@@ -1,0 +1,23 @@
+# ============================================================================
+# Fractal Mirror Introspection (FMI) — dipendenze Python
+#
+#     pip install -r requirements.txt
+#
+# Tutto il codice del progetto — Fractal Causal Engine incluso — è sorgente
+# semplice nella radice del repository: NON richiede alcuna installazione.
+# Qui ci sono solo le librerie esterne. Python >= 3.10.
+#
+# NOTA: l'inferenza LLM è fuori da Python — serve un server llama.cpp
+#       (o ollama) in esecuzione. CUDA/GPU sono gestite da llama.cpp,
+#       non da questi pacchetti (vedi INSTALLAZIONE.md, passi 3-4).
+# ============================================================================
+
+# --- runtime ----------------------------------------------------------------
+flask>=3.0          # interfaccia web (avvia_web.py, web/)
+requests>=2.31      # client HTTP verso llama.cpp / ollama (llm.py, specchio_adapter.py)
+
+# --- opzionali --------------------------------------------------------------
+# numpy>=1.26       # solo per specchio_di_coscienza/specchio_rag.py (RAG opzionale)
+# pytest>=8.0       # solo per la suite pytest del motore (fractal_causal_engine/tests)
+#                     i test FMI (test_strada_b.py, test_web_strada_b.py,
+#                     test_integrazione_fractal.py, test_ponte.py) NON lo richiedono

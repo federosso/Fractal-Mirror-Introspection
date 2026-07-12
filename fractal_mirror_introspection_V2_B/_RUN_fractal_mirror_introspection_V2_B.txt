@@ -1,0 +1,71 @@
+*************************************************************************************************************************************************************
+VERSIONE: fractal_mirror_introspection_V4.0 del 12-07-2026
+*************************************************************************************************************************************************************
+
+
++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+AVVIO SERVER: llama-cpp	
++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+
+!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+PER EVITARE PROBLEMI DI TRONCAMENTO MODIFICARE I TOKEN DI CONTESTO
+!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+--ctx-size 16384 
+--ctx-size 32768
+!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+
+	
+1. 
+C:\Users\fede\Desktop\PyProject\.venv\Scripts\activate
+
+2. 
+cd C:\Users\fede\AppData\Local\Microsoft\WinGet\Packages\ggml.llamacpp_Microsoft.Winget.Source_8wekyb3d8bbwe
+
+3. LLM USATI:
+
+26.00 t/s -> Qwen_2_5_7B\qwen2.5-7b-instruct-q3_k_m.gguf
+llama-server.exe -m "C:\modelli\Qwen_2_5_7B\qwen2.5-7b-instruct-q3_k_m.gguf" --host 127.0.0.1 --port 8080 --ctx-size 8192 --parallel 1 --n-gpu-layers 999 --batch-size 256 --ubatch-size 64 --flash-attn on --threads 4
+
+
+24.00 t/s -> Meta-Llama-3.1-8B-Instruct-IQ3_M.gguf
+llama-server.exe -m "C:\modelli\Llama_3_1_8B\Meta-Llama-3.1-8B-Instruct-IQ3_M.gguf" --host 127.0.0.1 --port 8080 --ctx-size 8192 --parallel 1 --n-gpu-layers 999 --batch-size 256 --ubatch-size 64 --flash-attn on --threads 4
+llama-server.exe -m "C:\modelli\Llama_3_1_8B\Meta-Llama-3.1-8B-Instruct-IQ3_M.gguf" --host 127.0.0.1 --port 8080 --ctx-size 16384 --parallel 1 --n-gpu-layers 999 --batch-size 256 --ubatch-size 64 --flash-attn on --threads 4
+
+
+62.00 t/s -> Gemma-4-E2B-Uncensored-HauhauCS-Aggressive-Q6_K_P.gguf
+llama-server.exe -m "C:\modelli\Gemma-4-E2B-Uncensored-HauhauCS-Aggressive-Q6_K_P.gguf" --host 127.0.0.1 --port 8080 --ctx-size 8192 --parallel 1 --n-gpu-layers 999 --batch-size 256 --ubatch-size 64 --flash-attn on --threads 4
+llama-server.exe -m "C:\modelli\Gemma-4-E2B-Uncensored-HauhauCS-Aggressive-Q6_K_P.gguf" --host 127.0.0.1 --port 8080 --ctx-size 16384 --parallel 1 --n-gpu-layers 999 --batch-size 256 --ubatch-size 64 --flash-attn on --threads 4
+llama-server.exe -m "C:\modelli\Gemma-4-E2B-Uncensored-HauhauCS-Aggressive-Q6_K_P.gguf" --host 127.0.0.1 --port 8080 --ctx-size 32768 --parallel 1 --n-gpu-layers 999 --batch-size 256 --ubatch-size 64 --flash-attn on --threads 4
+
+
+
+
+
+///////////////////////////////////////////////////////////////////////////////////////////////////////
+- LA FAMIGLIA QWEN 3.5 NON RESTITUISCE JSON
+///////////////////////////////////////////////////////////////////////////////////////////////////////
+### STADIO 1 — L0-L4 (classificazione)
+item totali classificati: 0
+⛔ ZERO item. Il Fractal non ha classificato nulla: il modello non ha
+   rispettato lo schema, o L0-L4 è degradato. Il ventaglio non può
+   che essere vuoto. → qui muore tutto. Stadi successivi inutili.
+
+cross-scale rilevati: 0
+
+
+26.00 t/s -> Qwen3.5-9B-UD-Q2_K_XL.gguf
+llama-server.exe -m "C:\modelli\Qwen3.5-9B-UD-Q2_K_XL.gguf" --host 127.0.0.1 --port 8080 --ctx-size 8192 --parallel 1 --n-gpu-layers 999 --batch-size 256 --ubatch-size 64 --flash-attn on --threads 4
+
+36.00 t/s -> Qwen3.5-4B-Uncensored-HauhauCS-Aggressive-Q6_K.gguf
+llama-server.exe -m "C:\modelli\Qwen3.5-4B-Uncensored-HauhauCS-Aggressive-Q6_K.gguf" --host 127.0.0.1 --port 8080 --ctx-size 8192 --parallel 1 --n-gpu-layers 999 --batch-size 256 --ubatch-size 64 --flash-attn on --threads 4
+
+39.00 t/s -> Qwen3.5-4B-Q4_K_M.gguf
+llama-server.exe -m "C:\modelli\Qwen3.5-4B-Q4_K_M.gguf" --host 127.0.0.1 --port 8080 --ctx-size 8192 --parallel 1 --n-gpu-layers 999 --batch-size 256 --ubatch-size 64 --flash-attn on --threads 4
+
+29.00 t/s -> Qwen3.5-9B-Claude-4.6-HighIQ-INSTRUCT-HERETIC-UNCENSORED.Q2_K.gguf
+llama-server.exe -m "C:\modelli\Qwen3.5-9B-Claude-4.6-HighIQ-INSTRUCT-HERETIC-UNCENSORED.Q2_K.gguf" --host 127.0.0.1 --port 8080 --ctx-size 8192 --parallel 1 --n-gpu-layers 999 --batch-size 256 --ubatch-size 64 --flash-attn on --threads 4
+///////////////////////////////////////////////////////////////////////////////////////////////////////
+
+
+

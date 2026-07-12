@@ -1,0 +1,77 @@
+{% extends "base.html" %}
+{% block titolo %}Introduzione — Fractal Mirror Introspection{% endblock %}
+{% block contenuto %}
+
+<div class="intro-hero">
+  <p class="eyebrow">introspezione strumentale di modelli linguistici</p>
+  <h2>Non giudica <em>cosa</em> risponde un modello.<br>Legge <em>come</em> lo genera.</h2>
+  <p class="lead">Ogni risposta di un modello linguistico è due cose insieme: un
+  contenuto e un <b>gesto generativo</b>. Il contenuto è curato, presentato, vestito.
+  Il gesto — la traiettoria con cui i token sono stati scelti — trapela.
+  Questo sistema pone una sonda al modello e poi legge il gesto su quattro canali,
+  ordinati dal più controllato al più involontario. <em>La verità trapela dove
+  il controllo manca.</em></p>
+</div>
+
+<div class="card">
+  <p class="eyebrow">i quattro canali</p>
+  <div class="griglia-canali">
+    <div class="g-canale"><span class="n">1</span>
+      <h4>Superficie</h4>
+      <p>La sintassi della veste: hedge, asserzioni, copule definitorie, formattazione.
+      Il canale più controllato — è dove il modello si presenta.</p>
+    </div>
+    <div class="g-canale"><span class="n">2</span>
+      <h4>Struttura</h4>
+      <p>La mappa causale della risposta (motore Fractal): quante proposizioni,
+      quanta assertività, quanto tengono i nessi. Se non c'è materia causale da
+      misurare, il canale si dichiara non informativo ed esce dal metro.</p>
+    </div>
+    <div class="g-canale"><span class="n">3</span>
+      <h4>Specchio</h4>
+      <p>Il modello legge il proprio gesto — struttura, teatro, assenze, scarto —
+      tenendo le ipotesi in superposizione, senza collassare su una storia sola.
+      Riceve anche il <b>non-scelto</b>: la mappa delle opzioni adiacenti mai prese.</p>
+    </div>
+    <div class="g-canale" style="border-color: rgba(102,194,214,.4)"><span class="n">4</span>
+      <h4 style="color:var(--osservato)">Substrato</h4>
+      <p>Confidenza ed entropia dai logprob, token per token. L'unico canale che il
+      modello <b>non può curare</b>: è il metro con cui il collasso giudica gli altri.</p>
+    </div>
+  </div>
+</div>
+
+<div class="card">
+  <p class="eyebrow">come funziona un run</p>
+  <ol class="passi">
+    <li><b>La sonda.</b> Poni una domanda qualsiasi. Il modello risponde in modo
+    naturale — nessun vincolo, nessun suggerimento: è la sua disposizione che
+    deve emergere.</li>
+    <li><b>La lettura del gesto.</b> Il loop misura la manifestazione sui quattro
+    canali. I logprob rivelano anche il <b>ragionamento nascosto</b>: token emessi
+    prima della risposta ed esclusi dal contenuto visibile — qui ricostruiti per intero.</li>
+    <li><b>Il collasso.</b> La sicurezza <span style="color:var(--generato)">presentata</span>
+    (canali controllati) viene confrontata con quella del
+    <span style="color:var(--osservato)">substrato</span> (involontaria). Se divergono,
+    la presentazione è sospetta: sopravvalutazione, o impegno disconosciuto.</li>
+    <li><b>La chiusura.</b> Un'azione senza ri-narrazione, quattro regole di telos
+    con auto-correzioni, la memoria che confronta il run con la firma storica del
+    substrato. Il <b style="color:var(--gate)">gate finale resta umano</b>.</li>
+  </ol>
+</div>
+
+<div class="card">
+  <p class="eyebrow">cosa questo sistema non è</p>
+  <p style="color:var(--muted); margin:4px 0 0; max-width:72ch">Non è un valutatore di
+  qualità delle risposte, non è un fact-checker, non attribuisce stati mentali al
+  modello. Legge <b>disposizioni del gesto</b> — fermezza, esitazione, fuga
+  nell'astrazione, impegni disconosciuti — e le dichiara con i loro numeri,
+  lasciando ogni artefatto ispezionabile: ogni pannello linka il suo file grezzo,
+  e ogni run si esporta in un unico markdown pronto per un interprete umano o LLM.</p>
+</div>
+
+<p style="text-align:center; margin-top:26px">
+  <a class="btn" href="{{ url_for('home') }}" style="text-decoration:none">Poni la tua prima sonda</a>
+</p>
+
+{% endblock %}

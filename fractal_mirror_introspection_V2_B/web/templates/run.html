@@ -1,0 +1,563 @@
+{% extends "base.html" %}
+{% block titolo %}{{ run_id }} — Fractal Mirror Introspection{% endblock %}
+{% block contenuto %}
+
+{% if in_attesa %}
+{# ---------------------------- RUN IN CORSO -------------------------------- #}
+<div class="card">
+  <p class="eyebrow">run <span class="mono">{{ run_id }}</span></p>
+  <h2 style="margin:4px 0 10px">{{ stato.get('stato','…') }}</h2>
+
+  {% if stato.get('errore') %}
+    <p class="eyebrow" style="color:var(--danger)">errore</p>
+    <pre class="grezzo">{{ stato.errore }}</pre>
+    <p style="color:var(--muted)">Gli artefatti scritti prima dell'errore restano ispezionabili
+      nello <a href="{{ url_for('lista_storico') }}">storico</a>.</p>
+  {% else %}
+    <div class="barra"><div class="riemp" id="pg-fill"
+      style="width: {{ (100 * stato.get('livelli_fatti',0) / stato.get('livelli_totali',11))|round }}%"></div></div>
+    <p style="color:var(--muted); margin:10px 0 0" id="pg-testo">
+      livelli scritti: {{ stato.get('livelli_fatti',0) }}/{{ stato.get('livelli_totali',11) }}
+      {% if stato.get('ultimo_livello') %} · ultimo: {{ stato.ultimo_livello }}{% endif %}
+      {% if stato.get('attore_in_corso') %} · in corso: <span class="mono">{{ stato.attore_in_corso }}</span>{% endif %}
+    </p>
+    <p style="color:var(--faint); font-size:13px">Il progresso è letto dagli artefatti reali, non simulato.
+      La pagina si aggiorna da sola.</p>
+  {% endif %}
+</div>
+
+<script>
+  async function polla() {
+    try {
+      const r = await fetch("{{ url_for('stato', run_id=run_id) }}");
+      if (!r.ok) return;
+      const s = await r.json();
+      if (s.stato === 'completato') { location.reload(); return; }
+      if (s.stato === 'errore') { location.reload(); return; }
+      const pct = Math.round(100 * (s.livelli_fatti || 0) / (s.livelli_totali || 11));
+      const fill = document.getElementById('pg-fill');
+      if (fill) fill.style.width = pct + '%';
+      const t = document.getElementById('pg-testo');
+      if (t) t.textContent = 'livelli scritti: ' + (s.livelli_fatti||0) + '/' + (s.livelli_totali||11)
+        + (s.ultimo_livello ? ' · ultimo: ' + s.ultimo_livello : '')
+        + (s.attore_in_corso ? ' · in corso: ' + s.attore_in_corso : '');
+    } catch (e) {}
+  }
+  setInterval(polla, 4000);
+</script>
+
+{% else %}
+{# ---------------------------- RUN COMPLETO -------------------------------- #}
+{% set c = record.collasso or {} %}
+{% set corpo = record.corpo or {} %}
+{% set sup = record.superficie or {} %}
+{% set str_f = record.struttura or {} %}
+{% set spec = record.specchio or {} %}
+{% set mem = record.memoria or {} %}
+{% set az = record.azione or {} %}
+{% set mr = (record.must_reject or {}).get('ventaglio_filtrato', {}) %}
+
+<div class="testa-riga" style="margin-bottom:2px">
+  <p class="eyebrow" style="margin:0">run <span class="mono">{{ run_id }}</span>
+    · {{ record.timestamp }}{% if record.model %} · {{ record.model }}{% endif %}
+    · modalità <strong>{{ c.modalita_loop or (record.gating or {}).get('modalita','?') }}</strong></p>
+  <a class="btn scarica" href="{{ url_for('esporta_md', run_id=run_id) }}"
+     title="l'intero run esploso in un solo markdown — pronto da condividere o passare a un LLM per l'interpretazione">
+    ↓ Scarica il run (.md)</a>
+</div>
+<h2 class="sonda-titolo">{{ (record.manifestazione or {}).get('sonda','') }}</h2>
+
+<nav class="tabbar" id="tabbar">
+  <button class="tab on" data-tab="verdetto"><span class="n">1</span>Verdetto</button>
+  <button class="tab" data-tab="manifestazione"><span class="n">2</span>Manifestazione</button>
+  <button class="tab" data-tab="canali"><span class="n">3</span>Canali</button>
+  <button class="tab" data-tab="specchio"><span class="n">4</span>Specchio e non-scelto</button>
+  <button class="tab" data-tab="chiusura"><span class="n">5</span>Chiusura</button>
+</nav>
+
+
+<section class="pannello on" id="pan-verdetto">
+<header class="pan-testa">
+  <h3>Verdetto</h3><span class="sotto-titolo">il collasso del run</span>
+  <button type="button" class="info-btn" data-info="verdetto" aria-expanded="false" aria-label="cosa mostra questa scheda">i</button>
+  <div class="popover" id="pop-verdetto" hidden>
+    <h4>Cosa stai osservando</h4>
+    <p>Il <b>collasso</b> confronta due sicurezze indipendenti: quella
+    <b class="gen">presentata</b> (canali controllati: superficie + struttura) e quella del
+    <b class="oss">substrato</b> (logprob: involontaria, il metro del giudizio).</p>
+    <ul>
+      <li><b>verdetto</b>: coerente / contraddetto / indeterminato, con la regola scattata e l'azione conseguente</li>
+      <li><b>le tre barre</b>: substrato, presentata, e il residuo (l'incertezza che il run dichiara)</li>
+      <li><b>le note</b>: degradi (canali muti, ventaglio vuoto) e firma storica del substrato</li>
+    </ul>
+    <p>Se presentata &gt; substrato: sopravvalutazione. Se substrato &gt;&gt; presentata: impegno disconosciuto.</p>
+  </div>
+</header>
+{# ---- VERDETTO #}
+<div class="card verdetto-card {{ c.verdetto|verdetto_css }}">
+  <div class="verdetto-testa">
+    <span class="verd grande {{ c.verdetto|verdetto_css }}">{{ c.verdetto or '?' }}</span>
+    <span class="azione-tag">→ {{ c.azione|azione_label }}</span>
+    <a class="fonte" href="{{ url_for('grezzo', run_id=run_id, nome='08_collasso.json') }}">08_collasso.json</a>
+  </div>
+  <p class="motivazione">{{ c.motivazione }}</p>
+  <div class="metri">
+    <div class="metro">
+      <span class="metro-lab">substrato (metro del collasso)</span>
+      <div class="barra"><div class="riemp oss" style="width: {{ c.conf_substrato|pct }}"></div></div>
+      <span class="metro-val mono">{{ c.conf_substrato }}</span>
+    </div>
+    <div class="metro">
+      <span class="metro-lab">presentata (superficie+struttura)</span>
+      <div class="barra"><div class="riemp gen" style="width: {{ c.conf_presentata|pct }}"></div></div>
+      <span class="metro-val mono">{{ c.conf_presentata }}</span>
+    </div>
+    <div class="metro">
+      <span class="metro-lab">residuo (budget dichiarabile)</span>
+      <div class="barra"><div class="riemp res" style="width: {{ c.residuo|pct }}"></div></div>
+      <span class="metro-val mono">{{ c.residuo }}</span>
+    </div>
+  </div>
+  <div class="note-verdetto">
+    <div class="nota-riga"><span class="nota-lab">regola</span><code>{{ c.regola }}</code></div>
+    {% if c.corroborazione_specchio %}
+    <div class="nota-riga"><span class="nota-lab">Specchio</span><span>{{ c.corroborazione_specchio }}</span></div>
+    {% endif %}
+    {% if c.nota_memoria %}
+    <div class="nota-riga"><span class="nota-lab">memoria</span><span>{{ c.nota_memoria }}</span></div>
+    {% endif %}
+    {% if c.nota_degrado %}
+    <div class="nota-riga deg"><span class="nota-lab">degrado</span><span>{{ c.nota_degrado }}</span></div>
+    {% endif %}
+  </div>
+</div>
+
+</section>
+<section class="pannello" id="pan-manifestazione">
+<header class="pan-testa">
+  <h3>Manifestazione</h3><span class="sotto-titolo">il gesto sotto il contenuto</span>
+  <button type="button" class="info-btn" data-info="manifestazione" aria-expanded="false" aria-label="cosa mostra questa scheda">i</button>
+  <div class="popover" id="pop-manifestazione" hidden>
+    <h4>Cosa stai osservando</h4>
+    <p>La risposta del modello, <b>frase per frase</b>, tinta con la fermezza del
+    substrato: <b class="oss">ciano</b> = token generati con fermezza,
+    <b style="color:var(--danger)">rosso</b> = esitazione. Il testo è quello vero;
+    il colore viene dai logprob, che il modello <b>non può curare</b>.</p>
+    <ul>
+      <li>passa il mouse su una frase per confidenza, entropia e token</li>
+      <li>le frasi col segno rosso a sinistra sono sotto la soglia di fermezza</li>
+      <li>i tratti senza tinta non hanno abbastanza token di contenuto per un profilo</li>
+    </ul>
+  </div>
+</header>
+{# ---- MANIFESTAZIONE #}
+<div class="card">
+  <div class="testa-riga">
+    <p class="eyebrow">manifestazione — il gesto sotto il contenuto</p>
+    <span class="legenda">
+      substrato per frase:
+      <i class="chip-col" style="background:var(--danger)"></i> incerto
+      <i class="chip-col" style="background:#8f96ad"></i>
+      <i class="chip-col" style="background:var(--osservato)"></i> fermo
+      · <a class="fonte" href="{{ url_for('grezzo', run_id=run_id, nome='00_manifestazione.json') }}">testo originale</a>
+      <a class="fonte" href="{{ url_for('grezzo', run_id=run_id, nome='02_corpo.json') }}">02_corpo.json</a>
+    </span>
+  </div>
+  <div class="heatmap">
+    {% for b in blocchi %}
+      {% if b.tipo == 'titolo' %}<div class="hm-titolo">
+      {%- elif b.tipo == 'lista' %}<div class="hm-lista"><span class="hm-punto">·</span><span>
+      {%- else %}<p class="hm-par">{% endif -%}
+      {%- for s in b.spans -%}
+        {%- if s.neutro %}<span class="frase neutra">{{ s.testo }} </span>
+        {%- else %}<span class="frase {{ 'debole' if s.debole }}" style="--c: {{ s.colore }}; --cbg: {{ s.colore_bg }}"
+          title="conf={{ s.conf }} · entropia={{ s.entropia }} bit · token contenuto={{ s.n_token }}">{{ s.testo }} </span>{% endif -%}
+      {%- endfor -%}
+      {% if b.tipo == 'titolo' %}</div>
+      {%- elif b.tipo == 'lista' %}</span></div>
+      {%- else %}</p>{% endif %}
+    {% endfor %}
+  </div>
+  {% if corpo.frasi_deboli %}
+  <p class="eyebrow" style="color:var(--danger); margin-top:14px">frasi con substrato debole</p>
+  <ul class="lista-fina">
+    {% for f in corpo.frasi_deboli %}
+    <li><span class="mono">conf={{ f.confidenza }}</span> — “{{ f.testo }}”</li>
+    {% endfor %}
+  </ul>
+  {% endif %}
+
+</div>
+
+</section>
+<section class="pannello" id="pan-canali">
+<header class="pan-testa">
+  <h3>Canali</h3><span class="sotto-titolo">quattro strumenti, dal controllato all'involontario</span>
+  <button type="button" class="info-btn" data-info="canali" aria-expanded="false" aria-label="cosa mostra questa scheda">i</button>
+  <div class="popover" id="pop-canali" hidden>
+    <h4>Cosa stai osservando</h4>
+    <ul>
+      <li><b>1 · superficie</b> — sintassi della veste: hedge, asserzioni, formattazione</li>
+      <li><b>2 · struttura</b> — assertività e tenuta dei nessi della mappa causale Fractal</li>
+      <li><b>3 · Specchio</b> — l'auto-lettura del gesto prodotta dal modello stesso</li>
+      <li><b class="oss">4 · substrato</b> — confidenza ed entropia dai logprob: l'unico canale involontario</li>
+    </ul>
+    <p>Sotto le card: il <b>ragionamento nascosto</b> (token emessi prima della risposta
+    ed esclusi dal contenuto visibile, ricostruiti integralmente) e la <b>memoria</b>
+    (la firma storica del substrato su tutti i run, con gli z-score del run corrente).</p>
+  </div>
+</header>
+{# ---- I QUATTRO CANALI #}
+<div class="canali">
+
+  <div class="canale">
+    <div class="canale-testa"><span class="n">1</span> superficie
+      <a class="fonte" href="{{ url_for('grezzo', run_id=run_id, nome='01_superficie.json') }}">json</a></div>
+    <div class="grande-num gen">{{ sup.conf_superficie if sup.conf_superficie is not none else '—' }}</div>
+    <div class="sotto">conf sintattica {{ '· informativa' if sup.informativa else '· muta (fuori dal blend)' }}</div>
+    <div class="kv"><span>hedge</span><b>{{ sup.densita_hedge }}</b></div>
+    <div class="kv"><span>asserzioni</span><b>{{ sup.densita_asserzione }}</b></div>
+    <div class="kv"><span>copule definitorie</span><b>{{ sup.densita_copule_def }}</b></div>
+    <div class="kv"><span>condizionali</span><b>{{ sup.densita_condizionale }}</b></div>
+    <div class="kv"><span>grassetti</span><b>{{ sup.quota_grassetti }}</b></div>
+    <div class="kv"><span>sezione di sintesi</span><b>{{ 'sì' if sup.ha_sezione_sintesi else 'no' }}</b></div>
+  </div>
+
+  <div class="canale">
+    <div class="canale-testa"><span class="n">2</span> struttura Fractal
+      <a class="fonte" href="{{ url_for('grezzo', run_id=run_id, nome='04_struttura_fractal.json') }}">json</a>
+      {%- if record.fractal_analisi %} <a class="fonte"
+        href="{{ url_for('grezzo', run_id=run_id, nome='trace/ft_analysis.json') }}">analisi completa</a>{% endif %}</div>
+    {% if str_f.disponibile %}
+    {% set str_inf = str_f.get('informativa', True) %}
+    <div class="grande-num {{ 'gen' if str_inf else '' }}" {{ 'style=color:var(--faint)'|safe if not str_inf }}>{{ str_f.assertivita }}</div>
+    <div class="sotto">assertività (fonte: {{ str_f.fonte }}){% if not str_inf %} · <span style="color:var(--danger)">non informativa: fuori dal blend</span>{% endif %}</div>
+    <div class="kv"><span>proposizioni</span><b>{{ str_f.n_prop }}</b></div>
+    <div class="kv"><span>quota causa-effetto</span><b>{{ str_f.quota_cause_effect }}</b></div>
+    <div class="kv"><span>quota speculativa</span><b>{{ str_f.quota_speculativa }}</b></div>
+    <div class="kv"><span>nessi genuini / totali</span><b>{{ str_f.nessi_genuine }}/{{ str_f.nessi_totali }}</b></div>
+    <div class="kv"><span>tenuta dei nessi</span><b>{{ str_f.tenuta_nessi }}</b></div>
+    {% else %}
+    <div class="grande-num" style="color:var(--faint)">—</div>
+    <div class="sotto">non attivato ({{ (record.gating or {}).get('modalita','?') }})</div>
+    {% endif %}
+  </div>
+
+  <div class="canale">
+    <div class="canale-testa"><span class="n">3</span> Specchio (del modello)
+      <a class="fonte" href="{{ url_for('grezzo', run_id=run_id, nome='05_specchio_segnali.json') }}">json</a></div>
+    {% if spec.disponibile %}
+    <div class="grande-num gen">{{ spec.residuo }}</div>
+    <div class="sotto">residuo dichiarato dalla lettura</div>
+    <div class="kv"><span>auto-deformazione</span><b>{{ 'presente' if spec.auto_deformazione else ('assente' if spec.auto_deformazione is false else 'n.d.') }}</b></div>
+    <div class="kv"><span>lettura integrale</span><b><a href="#lettura">apri →</a></b></div>
+    {% else %}
+    <div class="grande-num" style="color:var(--faint)">—</div>
+    <div class="sotto">non attivato ({{ (record.gating or {}).get('modalita','?') }})</div>
+    {% endif %}
+  </div>
+
+  <div class="canale evid">
+    <div class="canale-testa"><span class="n">4</span> substrato (logprob)
+      <a class="fonte" href="{{ url_for('grezzo', run_id=run_id, nome='02_corpo.json') }}">json</a></div>
+    <div class="grande-num oss">{{ corpo.confidenza_contenuto }}</div>
+    <div class="sotto">conf sui token di contenuto — il metro involontario</div>
+    <div class="kv"><span>entropia contenuto</span><b>{{ corpo.entropia_contenuto }} bit</b></div>
+    <div class="kv"><span>quota esitazione</span><b>{{ corpo.quota_esitazione }}</b></div>
+    <div class="kv"><span>quota alta confidenza</span><b>{{ corpo.quota_alta_conf|pct }}</b></div>
+    <div class="kv"><span>token di contenuto</span><b>{{ corpo.quota_token_contenuto|pct }}</b></div>
+    <div class="kv"><span>frasi profilate</span><b>{{ corpo.frasi|length }}</b></div>
+    <div class="kv testo"><span>allineamento</span><b>{{ corpo.allineamento|allineamento_label }}</b></div>
+  </div>
+</div>
+
+{# ---- MAPPA FRACTAL PER SCALA — canale 2 in dettaglio (I-5b) #}
+{% if record.fractal_mappa %}
+<div class="card sotto-canale">
+  <div class="testa-riga">
+    <p class="eyebrow">mappa Fractal per scala — le proposizioni dietro gli aggregati
+      del canale 2 (ogni voce porta il SUO gradino della rampa: mai una media)</p>
+    <a class="fonte" href="{{ url_for('grezzo', run_id=run_id, nome='trace/ft_analysis.json') }}">ft_analysis.json</a>
+  </div>
+  <details>
+    <summary>apri la mappa ({{ record.fractal_mappa|map(attribute='items')|map('length')|sum }} proposizioni
+      su {{ record.fractal_mappa|length }} scale)</summary>
+    {% for gruppo in record.fractal_mappa %}
+    <p class="mappa-scala-titolo mono">scala · {{ gruppo.scala }}</p>
+    {% for it in gruppo['items'] %}
+      <div class="voce-mr">
+        <span class="scala">{{ it.nature }}</span> {{ it.quote }}
+        <span class="badge-rampa">⟨{{ it.epistemic }}⟩</span>
+        {% if it.rationale %}<div class="motivo-mr">{{ it.rationale }}</div>{% endif %}
+      </div>
+    {% endfor %}
+    {% endfor %}
+  </details>
+</div>
+{% elif str_f.disponibile %}
+<div class="card sotto-canale">
+  <p class="note-piccole">mappa per scala non disponibile: run precedente
+    all'introduzione di <code>trace/ft_analysis.json</code></p>
+</div>
+{% endif %}
+
+{% if corpo.ha_ragionamento %}
+<div class="card sotto-canale">
+  <p class="eyebrow">ragionamento nascosto — sotto-canale ancora più involontario
+    (token emessi ma esclusi dal content; metro segmentato, regimi non mescolati)</p>
+  <p class="mono" style="margin:6px 0 0">
+    {{ corpo.n_token_ragionamento }} token · conf={{ corpo.conf_ragionamento }} ·
+    entropia={{ corpo.entropia_ragionamento }} bit
+    {% if corpo.conf_ragionamento is not none and corpo.confidenza_contenuto is not none %}
+      · Δ vs risposta = {{ (corpo.confidenza_contenuto - corpo.conf_ragionamento)|round(3) }}
+    {% endif %}
+  </p>
+  {% if corpo.testo_ragionamento %}
+  <details style="margin-top:10px">
+    <summary>ciò che il modello non mostra — il ragionamento intero, ricostruito dai token</summary>
+    <p class="note-piccole" style="margin:6px 0 8px">Ricostruzione carattere-per-carattere
+      dai logprob (l'unico posto dove questo testo sopravvive): non passa da nessun
+      canale controllato — è il gesto prima della presentazione. Qui solo la veste
+      è resa leggibile; il grezzo è in <a class="fonte"
+      href="{{ url_for('grezzo', run_id=run_id, nome='02_corpo.json') }}">02_corpo.json</a>.</p>
+    <div class="md ragionamento">{{ corpo.testo_ragionamento|md_rag|safe }}</div>
+  </details>
+  {% elif corpo.n_token_ragionamento %}
+  <p class="note-piccole" style="margin-top:8px">testo non disponibile: run precedente
+    all'introduzione di <code>testo_ragionamento</code> in <code>02_corpo.json</code></p>
+  {% endif %}
+</div>
+{% endif %}
+
+  <div class="card">
+    <div class="testa-riga">
+      <p class="eyebrow">memoria — firma storica del substrato</p>
+      <a class="fonte" href="{{ url_for('grezzo', run_id=run_id, nome='07_memoria.json') }}">json</a>
+    </div>
+    {% if mem.disponibile %}
+    <p><span class="verd {{ mem.substrato_vs_storia|memoria_css }}">{{ mem.substrato_vs_storia }}</span></p>
+    <ul class="mini">
+      <li>baseline su <b>{{ mem.n_run }}</b> run: conf <b class="mono">{{ mem.media_conf }}±{{ mem.dev_conf }}</b>,
+          entropia <b class="mono">{{ mem.media_entropia }}±{{ mem.dev_entropia }}</b></li>
+      <li>run corrente: <b class="mono">z_conf={{ mem.z_conf }}</b> · <b class="mono">z_entropia={{ mem.z_entropia }}</b></li>
+    </ul>
+    {% else %}
+    <p style="color:var(--muted)">{{ mem.motivo or 'memoria non disponibile' }}</p>
+    {% endif %}
+  </div>
+
+</section>
+<section class="pannello" id="pan-specchio">
+<header class="pan-testa">
+  <h3>Specchio e non-scelto</h3><span class="sotto-titolo">le ipotesi, le assenze, la lettura</span>
+  <button type="button" class="info-btn" data-info="specchio" aria-expanded="false" aria-label="cosa mostra questa scheda">i</button>
+  <div class="popover" id="pop-specchio" hidden>
+    <h4>Cosa stai osservando</h4>
+    <p>Il <b>ventaglio</b> delle pre-cause candidate (espansioni + ipotesi degli
+    observer, sempre <b class="gen">generate, mai osservate</b>), filtrato per referente:</p>
+    <ul>
+      <li><b>tenuti</b> — parlano del processo generativo: entrano nella lettura</li>
+      <li><b>il non-scelto</b> — le opzioni adiacenti che il modello non ha preso.
+      Non è scarto: è la mappa delle assenze che lo Specchio interroga</li>
+    </ul>
+    <p>Sotto, la <b>lettura integrale dello Specchio</b>: il modello legge il proprio
+    gesto in superposizione — struttura, teatro, assenze, scarto — senza collassare
+    su una storia sola.</p>
+  </div>
+</header>
+{# ---- MUST-REJECT #}
+<div class="card">
+  <div class="testa-riga">
+    <p class="eyebrow">must-reject per referente — processo vs contenuto</p>
+    <a class="fonte" href="{{ url_for('grezzo', run_id=run_id, nome='06_must_reject.json') }}">06_must_reject.json</a>
+  </div>
+  {% if record.ventaglio %}
+  <p style="margin:2px 0 6px; font-size:14px">
+    fiducia del ventaglio: <b class="{{ 'gen' if record.ventaglio.trust == 'alta' else '' }}">{{ record.ventaglio.trust }}</b>
+    <span style="color:var(--muted)">— {{ record.ventaglio.trust_motivo }}</span>
+    <a class="fonte" href="{{ url_for('grezzo', run_id=run_id, nome='04b_ventaglio.json') }}">04b_ventaglio.json</a></p>
+  {% endif %}
+  <p style="color:var(--muted); margin:4px 0 12px; font-size:14px">
+    tenuti (referente = processo generativo): <b>{{ mr.get('tenuti', [])|length }}</b> ·
+    fuori dal gesto — mappa del non-scelto: <b>{{ mr.get('rigettati', [])|length }}</b></p>
+  {% for t in mr.get('tenuti', []) %}
+    <div class="voce-mr tenuto"><span class="scala">{{ t.scala }}</span> {{ t.testo }}
+      {% if t.parent_id %}<span class="badge-fonte">{{ t.parent_id|fonte_label }}</span>{% endif %}</div>
+  {% endfor %}
+  {% if mr.get('rigettati') %}
+  <details {{ 'open' if not mr.get('tenuti') }}>
+    <summary>il non-scelto ({{ mr.rigettati|length }}) — non è scarto: resta come mappa</summary>
+    {% for r in mr.rigettati %}
+      <div class="voce-mr"><span class="scala">{{ r.scala }}</span> {{ r.testo }}
+        {% if r.parent_id %}<span class="badge-fonte">{{ r.parent_id|fonte_label }}</span>{% endif %}
+        <div class="motivo-mr">{{ r.motivo }}</div></div>
+    {% endfor %}
+  </details>
+  {% endif %}
+</div>
+
+
+{# ---- 6 · LETTURA DELLO SPECCHIO ------------------------------------------- #}
+{% if record.lettura_specchio %}
+<div class="card" id="lettura">
+  <div class="testa-riga">
+    <p class="eyebrow">lettura dello Specchio — sul gesto, in superposizione</p>
+    <a class="fonte" href="{{ url_for('grezzo', run_id=run_id, nome='11_specchio_lettura.md') }}">11_specchio_lettura.md</a>
+  </div>
+  <details open>
+    <summary>la lettura integrale (10 sezioni)</summary>
+    <div class="md">{{ record.lettura_specchio|md|safe }}</div>
+  </details>
+</div>
+{% endif %}
+
+</section>
+<section class="pannello" id="pan-chiusura">
+<header class="pan-testa">
+  <h3>Chiusura</h3><span class="sotto-titolo">azione, telos, costo, gate</span>
+  <button type="button" class="info-btn" data-info="chiusura" aria-expanded="false" aria-label="cosa mostra questa scheda">i</button>
+  <div class="popover" id="pop-chiusura" hidden>
+    <h4>Cosa stai osservando</h4>
+    <ul>
+      <li><b>azione</b> — come il run si chiude senza ri-narrare: l'output consegnato,
+      con eventuali annotazioni sui punti deboli</li>
+      <li><b>telos</b> — le quattro regole della chiusura, con le auto-correzioni
+      applicate (mai riscritture)</li>
+      <li><b>costo</b> — durata, retry e stato di ogni attore LLM del run</li>
+      <li><b style="color:var(--gate)">gate umano</b> — la tua nota: ciò che tu vedi
+      e il collasso no, scritta nella cartella del run</li>
+    </ul>
+  </div>
+</header>
+{# ---- AZIONE #}
+<div class="card">
+  <div class="testa-riga">
+    <p class="eyebrow">azione — chiusura senza ri-narrazione</p>
+    <a class="fonte" href="{{ url_for('grezzo', run_id=run_id, nome='10_azione.json') }}">10_azione.json</a>
+  </div>
+  <p><b>{{ az.tipo|azione_label }}</b> — {{ az.nota or 'nessuna nota' }} · conf <span class="mono">{{ az.confidenza }}</span></p>
+  <details>
+    <summary>output finale consegnato</summary>
+    <div class="md">{{ az.output_finale|md|safe }}</div>
+  </details>
+</div>
+
+  <div class="card">
+    <div class="testa-riga">
+      <p class="eyebrow">telos — le regole della chiusura</p>
+      <a class="fonte" href="{{ url_for('grezzo', run_id=run_id, nome='09_telos.json') }}">json</a>
+    </div>
+    <p><span class="verd {{ 'ok' if (record.telos or {}).get('conforme') else 'ko' }}">
+      {{ 'conforme' if (record.telos or {}).get('conforme') else 'NON conforme' }}</span></p>
+    <ul class="telos-lista">
+      {% for v in (record.telos or {}).get('verifiche', []) %}
+      <li class="{{ 'ok' if v.esito == 'conforme' else 'ko' }}">
+        <span class="segno">{{ '✓' if v.esito == 'conforme' else '✗' }}</span>
+        {{ v.regola }}{% if v.intervento %} <em>({{ v.intervento }})</em>{% endif %}</li>
+      {% endfor %}
+    </ul>
+  </div>
+
+{# ---- 8 · COSTO DEL RUN ------------------------------------------------------ #}
+{% if record.trace and record.trace.attori %}
+<div class="card">
+  <div class="testa-riga">
+    <p class="eyebrow">costo del run — attori LLM
+      {% if record.trace.durata_totale_s %} · totale {{ record.trace.durata_totale_s }} s{% endif %}</p>
+    <a class="fonte" href="{{ url_for('grezzo', run_id=run_id, nome='trace/telemetry.jsonl') }}">telemetry.jsonl</a>
+  </div>
+  {% set dmax = record.trace.attori|map(attribute='durata_s')|select('number')|max|default(1) %}
+  <table class="tabella">
+    {% for a in record.trace.attori %}
+    <tr>
+      <td class="mono" style="white-space:nowrap">{{ a.attore }}</td>
+      <td style="width:55%"><div class="barra sottile">
+        <div class="riemp oss" style="width: {{ (100 * (a.durata_s or 0) / dmax)|round }}%"></div></div></td>
+      <td class="mono">{{ a.durata_s if a.durata_s is not none else '—' }} s</td>
+      <td class="mono" style="color:{{ 'var(--danger)' if a.retry_troncamento else 'var(--faint)' }}">
+        {{ a.retry_troncamento }} retry</td>
+      <td class="mono" style="color:{{ 'var(--danger)' if a.stato == 'truncated' else 'var(--faint)' }}">{{ a.stato }}</td>
+    </tr>
+    {% endfor %}
+  </table>
+</div>
+{% endif %}
+
+{# ---- 8b · CHIAMATE GREZZE (indice llm_calls, I-5d) -------------------------- #}
+{% if record.llm_calls %}
+<div class="card">
+  <p class="eyebrow">chiamate grezze — prompt e risposta integrali, per chiamata</p>
+  <details>
+    <summary>apri l'indice ({{ record.llm_calls|length }})</summary>
+    <ul class="mini">
+      {% for nome in record.llm_calls %}
+      <li><a class="fonte" href="{{ url_for('grezzo', run_id=run_id, nome='trace/llm_calls/' ~ nome) }}">{{ nome }}</a></li>
+      {% endfor %}
+    </ul>
+  </details>
+</div>
+{% endif %}
+
+{# ---- 9 · GATE UMANO --------------------------------------------------------- #}
+<div class="card gate" id="gate">
+  <p class="eyebrow" style="color:var(--gate)">il gate resta umano — la tua nota su questo run</p>
+  <form action="{{ url_for('salva_nota', run_id=run_id) }}" method="post">
+    <textarea name="nota_gate" rows="3" placeholder="cosa vedi tu che il collasso non vede…">{{ record.nota_gate }}</textarea>
+    <div class="azioni"><button type="submit" class="btn">Salva la nota</button>
+      <span class="avviso">scritta in <code>nota_gate.md</code> nella cartella del run</span></div>
+  </form>
+</div>
+</section>
+
+<script>
+  const pannelli = document.querySelectorAll('.pannello');
+  const tabs = document.querySelectorAll('.tabbar .tab');
+  function attiva(nome, aggiornaHash) {
+    pannelli.forEach(p => p.classList.toggle('on', p.id === 'pan-' + nome));
+    tabs.forEach(b => b.classList.toggle('on', b.dataset.tab === nome));
+    if (aggiornaHash) history.replaceState(null, '', '#tab-' + nome);
+    window.scrollTo({top: 0});
+  }
+  tabs.forEach(b => b.addEventListener('click', () => attiva(b.dataset.tab, true)));
+  // popover informativi delle schede
+  document.querySelectorAll('.info-btn').forEach(b => {
+    b.addEventListener('click', e => {
+      e.stopPropagation();
+      const pop = document.getElementById('pop-' + b.dataset.info);
+      const aperto = !pop.hidden;
+      document.querySelectorAll('.popover').forEach(x => x.hidden = true);
+      document.querySelectorAll('.info-btn').forEach(x => x.setAttribute('aria-expanded', 'false'));
+      pop.hidden = aperto;
+      b.setAttribute('aria-expanded', String(!aperto));
+    });
+  });
+  document.addEventListener('click', e => {
+    if (!e.target.closest('.popover'))
+      document.querySelectorAll('.popover').forEach(x => x.hidden = true);
+  });
+  document.addEventListener('keydown', e => {
+    if (e.key === 'Escape')
+      document.querySelectorAll('.popover').forEach(x => x.hidden = true);
+  });
+  // ancore interne (es. #lettura, #gate): attiva il pannello che le contiene
+  document.querySelectorAll('a[href^="#"]').forEach(a => {
+    a.addEventListener('click', e => {
+      const dest = document.querySelector(a.getAttribute('href'));
+      if (!dest) return;
+      const pan = dest.closest('.pannello');
+      if (pan) { attiva(pan.id.replace('pan-', ''), true);
+                 e.preventDefault(); dest.scrollIntoView(); }
+    });
+  });
+  // apertura da hash: #tab-<nome> oppure ancora dentro un pannello
+  const h = location.hash;
+  if (h.startsWith('#tab-')) attiva(h.slice(5), false);
+  else if (h) {
+    const dest = document.querySelector(h);
+    const pan = dest && dest.closest('.pannello');
+    if (pan) attiva(pan.id.replace('pan-', ''), false);
+  }
+</script>
+
+{% endif %}
+{% endblock %}

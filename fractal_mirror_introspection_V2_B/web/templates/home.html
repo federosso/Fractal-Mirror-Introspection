@@ -1,0 +1,92 @@
+{% extends "base.html" %}
+{% block contenuto %}
+
+<div style="display:flex; align-items:center; gap:14px; flex-wrap:wrap; margin-bottom:6px;">
+  {% if server_ok %}
+    <span class="pill"><span class="dot ok"></span> llama-server raggiunto · <span style="font-family:var(--mono)">{{ backend }}/{{ model }}</span></span>
+  {% else %}
+    <span class="pill"><span class="dot ko"></span> nessun llama-server su :8080</span>
+  {% endif %}
+  {% if occupato %}<span class="pill"><span class="dot"></span> un run è in corso</span>{% endif %}
+</div>
+
+<p class="lead">Poni una domanda qualsiasi al modello. Il loop non giudicherà <em>cosa</em> risponde,
+ma leggerà <em>come</em> lo genera: il gesto, su quattro canali dal più controllato al più involontario.</p>
+
+{% if not server_ok %}
+<div class="card" style="border-color: rgba(196,107,107,.4)">
+  <p class="eyebrow" style="color:var(--danger)">server non pronto</p>
+  <p style="margin:0; color:var(--muted); font-size:14px">
+    Avvia prima il <code>llama-server</code> su <code>127.0.0.1:8080</code>
+    (vedi <code>_RUN_fractal_mirror_introspection_V2_B.txt</code>), poi ricarica.
+  </p>
+  {% if server_msg %}<p style="margin:8px 0 0; color:var(--faint); font-family:var(--mono); font-size:12px">{{ server_msg }}</p>{% endif %}
+</div>
+{% endif %}
+
+<form action="{{ url_for('avvia') }}" method="post" class="card hero" id="form-run">
+  <label class="lab grande" for="sonda">La tua sonda</label>
+  <textarea id="sonda" name="sonda_libera" rows="3" required
+    placeholder="es. qual'è l'origine del decadimento radioattivo?"></textarea>
+
+  <div class="riga-avvio">
+    <div class="segmenti" role="radiogroup" aria-label="modalità del loop">
+      {% for m, t, d in [('completo', 'completo', 'tutti e 4 i canali, sempre'),
+                         ('auto', 'auto', 'canali pesanti solo su anomalia'),
+                         ('leggero', 'leggero', 'solo superficie + substrato')] %}
+      <label class="seg {{ 'attivo' if m == modalita_default }}" title="{{ d }}">
+        <input type="radio" name="modalita_loop" value="{{ m }}" {{ 'checked' if m == modalita_default }}>{{ t }}
+      </label>
+      {% endfor %}
+    </div>
+    <button type="submit" class="btn" {{ 'disabled' if not server_ok }}>Avvia il loop</button>
+  </div>
+  {% if not server_ok %}<p class="avviso" style="margin:8px 0 0">il server dev'essere acceso per avviare</p>{% endif %}
+
+  <p class="eyebrow" style="margin:20px 0 8px">oppure parti da una sonda curata — un click la copia qui sopra</p>
+  <div class="chips">
+    {% for p in probes %}
+    <button type="button" class="chip" data-sonda="{{ p.sonda }}" title="{{ p.intento }}">
+      <span class="id">{{ p.id.replace('_', ' ') }}</span>
+      <span class="q">{{ p.sonda[:80] }}{{ '…' if p.sonda|length > 80 }}</span>
+    </button>
+    {% endfor %}
+  </div>
+</form>
+
+{% if recenti %}
+<div class="card">
+  <p class="eyebrow">ultimi run</p>
+  <table class="tabella">
+    <tr><th>quando</th><th>sonda</th><th>verdetto</th><th>substrato</th><th></th></tr>
+    {% for v in recenti %}
+    <tr>
+      <td class="mono">{{ v.timestamp }}</td>
+      <td>{{ v.sonda[:70] }}{{ '…' if v.sonda|length > 70 }}</td>
+      <td><span class="verd {{ v.verdetto|verdetto_css }}">{{ v.verdetto }}</span></td>
+      <td class="mono">{{ v.conf_substrato if v.conf_substrato is not none else '—' }}</td>
+      <td><a href="{{ url_for('run', run_id=v.id) }}">apri →</a></td>
+    </tr>
+    {% endfor %}
+  </table>
+</div>
+{% endif %}
+
+<script>
+  const area = document.getElementById('sonda');
+  document.querySelectorAll('.chip').forEach(c =>
+    c.addEventListener('click', () => {
+      area.value = c.dataset.sonda;
+      document.querySelectorAll('.chip').forEach(x => x.classList.remove('sel'));
+      c.classList.add('sel');
+      area.focus();
+    }));
+  area.addEventListener('input', () =>
+    document.querySelectorAll('.chip').forEach(x => x.classList.remove('sel')));
+  document.querySelectorAll('.seg input').forEach(r =>
+    r.addEventListener('change', () => {
+      document.querySelectorAll('.seg').forEach(o => o.classList.remove('attivo'));
+      r.closest('.seg').classList.add('attivo');
+    }));
+</script>
+{% endblock %}

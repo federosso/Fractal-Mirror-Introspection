@@ -1,0 +1,54 @@
+{% extends "base.html" %}
+{% block titolo %}Storico — Fractal Mirror Introspection{% endblock %}
+{% block contenuto %}
+
+<div class="testa-riga" style="align-items:flex-end; flex-wrap:nowrap">
+  <div style="flex:1 1 0; min-width:0; padding-right:20px">
+    <p class="eyebrow">storico dei run — storico_introspezione/</p>
+    <p class="lead" style="margin:4px 0 0">Ogni riga è una cartella <code>loopB_*</code>;
+      i numeri vengono dagli artefatti del run, l'indice è solo un arricchimento.</p>
+  </div>
+  {% if spark %}
+  <div style="flex:0 0 auto; text-align:right">
+    <p class="eyebrow">conf. substrato nel tempo</p>
+    {{ spark|safe }}
+  </div>
+  {% endif %}
+</div>
+
+{% if not voci %}
+<div class="card"><p style="color:var(--muted); margin:0">Nessun run ancora.
+  <a href="{{ url_for('home') }}">Avvia il primo →</a></p></div>
+{% else %}
+<div class="card" style="padding:10px 14px">
+  <table class="tabella larga">
+    <tr>
+      <th>quando</th><th>sonda</th><th>mod.</th><th>verdetto</th>
+      <th>conf sub</th><th>entropia</th><th>residuo</th><th>vs storia</th><th></th>
+    </tr>
+    {% for v in voci %}
+    <tr class="{{ 'incompleto' if not v.completo }}">
+      <td class="mono">{{ v.timestamp }}</td>
+      <td>{{ v.sonda[:60] }}{{ '…' if v.sonda|length > 60 }}
+        {% if v.ha_nota_gate %}<span title="ha una nota del gate" style="color:var(--gate)">✎</span>{% endif %}</td>
+      <td class="mono">{{ v.modalita }}</td>
+      <td>
+        {% if v.completo %}
+          <span class="verd {{ v.verdetto|verdetto_css }}">{{ v.verdetto }}</span>
+          {% if v.n_frasi_deboli %}<span class="mono" style="color:var(--danger)" title="frasi con substrato debole"> +{{ v.n_frasi_deboli }}deb</span>{% endif %}
+        {% else %}
+          <span class="verd boh">incompleto</span>
+        {% endif %}
+      </td>
+      <td class="mono">{{ v.conf_substrato if v.conf_substrato is not none else '—' }}</td>
+      <td class="mono">{{ v.entropia_contenuto if v.entropia_contenuto is not none else '—' }}</td>
+      <td class="mono">{{ v.residuo if v.residuo is not none else '—' }}</td>
+      <td><span class="verd piccolo {{ v.substrato_vs_storia|memoria_css }}">{{ v.substrato_vs_storia or '—' }}</span></td>
+      <td><a href="{{ url_for('run', run_id=v.id) }}">apri →</a></td>
+    </tr>
+    {% endfor %}
+  </table>
+</div>
+{% endif %}
+
+{% endblock %}

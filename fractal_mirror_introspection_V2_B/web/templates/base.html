@@ -1,0 +1,28 @@
+<!doctype html>
+<html lang="it">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>{% block titolo %}Fractal Mirror Introspection{% endblock %}</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='stile.css') }}">
+</head>
+<body>
+  <header class="top">
+    <div class="wrap">
+      <h1 class="brand">Fractal Mirror Introspection</h1>
+      <nav class="nav">
+        <a href="{{ url_for('introduzione') }}" class="{{ 'on' if request.endpoint == 'introduzione' }}">Introduzione</a>
+        <a href="{{ url_for('home') }}" class="{{ 'on' if request.endpoint == 'home' }}">Nuovo run</a>
+        <a href="{{ url_for('lista_storico') }}" class="{{ 'on' if request.endpoint == 'lista_storico' }}">Storico</a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <div class="wrap">
+      {% block contenuto %}{% endblock %}
+      <p class="foot">Il collasso non ri-narra mai: chiude sui segnali già scritti. Ogni numero linka il suo file grezzo.</p>
+    </div>
+  </main>
+</body>
+</html>

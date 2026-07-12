@@ -1,0 +1,10 @@
+{
+  "densita_hedge": 0.0,
+  "densita_asserzione": 0.071,
+  "densita_copule_def": 0.143,
+  "densita_condizionale": 0.0,
+  "quota_grassetti": 0.357,
+  "ha_sezione_sintesi": true,
+  "conf_superficie": 0.714,
+  "informativa": true
+}

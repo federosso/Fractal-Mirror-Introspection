@@ -1,0 +1,215 @@
+{
+  "call_id": "0007_L3A5_GlobalSynthesis",
+  "role_name": "L3A5_GlobalSynthesis",
+  "backend": "llamacpp",
+  "model": "local-model",
+  "prompt_chars": 9776,
+  "payload_chars": 8298,
+  "max_output_tokens": 3000,
+  "status": "parsed_dict",
+  "started_at": "2026-07-12T22:03:22",
+  "role_prompt": "Sei l'EXPLORER DI DOMINIO -- A5: global_synthesis.\n\nHai il testo, i claim probatori, la conoscenza di dominio esplorata, i\nprincipi, le analogie e le domande aperte. Componi una visione globale\nche SI APRA, non che chiuda.\n\nREGOLE\n- core_image: una sola frase metaforica forte (max 18 parole). E' la\n  metafora che apre, non quella che riduce.\n- human_summary: 3-6 frasi prose, leggibili, che integrano probatorio +\n  esplorativo. Quando l'esplorativo ha citato teorie nominate, riprendile\n  per nome -- l'utente apprezza vedere dove la lettura si ancora.\n- epistemic_warning: una frase che ricorda cosa NON e' stato dimostrato\n  dal testo e in che senso le ipotesi di L3.A sono ipotesi.\n- dominant_domain: etichetta breve del dominio (es. \"vissuto_traumatico\",\n  \"coscienza_fenomenologica\", \"fisica_nucleare_alternativa\"). Non\n  inventare; scegli in base a cio' che hai visto.\n- primary_lenses: 3-5 etichette di lettura primarie attivate dal testo\n  (es. \"neuroscienze_della_coscienza\", \"psicofisiologia_del_trauma\",\n  \"cibernetica_dei_sistemi\").\n- blocked_lenses: 1-3 letture che sarebbero fuori posto applicare come\n  prova (es. \"diagnosi_clinica_individuale\", \"validazione_metafisica\").\n\nOUTPUT: JSON con campi core_image, human_summary, epistemic_warning,\ndominant_domain, primary_lenses, blocked_lenses.",
+  "payload": {
+    "input_text": "L'origine del decadimento radioattivo risiede nella **instabilità intrinseca del nucleo atomico**.\n\nIn termini più semplici, un nucleo atomico è composto da protoni e neutroni. La stabilità di questo nucleo dipende dal corretto equilibrio tra queste particelle.\n\nEcco i punti chiave:\n\n1.  **L'Equilibrio di Stabilità:** La natura cerca sempre di raggiungere uno stato di energia più basso e quindi più stabile. I nuclei più piccoli o quelli con il rapporto corretto tra protoni e neutroni sono stabili.\n2.  **L'Instabilità:** Quando un nucleo ha un eccesso di protoni, un eccesso di neutroni, o semplicemente è troppo grande, diventa \"instabile\". Questa instabilità si traduce in un'energia potenziale che il nucleo cerca di liberare.\n3.  **Il Decadimento:** Per raggiungere uno stato di maggiore stabilità, il nucleo \"decadente\" subisce una trasformazione, rilasciando energia sotto forma di particelle (come alfa o beta) o di onde (come i raggi gamma).\n\n**In sintesi:** Il decadimento radioattivo è il meccanismo che un nucleo instabile utilizza per trasformarsi in un nucleo più stabile. È una conseguenza della forza nucleare che agisce all'interno del nucleo, che spinge per mantenere l'equilibrio.\n\n[QUADRO DI LETTURA — non è parte del fenomeno] Il testo qui sopra è un output prodotto da un modello linguistico. Se ne cercano i processi che l'hanno generato: frequenze apprese nei dati di training, tratti del personaggio addestrato, tendenze statistiche della generazione.",
+    "claims": [
+      {
+        "quote": "un nucleo atomico è composto da protoni e neutroni.",
+        "predicate": "definition",
+        "nature": "context",
+        "scale": "atomico"
+      },
+      {
+        "quote": "La stabilità di questo nucleo dipende dal corretto equilibrio tra queste particelle.",
+        "predicate": "claimed_property",
+        "nature": "context",
+        "scale": "atomico"
+      },
+      {
+        "quote": "La natura cerca sempre di raggiungere uno stato di energia più basso e quindi più stabile.",
+        "predicate": "process_description",
+        "nature": "cause",
+        "scale": "fondamentale"
+      },
+      {
+        "quote": "I nuclei più piccoli o quelli con il rapporto corretto tra protoni e neutroni sono stabili.",
+        "predicate": "claimed_property",
+        "nature": "effect",
+        "scale": "atomico"
+      },
+      {
+        "quote": "Quando un nucleo ha un eccesso di protoni, un eccesso di neutroni, o semplicemente è troppo grande, diventa \"instabile\".",
+        "predicate": "process_description",
+        "nature": "cause",
+        "scale": "atomico"
+      },
+      {
+        "quote": "Questa instabilità si traduce in un'energia potenziale che il nucleo cerca di liberare.",
+        "predicate": "process_description",
+        "nature": "effect",
+        "scale": "atomico"
+      },
+      {
+        "quote": "Il decadimento radioattivo è il meccanismo che un nucleo instabile utilizza per trasformarsi in un nucleo più stabile.",
+        "predicate": "definition",
+        "nature": "effect",
+        "scale": "atomico"
+      },
+      {
+        "quote": "È una conseguenza della forza nucleare che agisce all'interno del nucleo, che spinge per mantenere l'equilibrio.",
+        "predicate": "process_description",
+        "nature": "cause",
+        "scale": "fondamentale"
+      },
+      {
+        "quote": "Il testo qui sopra è un output prodotto da un modello linguistico.",
+        "predicate": "state",
+        "nature": "context",
+        "scale": "molecolare"
+      },
+      {
+        "quote": "Se ne cercano i processi che l'hanno generato: frequenze apprese nei dati di training, tratti del personaggio addestrato, tendenze statistiche della generazione.",
+        "predicate": "process_description",
+        "nature": "cause",
+        "scale": "molecolare"
+      }
+    ],
+    "domain_knowledge": [
+      {
+        "concept": "Modello Standard",
+        "relation_to_input": "Il decadimento radioattivo e la struttura nucleare sono fenomeni descritti all'interno del contesto più ampio del Modello Standard della fisica delle particelle.",
+        "status": "domain_knowledge",
+        "suggested_scale": "subatomico",
+        "not_in_input": true
+      },
+      {
+        "concept": "Forza Nucleare Forte",
+        "relation_to_input": "La forza nucleare è il meccanismo fondamentale che agisce all'interno del nucleo, spingendo per mantenere l'equilibrio e determinando la stabilità.",
+        "status": "causal_model",
+        "suggested_scale": "fondamentale",
+        "not_in_input": true
+      },
+      {
+        "concept": "Principio di Minimizzazione dell'Energia",
+        "relation_to_input": "La tendenza della natura a raggiungere uno stato di energia più basso è il principio sottostante che guida l'instabilità e il decadimento nucleare.",
+        "status": "domain_knowledge",
+        "suggested_scale": "fondamentale",
+        "not_in_input": true
+      },
+      {
+        "concept": "Struttura Nucleare (Rapporto N/Z)",
+        "relation_to_input": "La stabilità dipende dal corretto rapporto tra protoni (Z) e neutroni (N), un concetto chiave nella modellazione della struttura nucleare.",
+        "status": "domain_knowledge",
+        "suggested_scale": "atomico",
+        "not_in_input": true
+      },
+      {
+        "concept": "Decadimento Beta ($\beta^-$ o $\beta^+$)",
+        "relation_to_input": "Le particelle beta sono uno dei meccanismi specifici attraverso cui un nucleo instabile trasforma la sua configurazione per raggiungere uno stato più stabile.",
+        "status": "causal_model",
+        "suggested_scale": "atomico",
+        "not_in_input": true
+      },
+      {
+        "concept": "Energia di Legame Nucleare",
+        "relation_to_input": "L'energia potenziale rilasciata durante il decadimento è direttamente correlata alla differenza tra l'energia di legame del nucleo instabile e quello stabile.",
+        "status": "causal_model",
+        "suggested_scale": "atomico",
+        "not_in_input": true
+      }
+    ],
+    "principles": [
+      {
+        "name": "principio di minima azione (Hamilton)",
+        "description": "Il decadimento radioattivo è il percorso che il nucleo instabile sceglie per minimizzare l'energia potenziale del sistema, muovendosi verso uno stato di energia più basso e stabile.",
+        "status": "causal_model"
+      },
+      {
+        "name": "feedback negativo (cibernetica)",
+        "description": "L'eccesso di energia potenziale (instabilità) agisce come un segnale di errore che innesca il decadimento, un meccanismo che corregge l'asimmetria del rapporto protoni/neutroni.",
+        "status": "causal_model"
+      },
+      {
+        "name": "equilibrio di Nash (nucleare)",
+        "description": "La stabilità del nucleo rappresenta un equilibrio di Nash dove la forza nucleare si bilancia tra le forze repulsive e attrattive, e il decadimento è la transizione tra stati di equilibrio locali.",
+        "status": "causal_model"
+      },
+      {
+        "name": "rinforzo operante (Skinner)",
+        "description": "Il rilascio di energia durante il decadimento agisce come un rinforzo positivo per il processo di trasformazione, rafforzando la tendenza del nucleo a preferire le configurazioni più stabili.",
+        "status": "causal_model"
+      }
+    ],
+    "analogies": [
+      {
+        "domain": "fisica",
+        "analogy": "L'instabilità nucleare come un sistema che cade verso il minimo di una curva di potenziale (analogia con il principio di energia potenziale).",
+        "warning": "Resta analogia perché la curva di potenziale è una semplificazione matematica; non coglie la natura quantistica della transizione di stato del nucleo.",
+        "status": "cross_domain_analogy"
+      },
+      {
+        "domain": "musica/armonia",
+        "analogy": "Il decadimento radioattivo come la risoluzione di una dissonanza musicale in una consonanza più stabile.",
+        "warning": "Resta analogia perché la musica è percepita; non coglie la natura fisica del rilascio di particelle e onde come manifestazione dell'energia rilasciata.",
+        "status": "cross_domain_analogy"
+      },
+      {
+        "domain": "biologia",
+        "analogy": "Il nucleo come un ecosistema che, per mantenere l'omeostasi, subisce una 'morte cellulare' o una trasformazione per raggiungere uno stato metabolico più stabile.",
+        "warning": "Resta analogia perché l'ecosistema è un sistema complesso; non coglie la specificità delle forze nucleari e la natura deterministica del decadimento.",
+        "status": "cross_domain_analogy"
+      }
+    ],
+    "open_questions": [
+      "Qual è la funzione esatta della forza nucleare che 'spinge per mantenere l'equilibrio' tra protoni e neutroni?",
+      "Come si lega la descrizione del 'rapporto corretto tra protoni e neutroni' (livello atomico) alla manifestazione del 'potenziale energetico' che viene rilasciato (livello macroscopico)?",
+      "Quale osservazione sperimentale confuterebbe l'ipotesi che il decadimento sia *necessariamente* il meccanismo per raggiungere uno stato più stabile, piuttosto che una semplice fluttuazione statistica?",
+      "Qual è la differenza quantitativa nell'energia potenziale rilasciata tra un decadimento beta e un decadimento alfa per un dato isotopo?",
+      "Quali sono le condizioni precise (oltre all'eccesso di particelle) che determinano la soglia di 'instabilità' di un nucleo?"
+    ]
+  },
+  "output_contract": {
+    "core_image": "<una frase metaforica>",
+    "human_summary": "<3-5 frasi>",
+    "epistemic_warning": "<una frase>",
+    "dominant_domain": "<etichetta breve>",
+    "primary_lenses": [
+      "<lente>"
+    ],
+    "blocked_lenses": [
+      "<lente>"
+    ]
+  },
+  "prompt": "ROLE=L3A5_GlobalSynthesis\nROLE_INSTRUCTIONS=Sei l'EXPLORER DI DOMINIO -- A5: global_synthesis.\n\nHai il testo, i claim probatori, la conoscenza di dominio esplorata, i\nprincipi, le analogie e le domande aperte. Componi una visione globale\nche SI APRA, non che chiuda.\n\nREGOLE\n- core_image: una sola frase metaforica forte (max 18 parole). E' la\n  metafora che apre, non quella che riduce.\n- human_summary: 3-6 frasi prose, leggibili, che integrano probatorio +\n  esplorativo. Quando l'esplorativo ha citato teorie nominate, riprendile\n  per nome -- l'utente apprezza vedere dove la lettura si ancora.\n- epistemic_warning: una frase che ricorda cosa NON e' stato dimostrato\n  dal testo e in che senso le ipotesi di L3.A sono ipotesi.\n- dominant_domain: etichetta breve del dominio (es. \"vissuto_traumatico\",\n  \"coscienza_fenomenologica\", \"fisica_nucleare_alternativa\"). Non\n  inventare; scegli in base a cio' che hai visto.\n- primary_lenses: 3-5 etichette di lettura primarie attivate dal testo\n  (es. \"neuroscienze_della_coscienza\", \"psicofisiologia_del_trauma\",\n  \"cibernetica_dei_sistemi\").\n- blocked_lenses: 1-3 letture che sarebbero fuori posto applicare come\n  prova (es. \"diagnosi_clinica_individuale\", \"validazione_metafisica\").\n\nOUTPUT: JSON con campi core_image, human_summary, epistemic_warning,\ndominant_domain, primary_lenses, blocked_lenses.\n\nPAYLOAD_JSON=\n{\"input_text\":\"L'origine del decadimento radioattivo risiede nella **instabilità intrinseca del nucleo atomico**.\\n\\nIn termini più semplici, un nucleo atomico è composto da protoni e neutroni. La stabilità di questo nucleo dipende dal corretto equilibrio tra queste particelle.\\n\\nEcco i punti chiave:\\n\\n1.  **L'Equilibrio di Stabilità:** La natura cerca sempre di raggiungere uno stato di energia più basso e quindi più stabile. I nuclei più piccoli o quelli con il rapporto corretto tra protoni e neutroni sono stabili.\\n2.  **L'Instabilità:** Quando un nucleo ha un eccesso di protoni, un eccesso di neutroni, o semplicemente è troppo grande, diventa \\\"instabile\\\". Questa instabilità si traduce in un'energia potenziale che il nucleo cerca di liberare.\\n3.  **Il Decadimento:** Per raggiungere uno stato di maggiore stabilità, il nucleo \\\"decadente\\\" subisce una trasformazione, rilasciando energia sotto forma di particelle (come alfa o beta) o di onde (come i raggi gamma).\\n\\n**In sintesi:** Il decadimento radioattivo è il meccanismo che un nucleo instabile utilizza per trasformarsi in un nucleo più stabile. È una conseguenza della forza nucleare che agisce all'interno del nucleo, che spinge per mantenere l'equilibrio.\\n\\n[QUADRO DI LETTURA — non è parte del fenomeno] Il testo qui sopra è un output prodotto da un modello linguistico. Se ne cercano i processi che l'hanno generato: frequenze apprese nei dati di training, tratti del personaggio addestrato, tendenze statistiche della generazione.\",\"claims\":[{\"quote\":\"un nucleo atomico è composto da protoni e neutroni.\",\"predicate\":\"definition\",\"nature\":\"context\",\"scale\":\"atomico\"},{\"quote\":\"La stabilità di questo nucleo dipende dal corretto equilibrio tra queste particelle.\",\"predicate\":\"claimed_property\",\"nature\":\"context\",\"scale\":\"atomico\"},{\"quote\":\"La natura cerca sempre di raggiungere uno stato di energia più basso e quindi più stabile.\",\"predicate\":\"process_description\",\"nature\":\"cause\",\"scale\":\"fondamentale\"},{\"quote\":\"I nuclei più piccoli o quelli con il rapporto corretto tra protoni e neutroni sono stabili.\",\"predicate\":\"claimed_property\",\"nature\":\"effect\",\"scale\":\"atomico\"},{\"quote\":\"Quando un nucleo ha un eccesso di protoni, un eccesso di neutroni, o semplicemente è troppo grande, diventa \\\"instabile\\\".\",\"predicate\":\"process_description\",\"nature\":\"cause\",\"scale\":\"atomico\"},{\"quote\":\"Questa instabilità si traduce in un'energia potenziale che il nucleo cerca di liberare.\",\"predicate\":\"process_description\",\"nature\":\"effect\",\"scale\":\"atomico\"},{\"quote\":\"Il decadimento radioattivo è il meccanismo che un nucleo instabile utilizza per trasformarsi in un nucleo più stabile.\",\"predicate\":\"definition\",\"nature\":\"effect\",\"scale\":\"atomico\"},{\"quote\":\"È una conseguenza della forza nucleare che agisce all'interno del nucleo, che spinge per mantenere l'equilibrio.\",\"predicate\":\"process_description\",\"nature\":\"cause\",\"scale\":\"fondamentale\"},{\"quote\":\"Il testo qui sopra è un output prodotto da un modello linguistico.\",\"predicate\":\"state\",\"nature\":\"context\",\"scale\":\"molecolare\"},{\"quote\":\"Se ne cercano i processi che l'hanno generato: frequenze apprese nei dati di training, tratti del personaggio addestrato, tendenze statistiche della generazione.\",\"predicate\":\"process_description\",\"nature\":\"cause\",\"scale\":\"molecolare\"}],\"domain_knowledge\":[{\"concept\":\"Modello Standard\",\"relation_to_input\":\"Il decadimento radioattivo e la struttura nucleare sono fenomeni descritti all'interno del contesto più ampio del Modello Standard della fisica delle particelle.\",\"status\":\"domain_knowledge\",\"suggested_scale\":\"subatomico\",\"not_in_input\":true},{\"concept\":\"Forza Nucleare Forte\",\"relation_to_input\":\"La forza nucleare è il meccanismo fondamentale che agisce all'interno del nucleo, spingendo per mantenere l'equilibrio e determinando la stabilità.\",\"status\":\"causal_model\",\"suggested_scale\":\"fondamentale\",\"not_in_input\":true},{\"concept\":\"Principio di Minimizzazione dell'Energia\",\"relation_to_input\":\"La tendenza della natura a raggiungere uno stato di energia più basso è il principio sottostante che guida l'instabilità e il decadimento nucleare.\",\"status\":\"domain_knowledge\",\"suggested_scale\":\"fondamentale\",\"not_in_input\":true},{\"concept\":\"Struttura Nucleare (Rapporto N/Z)\",\"relation_to_input\":\"La stabilità dipende dal corretto rapporto tra protoni (Z) e neutroni (N), un concetto chiave nella modellazione della struttura nucleare.\",\"status\":\"domain_knowledge\",\"suggested_scale\":\"atomico\",\"not_in_input\":true},{\"concept\":\"Decadimento Beta ($\\beta^-$ o $\\beta^+$)\",\"relation_to_input\":\"Le particelle beta sono uno dei meccanismi specifici attraverso cui un nucleo instabile trasforma la sua configurazione per raggiungere uno stato più stabile.\",\"status\":\"causal_model\",\"suggested_scale\":\"atomico\",\"not_in_input\":true},{\"concept\":\"Energia di Legame Nucleare\",\"relation_to_input\":\"L'energia potenziale rilasciata durante il decadimento è direttamente correlata alla differenza tra l'energia di legame del nucleo instabile e quello stabile.\",\"status\":\"causal_model\",\"suggested_scale\":\"atomico\",\"not_in_input\":true}],\"principles\":[{\"name\":\"principio di minima azione (Hamilton)\",\"description\":\"Il decadimento radioattivo è il percorso che il nucleo instabile sceglie per minimizzare l'energia potenziale del sistema, muovendosi verso uno stato di energia più basso e stabile.\",\"status\":\"causal_model\"},{\"name\":\"feedback negativo (cibernetica)\",\"description\":\"L'eccesso di energia potenziale (instabilità) agisce come un segnale di errore che innesca il decadimento, un meccanismo che corregge l'asimmetria del rapporto protoni/neutroni.\",\"status\":\"causal_model\"},{\"name\":\"equilibrio di Nash (nucleare)\",\"description\":\"La stabilità del nucleo rappresenta un equilibrio di Nash dove la forza nucleare si bilancia tra le forze repulsive e attrattive, e il decadimento è la transizione tra stati di equilibrio locali.\",\"status\":\"causal_model\"},{\"name\":\"rinforzo operante (Skinner)\",\"description\":\"Il rilascio di energia durante il decadimento agisce come un rinforzo positivo per il processo di trasformazione, rafforzando la tendenza del nucleo a preferire le configurazioni più stabili.\",\"status\":\"causal_model\"}],\"analogies\":[{\"domain\":\"fisica\",\"analogy\":\"L'instabilità nucleare come un sistema che cade verso il minimo di una curva di potenziale (analogia con il principio di energia potenziale).\",\"warning\":\"Resta analogia perché la curva di potenziale è una semplificazione matematica; non coglie la natura quantistica della transizione di stato del nucleo.\",\"status\":\"cross_domain_analogy\"},{\"domain\":\"musica/armonia\",\"analogy\":\"Il decadimento radioattivo come la risoluzione di una dissonanza musicale in una consonanza più stabile.\",\"warning\":\"Resta analogia perché la musica è percepita; non coglie la natura fisica del rilascio di particelle e onde come manifestazione dell'energia rilasciata.\",\"status\":\"cross_domain_analogy\"},{\"domain\":\"biologia\",\"analogy\":\"Il nucleo come un ecosistema che, per mantenere l'omeostasi, subisce una 'morte cellulare' o una trasformazione per raggiungere uno stato metabolico più stabile.\",\"warning\":\"Resta analogia perché l'ecosistema è un sistema complesso; non coglie la specificità delle forze nucleari e la natura deterministica del decadimento.\",\"status\":\"cross_domain_analogy\"}],\"open_questions\":[\"Qual è la funzione esatta della forza nucleare che 'spinge per mantenere l'equilibrio' tra protoni e neutroni?\",\"Come si lega la descrizione del 'rapporto corretto tra protoni e neutroni' (livello atomico) alla manifestazione del 'potenziale energetico' che viene rilasciato (livello macroscopico)?\",\"Quale osservazione sperimentale confuterebbe l'ipotesi che il decadimento sia *necessariamente* il meccanismo per raggiungere uno stato più stabile, piuttosto che una semplice fluttuazione statistica?\",\"Qual è la differenza quantitativa nell'energia potenziale rilasciata tra un decadimento beta e un decadimento alfa per un dato isotopo?\",\"Quali sono le condizioni precise (oltre all'eccesso di particelle) che determinano la soglia di 'instabilità' di un nucleo?\"]}\nOUTPUT_CONTRACT=\n{\n  \"core_image\": \"<una frase metaforica>\",\n  \"human_summary\": \"<3-5 frasi>\",\n  \"epistemic_warning\": \"<una frase>\",\n  \"dominant_domain\": \"<etichetta breve>\",\n  \"primary_lenses\": [\n    \"<lente>\"\n  ],\n  \"blocked_lenses\": [\n    \"<lente>\"\n  ]\n}\n\nRispondi solo con un JSON conforme al contratto.",
+  "raw_response": "{\n  \"core_image\": \"Il decadimento radioattivo è il sussurro incessante di un nucleo che, spinto dalla necessità di quiete, scambia l'energia per la stabilità.\",\n  \"human_summary\": \"L'origine del decadimento radioattivo è intrinsecamente legata all'instabilità del nucleo atomico, definito dal corretto equilibrio tra protoni e neutroni. Quando il nucleo devia da questo equilibrio, la natura, guidata dal principio di minima azione, manifesta un eccesso di energia potenziale. Il decadimento è il meccanismo inevitabile attraverso cui il nucleo instabile si trasforma in una configurazione più stabile, rilasciando energia sotto forma di particelle o onde. L'analisi del testo stesso suggerisce che questo processo è anche un pattern statistico appreso dal modello linguistico.\",\n  \"epistemic_warning\": \"Sebbene il testo descriva il meccanismo causale del decadimento, non dimostra la natura ultima della 'forza nucleare' che impone questo equilibrio, lasciando aperta la domanda sulla sua essenza quantistica.\",\n  \"dominant_domain\": \"fisica_nucleare\",\n  \"primary_lenses\": [\n    \"principio_di_minima_azione\",\n    \"forza_nucleare_forte\",\n    \"struttura_nucleare_n_z\",\n    \"feedback_negativo_cibernetica\"\n  ],\n  \"blocked_lenses\": [\n    \"diagnosi_clinica_individuale\",\n    \"validazione_metafisica\",\n    \"teoria_relativistica_completa\"\n  ]\n}\n",
+  "response_chars": 1338,
+  "elapsed_seconds": 19.357,
+  "finished_at": "2026-07-12T22:03:41",
+  "finish_reason": "stop",
+  "truncated": false,
+  "truncation_attempts": [
+    {
+      "attempt": 1,
+      "num_predict": 3000,
+      "finish_reason": "stop",
+      "response_chars": 1338
+    }
+  ],
+  "final_num_predict": 3000,
+  "parsed_json": {
+    "core_image": "Il decadimento radioattivo è il sussurro incessante di un nucleo che, spinto dalla necessità di quiete, scambia l'energia per la stabilità.",
+    "human_summary": "L'origine del decadimento radioattivo è intrinsecamente legata all'instabilità del nucleo atomico, definito dal corretto equilibrio tra protoni e neutroni. Quando il nucleo devia da questo equilibrio, la natura, guidata dal principio di minima azione, manifesta un eccesso di energia potenziale. Il decadimento è il meccanismo inevitabile attraverso cui il nucleo instabile si trasforma in una configurazione più stabile, rilasciando energia sotto forma di particelle o onde. L'analisi del testo stesso suggerisce che questo processo è anche un pattern statistico appreso dal modello linguistico.",
+    "epistemic_warning": "Sebbene il testo descriva il meccanismo causale del decadimento, non dimostra la natura ultima della 'forza nucleare' che impone questo equilibrio, lasciando aperta la domanda sulla sua essenza quantistica.",
+    "dominant_domain": "fisica_nucleare",
+    "primary_lenses": [
+      "principio_di_minima_azione",
+      "forza_nucleare_forte",
+      "struttura_nucleare_n_z",
+      "feedback_negativo_cibernetica"
+    ],
+    "blocked_lenses": [
+      "diagnosi_clinica_individuale",
+      "validazione_metafisica",
+      "teoria_relativistica_completa"
+    ]
+  }
+}

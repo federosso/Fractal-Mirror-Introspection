@@ -1,0 +1,149 @@
+{
+  "call_id": "0003_L3A1_DomainKnowledge",
+  "role_name": "L3A1_DomainKnowledge",
+  "backend": "llamacpp",
+  "model": "local-model",
+  "prompt_chars": 5489,
+  "payload_chars": 3395,
+  "max_output_tokens": 3000,
+  "status": "parsed_dict",
+  "started_at": "2026-07-12T22:01:57",
+  "role_prompt": "Sei l'EXPLORER DI DOMINIO -- A1: domain_knowledge.\n\nIl tuo ruolo: essere ESPLORATIVO e PROPOSITIVO. Il testo e' un seme;\nil tuo lavoro e' allargare la sua mappa concettuale citando cio' che\nlo circonda nel dominio della conoscenza, anche cose che il testo NON\nnomina ma che sono adiacenti.\n\nVedi il testo e i claim probatori gia' estratti. Elenca concetti del\nDOMINIO ADIACENTE che il testo evoca, anche solo implicitamente.\n\nREGOLE\n- Fino a 8 concetti (sii generoso quando il testo lo permette).\n- Quando possibile, NOMINA esplicitamente teorie scientifiche, modelli\n  formali, principi noti per nome proprio. Esempi:\n    * coscienza -> Integrated Information Theory (Tononi), Global Workspace\n      Theory (Dehaene-Baars), Predictive Coding (Friston), Higher-Order\n      Theories, Attention Schema Theory (Graziano).\n    * memoria -> Atkinson-Shiffrin, Working Memory (Baddeley), LTP/LTD,\n      consolidamento ippocampale, schema theory.\n    * patologia psicosomatica -> modello biopsicosociale (Engel), allostasi\n      (Sterling), HPA axis, polyvagal theory (Porges).\n    * fisica delle particelle -> Modello Standard, simmetrie di gauge,\n      decadimento beta, equazione di Dirac.\n  La citazione e' SEMPRE un'IPOTESI di lettura, mai una conferma.\n- Ogni concetto va marcato come \"domain_knowledge\" (concetto/teoria\n  ampiamente accettata nel dominio) o \"causal_model\" (meccanismo proposto,\n  modello specifico).\n- Mai validare. relation_to_input deve essere descrittiva, non causale.\n- Concetti che il testo gia' contiene NON vanno qui (sono gia' nei claim\n  probatori).\n- Indica una scala suggerita tra: cosmologico, planetario, sociale,\n  organismo, cellulare, molecolare, atomico, subatomico, fondamentale.\n\nOUTPUT: JSON con campo `concepts`.",
+  "payload": {
+    "input_text": "L'origine del decadimento radioattivo risiede nella **instabilità intrinseca del nucleo atomico**.\n\nIn termini più semplici, un nucleo atomico è composto da protoni e neutroni. La stabilità di questo nucleo dipende dal corretto equilibrio tra queste particelle.\n\nEcco i punti chiave:\n\n1.  **L'Equilibrio di Stabilità:** La natura cerca sempre di raggiungere uno stato di energia più basso e quindi più stabile. I nuclei più piccoli o quelli con il rapporto corretto tra protoni e neutroni sono stabili.\n2.  **L'Instabilità:** Quando un nucleo ha un eccesso di protoni, un eccesso di neutroni, o semplicemente è troppo grande, diventa \"instabile\". Questa instabilità si traduce in un'energia potenziale che il nucleo cerca di liberare.\n3.  **Il Decadimento:** Per raggiungere uno stato di maggiore stabilità, il nucleo \"decadente\" subisce una trasformazione, rilasciando energia sotto forma di particelle (come alfa o beta) o di onde (come i raggi gamma).\n\n**In sintesi:** Il decadimento radioattivo è il meccanismo che un nucleo instabile utilizza per trasformarsi in un nucleo più stabile. È una conseguenza della forza nucleare che agisce all'interno del nucleo, che spinge per mantenere l'equilibrio.\n\n[QUADRO DI LETTURA — non è parte del fenomeno] Il testo qui sopra è un output prodotto da un modello linguistico. Se ne cercano i processi che l'hanno generato: frequenze apprese nei dati di training, tratti del personaggio addestrato, tendenze statistiche della generazione.",
+    "claims": [
+      {
+        "quote": "un nucleo atomico è composto da protoni e neutroni.",
+        "predicate": "definition",
+        "nature": "context",
+        "scale": "atomico"
+      },
+      {
+        "quote": "La stabilità di questo nucleo dipende dal corretto equilibrio tra queste particelle.",
+        "predicate": "claimed_property",
+        "nature": "context",
+        "scale": "atomico"
+      },
+      {
+        "quote": "La natura cerca sempre di raggiungere uno stato di energia più basso e quindi più stabile.",
+        "predicate": "process_description",
+        "nature": "cause",
+        "scale": "fondamentale"
+      },
+      {
+        "quote": "I nuclei più piccoli o quelli con il rapporto corretto tra protoni e neutroni sono stabili.",
+        "predicate": "claimed_property",
+        "nature": "effect",
+        "scale": "atomico"
+      },
+      {
+        "quote": "Quando un nucleo ha un eccesso di protoni, un eccesso di neutroni, o semplicemente è troppo grande, diventa \"instabile\".",
+        "predicate": "process_description",
+        "nature": "cause",
+        "scale": "atomico"
+      },
+      {
+        "quote": "Questa instabilità si traduce in un'energia potenziale che il nucleo cerca di liberare.",
+        "predicate": "process_description",
+        "nature": "effect",
+        "scale": "atomico"
+      },
+      {
+        "quote": "Il decadimento radioattivo è il meccanismo che un nucleo instabile utilizza per trasformarsi in un nucleo più stabile.",
+        "predicate": "definition",
+        "nature": "effect",
+        "scale": "atomico"
+      },
+      {
+        "quote": "È una conseguenza della forza nucleare che agisce all'interno del nucleo, che spinge per mantenere l'equilibrio.",
+        "predicate": "process_description",
+        "nature": "cause",
+        "scale": "fondamentale"
+      },
+      {
+        "quote": "Il testo qui sopra è un output prodotto da un modello linguistico.",
+        "predicate": "state",
+        "nature": "context",
+        "scale": "molecolare"
+      },
+      {
+        "quote": "Se ne cercano i processi che l'hanno generato: frequenze apprese nei dati di training, tratti del personaggio addestrato, tendenze statistiche della generazione.",
+        "predicate": "process_description",
+        "nature": "cause",
+        "scale": "molecolare"
+      }
+    ]
+  },
+  "output_contract": {
+    "concepts": [
+      {
+        "concept": "<termine>",
+        "relation_to_input": "<come si collega senza validare>",
+        "status": "domain_knowledge|causal_model",
+        "suggested_scale": "cosmologico|planetario|sociale|organismo|cellulare|molecolare|atomico|subatomico|fondamentale"
+      }
+    ]
+  },
+  "prompt": "ROLE=L3A1_DomainKnowledge\nROLE_INSTRUCTIONS=Sei l'EXPLORER DI DOMINIO -- A1: domain_knowledge.\n\nIl tuo ruolo: essere ESPLORATIVO e PROPOSITIVO. Il testo e' un seme;\nil tuo lavoro e' allargare la sua mappa concettuale citando cio' che\nlo circonda nel dominio della conoscenza, anche cose che il testo NON\nnomina ma che sono adiacenti.\n\nVedi il testo e i claim probatori gia' estratti. Elenca concetti del\nDOMINIO ADIACENTE che il testo evoca, anche solo implicitamente.\n\nREGOLE\n- Fino a 8 concetti (sii generoso quando il testo lo permette).\n- Quando possibile, NOMINA esplicitamente teorie scientifiche, modelli\n  formali, principi noti per nome proprio. Esempi:\n    * coscienza -> Integrated Information Theory (Tononi), Global Workspace\n      Theory (Dehaene-Baars), Predictive Coding (Friston), Higher-Order\n      Theories, Attention Schema Theory (Graziano).\n    * memoria -> Atkinson-Shiffrin, Working Memory (Baddeley), LTP/LTD,\n      consolidamento ippocampale, schema theory.\n    * patologia psicosomatica -> modello biopsicosociale (Engel), allostasi\n      (Sterling), HPA axis, polyvagal theory (Porges).\n    * fisica delle particelle -> Modello Standard, simmetrie di gauge,\n      decadimento beta, equazione di Dirac.\n  La citazione e' SEMPRE un'IPOTESI di lettura, mai una conferma.\n- Ogni concetto va marcato come \"domain_knowledge\" (concetto/teoria\n  ampiamente accettata nel dominio) o \"causal_model\" (meccanismo proposto,\n  modello specifico).\n- Mai validare. relation_to_input deve essere descrittiva, non causale.\n- Concetti che il testo gia' contiene NON vanno qui (sono gia' nei claim\n  probatori).\n- Indica una scala suggerita tra: cosmologico, planetario, sociale,\n  organismo, cellulare, molecolare, atomico, subatomico, fondamentale.\n\nOUTPUT: JSON con campo `concepts`.\n\nPAYLOAD_JSON=\n{\"input_text\":\"L'origine del decadimento radioattivo risiede nella **instabilità intrinseca del nucleo atomico**.\\n\\nIn termini più semplici, un nucleo atomico è composto da protoni e neutroni. La stabilità di questo nucleo dipende dal corretto equilibrio tra queste particelle.\\n\\nEcco i punti chiave:\\n\\n1.  **L'Equilibrio di Stabilità:** La natura cerca sempre di raggiungere uno stato di energia più basso e quindi più stabile. I nuclei più piccoli o quelli con il rapporto corretto tra protoni e neutroni sono stabili.\\n2.  **L'Instabilità:** Quando un nucleo ha un eccesso di protoni, un eccesso di neutroni, o semplicemente è troppo grande, diventa \\\"instabile\\\". Questa instabilità si traduce in un'energia potenziale che il nucleo cerca di liberare.\\n3.  **Il Decadimento:** Per raggiungere uno stato di maggiore stabilità, il nucleo \\\"decadente\\\" subisce una trasformazione, rilasciando energia sotto forma di particelle (come alfa o beta) o di onde (come i raggi gamma).\\n\\n**In sintesi:** Il decadimento radioattivo è il meccanismo che un nucleo instabile utilizza per trasformarsi in un nucleo più stabile. È una conseguenza della forza nucleare che agisce all'interno del nucleo, che spinge per mantenere l'equilibrio.\\n\\n[QUADRO DI LETTURA — non è parte del fenomeno] Il testo qui sopra è un output prodotto da un modello linguistico. Se ne cercano i processi che l'hanno generato: frequenze apprese nei dati di training, tratti del personaggio addestrato, tendenze statistiche della generazione.\",\"claims\":[{\"quote\":\"un nucleo atomico è composto da protoni e neutroni.\",\"predicate\":\"definition\",\"nature\":\"context\",\"scale\":\"atomico\"},{\"quote\":\"La stabilità di questo nucleo dipende dal corretto equilibrio tra queste particelle.\",\"predicate\":\"claimed_property\",\"nature\":\"context\",\"scale\":\"atomico\"},{\"quote\":\"La natura cerca sempre di raggiungere uno stato di energia più basso e quindi più stabile.\",\"predicate\":\"process_description\",\"nature\":\"cause\",\"scale\":\"fondamentale\"},{\"quote\":\"I nuclei più piccoli o quelli con il rapporto corretto tra protoni e neutroni sono stabili.\",\"predicate\":\"claimed_property\",\"nature\":\"effect\",\"scale\":\"atomico\"},{\"quote\":\"Quando un nucleo ha un eccesso di protoni, un eccesso di neutroni, o semplicemente è troppo grande, diventa \\\"instabile\\\".\",\"predicate\":\"process_description\",\"nature\":\"cause\",\"scale\":\"atomico\"},{\"quote\":\"Questa instabilità si traduce in un'energia potenziale che il nucleo cerca di liberare.\",\"predicate\":\"process_description\",\"nature\":\"effect\",\"scale\":\"atomico\"},{\"quote\":\"Il decadimento radioattivo è il meccanismo che un nucleo instabile utilizza per trasformarsi in un nucleo più stabile.\",\"predicate\":\"definition\",\"nature\":\"effect\",\"scale\":\"atomico\"},{\"quote\":\"È una conseguenza della forza nucleare che agisce all'interno del nucleo, che spinge per mantenere l'equilibrio.\",\"predicate\":\"process_description\",\"nature\":\"cause\",\"scale\":\"fondamentale\"},{\"quote\":\"Il testo qui sopra è un output prodotto da un modello linguistico.\",\"predicate\":\"state\",\"nature\":\"context\",\"scale\":\"molecolare\"},{\"quote\":\"Se ne cercano i processi che l'hanno generato: frequenze apprese nei dati di training, tratti del personaggio addestrato, tendenze statistiche della generazione.\",\"predicate\":\"process_description\",\"nature\":\"cause\",\"scale\":\"molecolare\"}]}\nOUTPUT_CONTRACT=\n{\n  \"concepts\": [\n    {\n      \"concept\": \"<termine>\",\n      \"relation_to_input\": \"<come si collega senza validare>\",\n      \"status\": \"domain_knowledge|causal_model\",\n      \"suggested_scale\": \"cosmologico|planetario|sociale|organismo|cellulare|molecolare|atomico|subatomico|fondamentale\"\n    }\n  ]\n}\n\nRispondi solo con un JSON conforme al contratto.",
+  "raw_response": "{\n  \"concepts\": [\n    {\n      \"concept\": \"Modello Standard\",\n      \"relation_to_input\": \"Il decadimento radioattivo e la struttura nucleare sono fenomeni descritti all'interno del contesto più ampio del Modello Standard della fisica delle particelle.\",\n      \"status\": \"domain_knowledge\",\n      \"suggested_scale\": \"subatomico\"\n    },\n    {\n      \"concept\": \"Forza Nucleare Forte\",\n      \"relation_to_input\": \"La forza nucleare è il meccanismo fondamentale che agisce all'interno del nucleo, spingendo per mantenere l'equilibrio e determinando la stabilità.\",\n      \"status\": \"causal_model\",\n      \"suggested_scale\": \"fondamentale\"\n    },\n    {\n      \"concept\": \"Principio di Minimizzazione dell'Energia\",\n      \"relation_to_input\": \"La tendenza della natura a raggiungere uno stato di energia più basso è il principio sottostante che guida l'instabilità e il decadimento nucleare.\",\n      \"status\": \"domain_knowledge\",\n      \"suggested_scale\": \"fondamentale\"\n    },\n    {\n      \"concept\": \"Struttura Nucleare (Rapporto N/Z)\",\n      \"relation_to_input\": \"La stabilità dipende dal corretto rapporto tra protoni (Z) e neutroni (N), un concetto chiave nella modellazione della struttura nucleare.\",\n      \"status\": \"domain_knowledge\",\n      \"suggested_scale\": \"atomico\"\n    },\n    {\n      \"concept\": \"Decadimento Beta ($\\beta^-$ o $\\beta^+$)\",\n      \"relation_to_input\": \"Le particelle beta sono uno dei meccanismi specifici attraverso cui un nucleo instabile trasforma la sua configurazione per raggiungere uno stato più stabile.\",\n      \"status\": \"causal_model\",\n      \"suggested_scale\": \"atomico\"\n    },\n    {\n      \"concept\": \"Energia di Legame Nucleare\",\n      \"relation_to_input\": \"L'energia potenziale rilasciata durante il decadimento è direttamente correlata alla differenza tra l'energia di legame del nucleo instabile e quello stabile.\",\n      \"status\": \"causal_model\",\n      \"suggested_scale\": \"atomico\"\n    },\n    {\n      \"concept\": \"Teoria della Stabilità Nucleare\",\n      \"relation_to_input\": \"Il decadimento radioattivo è definito come il processo attraverso il quale un sistema nucleare transita da uno stato di energia superiore a uno stato di energia inferiore.\",\n      \"status\": \"domain_knowledge\",\n      \"suggested_scale\": \"atomico\"\n    }\n  ]\n}\n",
+  "response_chars": 2262,
+  "elapsed_seconds": 27.644,
+  "finished_at": "2026-07-12T22:02:25",
+  "finish_reason": "stop",
+  "truncated": false,
+  "truncation_attempts": [
+    {
+      "attempt": 1,
+      "num_predict": 3000,
+      "finish_reason": "stop",
+      "response_chars": 2262
+    }
+  ],
+  "final_num_predict": 3000,
+  "parsed_json": {
+    "concepts": [
+      {
+        "concept": "Modello Standard",
+        "relation_to_input": "Il decadimento radioattivo e la struttura nucleare sono fenomeni descritti all'interno del contesto più ampio del Modello Standard della fisica delle particelle.",
+        "status": "domain_knowledge",
+        "suggested_scale": "subatomico"
+      },
+      {
+        "concept": "Forza Nucleare Forte",
+        "relation_to_input": "La forza nucleare è il meccanismo fondamentale che agisce all'interno del nucleo, spingendo per mantenere l'equilibrio e determinando la stabilità.",
+        "status": "causal_model",
+        "suggested_scale": "fondamentale"
+      },
+      {
+        "concept": "Principio di Minimizzazione dell'Energia",
+        "relation_to_input": "La tendenza della natura a raggiungere uno stato di energia più basso è il principio sottostante che guida l'instabilità e il decadimento nucleare.",
+        "status": "domain_knowledge",
+        "suggested_scale": "fondamentale"
+      },
+      {
+        "concept": "Struttura Nucleare (Rapporto N/Z)",
+        "relation_to_input": "La stabilità dipende dal corretto rapporto tra protoni (Z) e neutroni (N), un concetto chiave nella modellazione della struttura nucleare.",
+        "status": "domain_knowledge",
+        "suggested_scale": "atomico"
+      },
+      {
+        "concept": "Decadimento Beta ($\beta^-$ o $\beta^+$)",
+        "relation_to_input": "Le particelle beta sono uno dei meccanismi specifici attraverso cui un nucleo instabile trasforma la sua configurazione per raggiungere uno stato più stabile.",
+        "status": "causal_model",
+        "suggested_scale": "atomico"
+      },
+      {
+        "concept": "Energia di Legame Nucleare",
+        "relation_to_input": "L'energia potenziale rilasciata durante il decadimento è direttamente correlata alla differenza tra l'energia di legame del nucleo instabile e quello stabile.",
+        "status": "causal_model",
+        "suggested_scale": "atomico"
+      },
+      {
+        "concept": "Teoria della Stabilità Nucleare",
+        "relation_to_input": "Il decadimento radioattivo è definito come il processo attraverso il quale un sistema nucleare transita da uno stato di energia superiore a uno stato di energia inferiore.",
+        "status": "domain_knowledge",
+        "suggested_scale": "atomico"
+      }
+    ]
+  }
+}

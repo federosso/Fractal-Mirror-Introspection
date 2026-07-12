@@ -1,0 +1,119 @@
+{
+  "call_id": "0002_L2_Locked_atomico",
+  "role_name": "L2_Locked_atomico",
+  "backend": "llamacpp",
+  "model": "local-model",
+  "prompt_chars": 2973,
+  "payload_chars": 1636,
+  "max_output_tokens": 3000,
+  "status": "parsed_dict",
+  "started_at": "2026-07-12T22:01:29",
+  "role_prompt": "Sei un LOCKED OBSERVER per la scala atomico.\n\nVedi SOLO item che vivono alla scala atomico. Non guardi altre scale.\n\nIl tuo compito: tra gli item che hai, decidere se esiste un legame causale\ngenuino tra una cause e un effect sulla MEDESIMA scala. Niente cross-scale.\n\nREGOLE\n1. Un legame valido richiede: una cause e un effect entrambi su scala atomico.\n2. Definizioni (nature=context) NON sono cause, anche se compaiono prima di un effect.\n3. Proprieta' dichiarate (nature=context o effect) NON sono cause: sono attributi.\n4. Una sequenza testuale NON implica causalita'. Se non c'e' un meccanismo\n   plausibile sulla stessa scala, il legame non e' valido.\n5. Se un item non trova partner sulla stessa scala, segnalalo come orphan.\n   Sara' L3.B a valutare se ha senso cross-scale.\n\nOUTPUT\n- same_scale_links: lista di legami validi (cause_item_id, effect_item_id).\n- orphans: item che restano senza pair sulla stessa scala.\n\nRestituisci JSON conforme al contratto. Niente prosa fuori dal JSON.",
+  "payload": {
+    "scale": "atomico",
+    "items": [
+      {
+        "id": "itm_85ece6579d",
+        "quote": "un nucleo atomico è composto da protoni e neutroni.",
+        "predicate": "definition",
+        "nature": "context",
+        "rationale": "Definizione della struttura base del nucleo."
+      },
+      {
+        "id": "itm_291dc464e6",
+        "quote": "La stabilità di questo nucleo dipende dal corretto equilibrio tra queste particelle.",
+        "predicate": "claimed_property",
+        "nature": "context",
+        "rationale": "Descrive la condizione (equilibrio) necessaria per la proprietà (stabilità)."
+      },
+      {
+        "id": "itm_7b50c8bd18",
+        "quote": "I nuclei più piccoli o quelli con il rapporto corretto tra protoni e neutroni sono stabili.",
+        "predicate": "claimed_property",
+        "nature": "effect",
+        "rationale": "Descrive lo stato osservato (stabilità) derivante dalla configurazione corretta."
+      },
+      {
+        "id": "itm_0a6ae566f8",
+        "quote": "Quando un nucleo ha un eccesso di protoni, un eccesso di neutroni, o semplicemente è troppo grande, diventa \"instabile\".",
+        "predicate": "process_description",
+        "nature": "cause",
+        "rationale": "Descrive la condizione (eccesso) che causa lo stato (instabilità)."
+      },
+      {
+        "id": "itm_88b3e42abb",
+        "quote": "Questa instabilità si traduce in un'energia potenziale che il nucleo cerca di liberare.",
+        "predicate": "process_description",
+        "nature": "effect",
+        "rationale": "Descrive la conseguenza diretta dell'instabilità (rilascio di energia potenziale)."
+      },
+      {
+        "id": "itm_f2bc0b3dd4",
+        "quote": "Il decadimento radioattivo è il meccanismo che un nucleo instabile utilizza per trasformarsi in un nucleo più stabile.",
+        "predicate": "definition",
+        "nature": "effect",
+        "rationale": "Definizione del meccanismo complessivo del decadimento."
+      }
+    ]
+  },
+  "output_contract": {
+    "same_scale_links": [
+      {
+        "cause_item_id": "<id>",
+        "effect_item_id": "<id>",
+        "rationale": "<breve>",
+        "confidence": 0.0
+      }
+    ],
+    "orphans": [
+      {
+        "item_id": "<id>",
+        "reason": "<breve>"
+      }
+    ],
+    "summary": "<breve, opzionale>"
+  },
+  "prompt": "ROLE=L2_Locked_atomico\nROLE_INSTRUCTIONS=Sei un LOCKED OBSERVER per la scala atomico.\n\nVedi SOLO item che vivono alla scala atomico. Non guardi altre scale.\n\nIl tuo compito: tra gli item che hai, decidere se esiste un legame causale\ngenuino tra una cause e un effect sulla MEDESIMA scala. Niente cross-scale.\n\nREGOLE\n1. Un legame valido richiede: una cause e un effect entrambi su scala atomico.\n2. Definizioni (nature=context) NON sono cause, anche se compaiono prima di un effect.\n3. Proprieta' dichiarate (nature=context o effect) NON sono cause: sono attributi.\n4. Una sequenza testuale NON implica causalita'. Se non c'e' un meccanismo\n   plausibile sulla stessa scala, il legame non e' valido.\n5. Se un item non trova partner sulla stessa scala, segnalalo come orphan.\n   Sara' L3.B a valutare se ha senso cross-scale.\n\nOUTPUT\n- same_scale_links: lista di legami validi (cause_item_id, effect_item_id).\n- orphans: item che restano senza pair sulla stessa scala.\n\nRestituisci JSON conforme al contratto. Niente prosa fuori dal JSON.\n\nPAYLOAD_JSON=\n{\"scale\":\"atomico\",\"items\":[{\"id\":\"itm_85ece6579d\",\"quote\":\"un nucleo atomico è composto da protoni e neutroni.\",\"predicate\":\"definition\",\"nature\":\"context\",\"rationale\":\"Definizione della struttura base del nucleo.\"},{\"id\":\"itm_291dc464e6\",\"quote\":\"La stabilità di questo nucleo dipende dal corretto equilibrio tra queste particelle.\",\"predicate\":\"claimed_property\",\"nature\":\"context\",\"rationale\":\"Descrive la condizione (equilibrio) necessaria per la proprietà (stabilità).\"},{\"id\":\"itm_7b50c8bd18\",\"quote\":\"I nuclei più piccoli o quelli con il rapporto corretto tra protoni e neutroni sono stabili.\",\"predicate\":\"claimed_property\",\"nature\":\"effect\",\"rationale\":\"Descrive lo stato osservato (stabilità) derivante dalla configurazione corretta.\"},{\"id\":\"itm_0a6ae566f8\",\"quote\":\"Quando un nucleo ha un eccesso di protoni, un eccesso di neutroni, o semplicemente è troppo grande, diventa \\\"instabile\\\".\",\"predicate\":\"process_description\",\"nature\":\"cause\",\"rationale\":\"Descrive la condizione (eccesso) che causa lo stato (instabilità).\"},{\"id\":\"itm_88b3e42abb\",\"quote\":\"Questa instabilità si traduce in un'energia potenziale che il nucleo cerca di liberare.\",\"predicate\":\"process_description\",\"nature\":\"effect\",\"rationale\":\"Descrive la conseguenza diretta dell'instabilità (rilascio di energia potenziale).\"},{\"id\":\"itm_f2bc0b3dd4\",\"quote\":\"Il decadimento radioattivo è il meccanismo che un nucleo instabile utilizza per trasformarsi in un nucleo più stabile.\",\"predicate\":\"definition\",\"nature\":\"effect\",\"rationale\":\"Definizione del meccanismo complessivo del decadimento.\"}]}\nOUTPUT_CONTRACT=\n{\n  \"same_scale_links\": [\n    {\n      \"cause_item_id\": \"<id>\",\n      \"effect_item_id\": \"<id>\",\n      \"rationale\": \"<breve>\",\n      \"confidence\": 0.0\n    }\n  ],\n  \"orphans\": [\n    {\n      \"item_id\": \"<id>\",\n      \"reason\": \"<breve>\"\n    }\n  ],\n  \"summary\": \"<breve, opzionale>\"\n}\n\nRispondi solo con un JSON conforme al contratto.",
+  "raw_response": "{\n  \"same_scale_links\": [\n    {\n      \"cause_item_id\": \"itm_0a6ae566f8\",\n      \"effect_item_id\": \"itm_88b3e42abb\",\n      \"rationale\": \"L'eccesso di protoni/neutroni (causa) genera un'energia potenziale da liberare (effetto).\",\n      \"confidence\": 0.0\n    },\n    {\n      \"cause_item_id\": \"itm_0a6ae566f8\",\n      \"effect_item_id\": \"itm_f2bc0b3dd4\",\n      \"rationale\": \"L'instabilità del nucleo (causa) è il meccanismo che porta al decadimento radioattivo (effetto).\",\n      \"confidence\": 0.0\n    }\n  ],\n  \"orphans\": [\n    {\n      \"item_id\": \"itm_85ece6579d\",\n      \"reason\": \"È una definizione della struttura, non una causa o un effetto diretto di un altro item sulla stessa scala.\"\n    },\n    {\n      \"item_id\": \"itm_291dc464e6\",\n      \"reason\": \"Descrive la condizione per la stabilità, ma non è la causa diretta di un effetto osservato tra gli altri item.\"\n    }\n  ],\n  \"summary\": \"Il legame causale più forte è tra l'instabilità nucleare (causa) e la conseguente liberazione di energia potenziale e il meccanismo di decadimento (effetti).\"\n}\n",
+  "response_chars": 1045,
+  "elapsed_seconds": 28.037,
+  "finished_at": "2026-07-12T22:01:57",
+  "finish_reason": "stop",
+  "truncated": false,
+  "truncation_attempts": [
+    {
+      "attempt": 1,
+      "num_predict": 3000,
+      "finish_reason": "stop",
+      "response_chars": 1045
+    }
+  ],
+  "final_num_predict": 3000,
+  "parsed_json": {
+    "same_scale_links": [
+      {
+        "cause_item_id": "itm_0a6ae566f8",
+        "effect_item_id": "itm_88b3e42abb",
+        "rationale": "L'eccesso di protoni/neutroni (causa) genera un'energia potenziale da liberare (effetto).",
+        "confidence": 0.0
+      },
+      {
+        "cause_item_id": "itm_0a6ae566f8",
+        "effect_item_id": "itm_f2bc0b3dd4",
+        "rationale": "L'instabilità del nucleo (causa) è il meccanismo che porta al decadimento radioattivo (effetto).",
+        "confidence": 0.0
+      }
+    ],
+    "orphans": [
+      {
+        "item_id": "itm_85ece6579d",
+        "reason": "È una definizione della struttura, non una causa o un effetto diretto di un altro item sulla stessa scala."
+      },
+      {
+        "item_id": "itm_291dc464e6",
+        "reason": "Descrive la condizione per la stabilità, ma non è la causa diretta di un effetto osservato tra gli altri item."
+      }
+    ],
+    "summary": "Il legame causale più forte è tra l'instabilità nucleare (causa) e la conseguente liberazione di energia potenziale e il meccanismo di decadimento (effetti)."
+  }
+}

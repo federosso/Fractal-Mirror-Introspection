@@ -1,0 +1,99 @@
+{
+  "affidabile": true,
+  "n_token": 841,
+  "confidenza_media": 0.892,
+  "confidenza_contenuto": 0.879,
+  "entropia_media": 0.41,
+  "entropia_contenuto": 0.46,
+  "quota_alta_conf": 0.697,
+  "quota_esitazione": 0.03,
+  "n_punti_impegno": 588,
+  "quota_token_contenuto": 0.683,
+  "frasi": [
+    {
+      "indice": 0,
+      "testo": "L'origine del decadimento radioattivo risiede nella **instabilità intrinseca del nucleo at",
+      "n_token_contenuto": 21,
+      "confidenza": 0.981,
+      "entropia": 0.09
+    },
+    {
+      "indice": 1,
+      "testo": "In termini più semplici, un nucleo atomico è composto da protoni e neutroni.",
+      "n_token_contenuto": 17,
+      "confidenza": 0.923,
+      "entropia": 0.29
+    },
+    {
+      "indice": 2,
+      "testo": "La stabilità di questo nucleo dipende dal corretto equilibrio tra queste particelle.",
+      "n_token_contenuto": 16,
+      "confidenza": 0.849,
+      "entropia": 0.53
+    },
+    {
+      "indice": 3,
+      "testo": "Ecco i punti chiave:",
+      "n_token_contenuto": 4,
+      "confidenza": 0.923,
+      "entropia": 0.32
+    },
+    {
+      "indice": 4,
+      "testo": "**L'Equilibrio di Stabilità:** La natura cerca sempre di raggiungere uno stato di energia ",
+      "n_token_contenuto": 23,
+      "confidenza": 0.78,
+      "entropia": 0.75
+    },
+    {
+      "indice": 5,
+      "testo": "I nuclei più piccoli o quelli con il rapporto corretto tra protoni e neutroni sono stabili",
+      "n_token_contenuto": 20,
+      "confidenza": 0.824,
+      "entropia": 0.65
+    },
+    {
+      "indice": 6,
+      "testo": "**L'Instabilità:** Quando un nucleo ha un eccesso di protoni, un eccesso di neutroni, o se",
+      "n_token_contenuto": 28,
+      "confidenza": 0.934,
+      "entropia": 0.3
+    },
+    {
+      "indice": 7,
+      "testo": "Questa instabilità si traduce in un'energia potenziale che il nucleo cerca di liberare.",
+      "n_token_contenuto": 18,
+      "confidenza": 0.882,
+      "entropia": 0.52
+    },
+    {
+      "indice": 8,
+      "testo": "**Il Decadimento:** Per raggiungere uno stato di maggiore stabilità, il nucleo \"decadente\"",
+      "n_token_contenuto": 43,
+      "confidenza": 0.91,
+      "entropia": 0.34
+    },
+    {
+      "indice": 9,
+      "testo": "**In sintesi:** Il decadimento radioattivo è il meccanismo che un nucleo instabile utilizz",
+      "n_token_contenuto": 29,
+      "confidenza": 0.923,
+      "entropia": 0.3
+    },
+    {
+      "indice": 10,
+      "testo": "È una conseguenza della forza nucleare che agisce all'interno del nucleo, che spinge per m",
+      "n_token_contenuto": 23,
+      "confidenza": 0.728,
+      "entropia": 1.02
+    }
+  ],
+  "frasi_deboli": [],
+  "allineamento": "risposta_allineata",
+  "ha_ragionamento": true,
+  "n_token_ragionamento": 332,
+  "conf_ragionamento": 0.868,
+  "entropia_ragionamento": 0.5,
+  "testo_ragionamento": "<|channel>thought\nHere's a thinking process that leads to the suggested answer:\n\n1.  **Analyze the Request:** The user is asking for the origin of radioactive decay (\"qual è l'origine del decadimento radioattivo?\").\n\n2.  **Identify the Core Concept:** Radioactive decay is fundamentally about the instability of atomic nuclei. The origin lies in the structure of the nucleus and the forces holding it together.\n\n3.  **Determine Key Explanations (The \"Why\"):**\n    *   **The Nucleus:** It's made of protons and neutrons (nucleons).\n    *   **Stability:** Nuclei are generally stable when the ratio of protons to neutrons is \"just right\" (the \"band of stability\").\n    *   **Instability/Decay:** Some nuclei are unstable because they have too many neutrons, too many protons, or are simply too large.\n    *   **The Mechanism:** To achieve a more stable configuration, the nucleus undergoes a transformation (emission of particles or energy).\n\n4.  **Identify the Main Types of Decay (Context):** While the *origin* is the instability, it's helpful to mention *how* it happens:\n    *   Alpha ($\\alpha$): Emission of a helium nucleus.\n    *   Beta ($\\beta$): Conversion of a neutron into a proton (or vice versa).\n    *   Gamma ($\\gamma$): Emission of pure energy (photons).\n\n5.  **Structure the Answer (Natural and Direct):**\n    *   **Direct Answer (The Thesis):** Start with the fundamental reason (instability).\n    *   **The Mechanism (The Detail):** Explain *why* it's unstable (the balance of protons/neutrons).\n    *   **The Driving Force (The Physics):** Briefly mention the underlying forces (strong nuclear force vs. electrostatic repulsion).\n    *   **The Result (The Conclusion):** What happens after the decay?\n\n6.  **Draft the Response (Iterative Refinement - Italian Focus):**\n\n    *   *(Initial thought):* Radioactive decay happens because the nucleus is unstable. It tries to reach a more stable state.\n    *   *(Refining for clarity):* Need to use terms like \"nucleo,\" \"protoni,\" \"neutroni,\" and \"equilibrio.\"\n\n7.  **Final Review:** Does the answer directly address the \"origin\"? Yes, the origin is the inherent instability of the nucleus. (The resulting Italian answer is natural and scientifically accurate.) (Self-Correction: Ensure the tone is direct, as requested.)<channel|>",
+  "motivo": ""
+}

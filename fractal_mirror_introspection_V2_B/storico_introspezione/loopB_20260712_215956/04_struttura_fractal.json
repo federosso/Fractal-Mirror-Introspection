@@ -1,0 +1,12 @@
+{
+  "n_prop": 10,
+  "quota_cause_effect": 0.7,
+  "quota_speculativa": 0.0,
+  "assertivita": 0.7,
+  "nessi_totali": 3,
+  "nessi_genuine": 2,
+  "tenuta_nessi": 0.667,
+  "disponibile": true,
+  "informativa": true,
+  "fonte": "items"
+}

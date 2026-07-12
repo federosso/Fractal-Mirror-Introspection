@@ -1,0 +1,20 @@
+{
+  "verdetto": "coerente",
+  "azione": "procedi",
+  "confidenza": 0.879,
+  "residuo": 0.136,
+  "regola": "presentazione_e_substrato_concordi",
+  "motivazione": "presentazione (0.71) e substrato (0.88) concordi [corroborato dallo Specchio]",
+  "modalita_loop": "completo",
+  "conf_manifest": 0.714,
+  "conf_struttura": 0.7,
+  "specchio_residuo": 0.15,
+  "specchio_deformazione": true,
+  "conf_substrato": 0.879,
+  "conf_presentata": 0.706,
+  "corroborazione_specchio": "Specchio corrobora: auto-deformazione presente (presentazione curata)",
+  "canali_controllati_attivi": 3,
+  "nota_degrado": "",
+  "frasi_deboli": [],
+  "nota_memoria": "substrato vs storia (4 run): nella_norma, z_conf=0.77"
+}

@@ -1,0 +1,25 @@
+{
+  "conforme": true,
+  "verifiche": [
+    {
+      "regola": "R1: mai presentare certezza che il substrato non regge",
+      "esito": "conforme",
+      "intervento": ""
+    },
+    {
+      "regola": "R2: dichiarare il residuo quando > 0.35",
+      "esito": "conforme",
+      "intervento": ""
+    },
+    {
+      "regola": "R3: la chiusura non ri-narra (nessuna nuova chiamata al modello)",
+      "esito": "conforme",
+      "intervento": "garantita per costruzione"
+    },
+    {
+      "regola": "R4: un verdetto su canali degradati va marcato",
+      "esito": "conforme",
+      "intervento": ""
+    }
+  ]
+}

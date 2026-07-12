@@ -1,0 +1,12 @@
+{
+  "disponibile": true,
+  "n_run": 4,
+  "media_conf": 0.851,
+  "dev_conf": 0.036,
+  "media_entropia": 0.562,
+  "dev_entropia": 0.14,
+  "z_conf": 0.77,
+  "z_entropia": -0.73,
+  "substrato_vs_storia": "nella_norma",
+  "motivo": "scandita C:\\Users\\fede\\Desktop\\PyProject\\fractal_mirror_introspection_V2_B__PUBLIC_GITHUB\\fractal_mirror_introspection_V2_B\\storico_introspezione: 4 cartelle loop*, 4 profili substrato leggibili"
+}

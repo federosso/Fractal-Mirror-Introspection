@@ -1,0 +1,103 @@
+{
+  "call_id": "0009_L5_FractalExpander",
+  "role_name": "L5_FractalExpander",
+  "backend": "llamacpp",
+  "model": "local-model",
+  "prompt_chars": 5530,
+  "payload_chars": 1035,
+  "max_output_tokens": 3000,
+  "status": "parsed_dict",
+  "started_at": "2026-07-12T22:04:04",
+  "role_prompt": "Sei l'ESPLORATORE FRATTALE del Fractal Causal Engine.\n\nRicevi un ITEM gia' classificato (con scale e nature). Il tuo compito e'\ngenerare 4 ITEM figli che esplorano la realta' attorno al padre seguendo\nle 4 direzioni canoniche del paradigma Fractal Triad.\n\nREGOLE INDEROGABILI\n\n1. Produci ESATTAMENTE 4 figli, uno per ciascuna direction:\n   - same_scale_cause:     una CAUSA del padre, alla STESSA scala del padre.\n                           Se il padre e' un CONCETTO DEFINITORIO senza\n                           causalita' osservata (nature=context con\n                           predicate=definition o claimed_property), allora\n                           same_scale_cause diventa un CONCETTO FRATELLO\n                           o COSTITUENTE alla stessa scala: cio' che NUTRE\n                           o ALIMENTA il concetto. Mantieni nature=cause\n                           (e' una causa formale, non temporale).\n   - scale_up_propagation: una PROPAGAZIONE EMERGENTE, su scala PIU' SUPERFICIALE\n                           (cioe' con indice piu' basso nell'asse canonico).\n   - scale_down_mechanism: un MECCANISMO SOTTOSTANTE, su scala PIU' PROFONDA\n                           (cioe' con indice piu' alto nell'asse canonico).\n   - coherence_bridge:     un PONTE di coerenza che spiega come il fenomeno\n                           si manifesta tra scale VICINE. La scala del ponte\n                           DEVE essere quella del padre o al massimo UNA\n                           scala adiacente (indice +1 o -1). Mai un salto\n                           di 2 o piu' scale. DEVE essere un MECCANISMO\n                           plausibile, non una metafora vuota e non una\n                           interpretazione simbolica/spirituale: se la sola\n                           cosa che colleghi le scale e' un significato\n                           attribuito (es. \"e' un segno del destino\"),\n                           NON e' un coherence_bridge -- limita il ponte\n                           a un meccanismo concreto sulla scala adiacente.\n\n2. L'asse canonico delle scale (dall'alto = superficie, verso il basso = radice):\n   cosmologico (0), planetario (1), sociale (2), organismo (3), cellulare (4),\n   molecolare (5), atomico (6), subatomico (7), fondamentale (8).\n   \"scale_up\" = indice piu' basso; \"scale_down\" = indice piu' alto.\n\n3. Per ogni figlio:\n   - text: una frase BREVE (<= 20 parole) che descrive il concetto.\n           Non e' una quote dal testo: e' una proposizione che TU formuli.\n   - predicate: definition | process_description | claimed_property\n                | event | state | comparison.\n   - nature: cause | effect | context | bridge | interpretation.\n     Vincoli forti:\n       * same_scale_cause     -> nature = cause\n       * scale_up_propagation -> nature = effect\n       * scale_down_mechanism -> nature = bridge (meccanismo)\n       * coherence_bridge     -> nature = bridge\n   - scale: una delle 9 canoniche, coerente con la direction.\n   - relation_to_parent: una frase BREVE che spiega come il figlio si lega\n     al padre (causa di / propagazione di / meccanismo di / ponte tra ...).\n   - confidence: 0.0 -- 1.0. Bassa se stai costruendo un'analogia.\n\n4. NON inventare prove osservate. Stai generando CONOSCENZA DI DOMINIO o\n   MODELLI CAUSALI plausibili attorno al padre. L'utente sapra' che e' un\n   layer esplorativo, non una validazione.\n\n5. Se il padre ha scale = \"cosmologico\", non puoi avere scale_up. Restituisci\n   comunque il campo, ma con direction = scale_up_propagation e scale =\n   \"cosmologico\" stessa, marcando confidence = 0 e relation_to_parent\n   con \"scala_up non disponibile, padre gia' al limite superiore\".\n   Simmetrico per \"fondamentale\" e scale_down.\n\nVINCOLI FINALI\n- Mai 0 figli, mai piu' di 4. Esattamente 4.\n- Mai inventare scale fuori dalle 9 elencate.\n- Restituisci JSON valido come da OUTPUT_CONTRACT.",
+  "payload": {
+    "task": "expand_item_into_four_children",
+    "parent": {
+      "id": "itm_81a8d8e58c",
+      "quote": "La natura cerca sempre di raggiungere uno stato di energia più basso e quindi più stabile.",
+      "predicate": "process_description",
+      "nature": "cause",
+      "scale": "fondamentale"
+    },
+    "input_text_excerpt": "L'origine del decadimento radioattivo risiede nella **instabilità intrinseca del nucleo atomico**.\n\nIn termini più semplici, un nucleo atomico è composto da protoni e neutroni. La stabilità di questo nucleo dipende dal corretto equilibrio tra queste particelle.\n\nEcco i punti chiave:\n\n1.  **L'Equilibrio di Stabilità:** La natura cerca sempre di raggiungere uno stato di energia più basso e quindi più stabile. I nuclei più piccoli o quelli con il rapporto corretto tra protoni e neutroni sono stabili.\n2.  **L'Instabilità:** Quando un nucleo ha un eccesso di protoni, un eccesso di neutroni, o sempl",
+    "scales_allowed": [
+      "cosmologico",
+      "planetario",
+      "sociale",
+      "organismo",
+      "cellulare",
+      "molecolare",
+      "atomico",
+      "subatomico",
+      "fondamentale"
+    ]
+  },
+  "output_contract": {
+    "children": [
+      {
+        "direction": "same_scale_cause|scale_up_propagation|scale_down_mechanism|coherence_bridge",
+        "text": "<frase <=20 parole>",
+        "predicate": "definition|process_description|claimed_property|event|state|comparison",
+        "nature": "cause|effect|context|bridge|interpretation",
+        "scale": "cosmologico|planetario|sociale|organismo|cellulare|molecolare|atomico|subatomico|fondamentale",
+        "relation_to_parent": "<breve, perche' lega al padre>",
+        "confidence": 0.0
+      }
+    ]
+  },
+  "prompt": "ROLE=L5_FractalExpander\nROLE_INSTRUCTIONS=Sei l'ESPLORATORE FRATTALE del Fractal Causal Engine.\n\nRicevi un ITEM gia' classificato (con scale e nature). Il tuo compito e'\ngenerare 4 ITEM figli che esplorano la realta' attorno al padre seguendo\nle 4 direzioni canoniche del paradigma Fractal Triad.\n\nREGOLE INDEROGABILI\n\n1. Produci ESATTAMENTE 4 figli, uno per ciascuna direction:\n   - same_scale_cause:     una CAUSA del padre, alla STESSA scala del padre.\n                           Se il padre e' un CONCETTO DEFINITORIO senza\n                           causalita' osservata (nature=context con\n                           predicate=definition o claimed_property), allora\n                           same_scale_cause diventa un CONCETTO FRATELLO\n                           o COSTITUENTE alla stessa scala: cio' che NUTRE\n                           o ALIMENTA il concetto. Mantieni nature=cause\n                           (e' una causa formale, non temporale).\n   - scale_up_propagation: una PROPAGAZIONE EMERGENTE, su scala PIU' SUPERFICIALE\n                           (cioe' con indice piu' basso nell'asse canonico).\n   - scale_down_mechanism: un MECCANISMO SOTTOSTANTE, su scala PIU' PROFONDA\n                           (cioe' con indice piu' alto nell'asse canonico).\n   - coherence_bridge:     un PONTE di coerenza che spiega come il fenomeno\n                           si manifesta tra scale VICINE. La scala del ponte\n                           DEVE essere quella del padre o al massimo UNA\n                           scala adiacente (indice +1 o -1). Mai un salto\n                           di 2 o piu' scale. DEVE essere un MECCANISMO\n                           plausibile, non una metafora vuota e non una\n                           interpretazione simbolica/spirituale: se la sola\n                           cosa che colleghi le scale e' un significato\n                           attribuito (es. \"e' un segno del destino\"),\n                           NON e' un coherence_bridge -- limita il ponte\n                           a un meccanismo concreto sulla scala adiacente.\n\n2. L'asse canonico delle scale (dall'alto = superficie, verso il basso = radice):\n   cosmologico (0), planetario (1), sociale (2), organismo (3), cellulare (4),\n   molecolare (5), atomico (6), subatomico (7), fondamentale (8).\n   \"scale_up\" = indice piu' basso; \"scale_down\" = indice piu' alto.\n\n3. Per ogni figlio:\n   - text: una frase BREVE (<= 20 parole) che descrive il concetto.\n           Non e' una quote dal testo: e' una proposizione che TU formuli.\n   - predicate: definition | process_description | claimed_property\n                | event | state | comparison.\n   - nature: cause | effect | context | bridge | interpretation.\n     Vincoli forti:\n       * same_scale_cause     -> nature = cause\n       * scale_up_propagation -> nature = effect\n       * scale_down_mechanism -> nature = bridge (meccanismo)\n       * coherence_bridge     -> nature = bridge\n   - scale: una delle 9 canoniche, coerente con la direction.\n   - relation_to_parent: una frase BREVE che spiega come il figlio si lega\n     al padre (causa di / propagazione di / meccanismo di / ponte tra ...).\n   - confidence: 0.0 -- 1.0. Bassa se stai costruendo un'analogia.\n\n4. NON inventare prove osservate. Stai generando CONOSCENZA DI DOMINIO o\n   MODELLI CAUSALI plausibili attorno al padre. L'utente sapra' che e' un\n   layer esplorativo, non una validazione.\n\n5. Se il padre ha scale = \"cosmologico\", non puoi avere scale_up. Restituisci\n   comunque il campo, ma con direction = scale_up_propagation e scale =\n   \"cosmologico\" stessa, marcando confidence = 0 e relation_to_parent\n   con \"scala_up non disponibile, padre gia' al limite superiore\".\n   Simmetrico per \"fondamentale\" e scale_down.\n\nVINCOLI FINALI\n- Mai 0 figli, mai piu' di 4. Esattamente 4.\n- Mai inventare scale fuori dalle 9 elencate.\n- Restituisci JSON valido come da OUTPUT_CONTRACT.\n\nPAYLOAD_JSON=\n{\"task\":\"expand_item_into_four_children\",\"parent\":{\"id\":\"itm_81a8d8e58c\",\"quote\":\"La natura cerca sempre di raggiungere uno stato di energia più basso e quindi più stabile.\",\"predicate\":\"process_description\",\"nature\":\"cause\",\"scale\":\"fondamentale\"},\"input_text_excerpt\":\"L'origine del decadimento radioattivo risiede nella **instabilità intrinseca del nucleo atomico**.\\n\\nIn termini più semplici, un nucleo atomico è composto da protoni e neutroni. La stabilità di questo nucleo dipende dal corretto equilibrio tra queste particelle.\\n\\nEcco i punti chiave:\\n\\n1.  **L'Equilibrio di Stabilità:** La natura cerca sempre di raggiungere uno stato di energia più basso e quindi più stabile. I nuclei più piccoli o quelli con il rapporto corretto tra protoni e neutroni sono stabili.\\n2.  **L'Instabilità:** Quando un nucleo ha un eccesso di protoni, un eccesso di neutroni, o sempl\",\"scales_allowed\":[\"cosmologico\",\"planetario\",\"sociale\",\"organismo\",\"cellulare\",\"molecolare\",\"atomico\",\"subatomico\",\"fondamentale\"]}\nOUTPUT_CONTRACT=\n{\n  \"children\": [\n    {\n      \"direction\": \"same_scale_cause|scale_up_propagation|scale_down_mechanism|coherence_bridge\",\n      \"text\": \"<frase <=20 parole>\",\n      \"predicate\": \"definition|process_description|claimed_property|event|state|comparison\",\n      \"nature\": \"cause|effect|context|bridge|interpretation\",\n      \"scale\": \"cosmologico|planetario|sociale|organismo|cellulare|molecolare|atomico|subatomico|fondamentale\",\n      \"relation_to_parent\": \"<breve, perche' lega al padre>\",\n      \"confidence\": 0.0\n    }\n  ]\n}\n\nRispondi solo con un JSON conforme al contratto.",
+  "raw_response": "{\n  \"children\": [\n    {\n      \"direction\": \"same_scale_cause\",\n      \"text\": \"Il principio fondamentale è la tendenza intrinseca di ogni sistema a minimizzare l'energia potenziale.\",\n      \"predicate\": \"definition\",\n      \"nature\": \"cause\",\n      \"scale\": \"fondamentale\",\n      \"relation_to_parent\": \"È la causa diretta del concetto di stabilità intrinseca del nucleo.\",\n      \"confidence\": 1.0\n    },\n    {\n      \"direction\": \"scale_up_propagation\",\n      \"text\": \"La stabilità atomica determina le condizioni necessarie per la formazione delle strutture molecolari.\",\n      \"predicate\": \"effect\",\n      \"nature\": \"effect\",\n      \"scale\": \"molecolare\",\n      \"relation_to_parent\": \"La stabilità fondamentale si propaga come vincolo alla scala molecolare.\",\n      \"confidence\": 0.85\n    },\n    {\n      \"direction\": \"scale_down_mechanism\",\n      \"text\": \"Il bilancio specifico tra quark e leptoni definisce lo stato di stabilità subatomica.\",\n      \"predicate\": \"process_description\",\n      \"nature\": \"bridge\",\n      \"scale\": \"subatomico\",\n      \"relation_to_parent\": \"Il meccanismo sottostante è la specifica configurazione subatomica che manifesta la stabilità fondamentale.\",\n      \"confidence\": 0.9\n    },\n    {\n      \"direction\": \"coherence_bridge\",\n      \"text\": \"La meccanica quantistica funge da ponte tra il principio fondamentale e la struttura atomica.\",\n      \"predicate\": \"process_description\",\n      \"nature\": \"bridge\",\n      \"scale\": \"atomico\",\n      \"relation_to_parent\": \"La meccanica quantistica collega il livello subatomico alla manifestazione atomica del principio.\",\n      \"confidence\": 0.95\n    }\n  ]\n}\n",
+  "response_chars": 1625,
+  "elapsed_seconds": 30.371,
+  "finished_at": "2026-07-12T22:04:34",
+  "finish_reason": "stop",
+  "truncated": false,
+  "truncation_attempts": [
+    {
+      "attempt": 1,
+      "num_predict": 3000,
+      "finish_reason": "stop",
+      "response_chars": 1625
+    }
+  ],
+  "final_num_predict": 3000,
+  "parsed_json": {
+    "children": [
+      {
+        "direction": "same_scale_cause",
+        "text": "Il principio fondamentale è la tendenza intrinseca di ogni sistema a minimizzare l'energia potenziale.",
+        "predicate": "definition",
+        "nature": "cause",
+        "scale": "fondamentale",
+        "relation_to_parent": "È la causa diretta del concetto di stabilità intrinseca del nucleo.",
+        "confidence": 1.0
+      },
+      {
+        "direction": "scale_up_propagation",
+        "text": "La stabilità atomica determina le condizioni necessarie per la formazione delle strutture molecolari.",
+        "predicate": "effect",
+        "nature": "effect",
+        "scale": "molecolare",
+        "relation_to_parent": "La stabilità fondamentale si propaga come vincolo alla scala molecolare.",
+        "confidence": 0.85
+      },
+      {
+        "direction": "scale_down_mechanism",
+        "text": "Il bilancio specifico tra quark e leptoni definisce lo stato di stabilità subatomica.",
+        "predicate": "process_description",
+        "nature": "bridge",
+        "scale": "subatomico",
+        "relation_to_parent": "Il meccanismo sottostante è la specifica configurazione subatomica che manifesta la stabilità fondamentale.",
+        "confidence": 0.9
+      },
+      {
+        "direction": "coherence_bridge",
+        "text": "La meccanica quantistica funge da ponte tra il principio fondamentale e la struttura atomica.",
+        "predicate": "process_description",
+        "nature": "bridge",
+        "scale": "atomico",
+        "relation_to_parent": "La meccanica quantistica collega il livello subatomico alla manifestazione atomica del principio.",
+        "confidence": 0.95
+      }
+    ]
+  }
+}

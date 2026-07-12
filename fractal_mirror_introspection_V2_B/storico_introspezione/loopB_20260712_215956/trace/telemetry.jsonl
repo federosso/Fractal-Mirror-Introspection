@@ -1,0 +1,44 @@
+{"event": "actor_start", "call_id": "0001_L1_Classifier", "actor": "L1_Classifier", "timestamp": "2026-07-12T22:00:38", "prompt_chars": 7409}
+{"event": "llm_call_start", "call_id": "0001_L1_Classifier", "role": "L1_Classifier", "timestamp": "2026-07-12T22:00:38", "prompt_chars": 7409}
+{"event": "actor_end", "call_id": "0001_L1_Classifier", "actor": "L1_Classifier", "timestamp": "2026-07-12T22:01:29", "elapsed_seconds": 50.465, "status": "parsed_dict"}
+{"event": "llm_call_end", "call_id": "0001_L1_Classifier", "role": "L1_Classifier", "timestamp": "2026-07-12T22:01:29", "elapsed_seconds": 50.465, "status": "parsed_dict", "truncated": false}
+{"event": "actor_start", "call_id": "0002_L2_Locked_atomico", "actor": "L2_Locked_atomico", "timestamp": "2026-07-12T22:01:29", "prompt_chars": 2973}
+{"event": "llm_call_start", "call_id": "0002_L2_Locked_atomico", "role": "L2_Locked_atomico", "timestamp": "2026-07-12T22:01:29", "prompt_chars": 2973}
+{"event": "actor_end", "call_id": "0002_L2_Locked_atomico", "actor": "L2_Locked_atomico", "timestamp": "2026-07-12T22:01:57", "elapsed_seconds": 28.037, "status": "parsed_dict"}
+{"event": "llm_call_end", "call_id": "0002_L2_Locked_atomico", "role": "L2_Locked_atomico", "timestamp": "2026-07-12T22:01:57", "elapsed_seconds": 28.037, "status": "parsed_dict", "truncated": false}
+{"event": "actor_start", "call_id": "0003_L3A1_DomainKnowledge", "actor": "L3A1_DomainKnowledge", "timestamp": "2026-07-12T22:01:57", "prompt_chars": 5489}
+{"event": "llm_call_start", "call_id": "0003_L3A1_DomainKnowledge", "role": "L3A1_DomainKnowledge", "timestamp": "2026-07-12T22:01:57", "prompt_chars": 5489}
+{"event": "actor_end", "call_id": "0003_L3A1_DomainKnowledge", "actor": "L3A1_DomainKnowledge", "timestamp": "2026-07-12T22:02:25", "elapsed_seconds": 27.644, "status": "parsed_dict"}
+{"event": "llm_call_end", "call_id": "0003_L3A1_DomainKnowledge", "role": "L3A1_DomainKnowledge", "timestamp": "2026-07-12T22:02:25", "elapsed_seconds": 27.644, "status": "parsed_dict", "truncated": false}
+{"event": "actor_start", "call_id": "0004_L3A2_CausalPrinciples", "actor": "L3A2_CausalPrinciples", "timestamp": "2026-07-12T22:02:25", "prompt_chars": 4896}
+{"event": "llm_call_start", "call_id": "0004_L3A2_CausalPrinciples", "role": "L3A2_CausalPrinciples", "timestamp": "2026-07-12T22:02:25", "prompt_chars": 4896}
+{"event": "actor_end", "call_id": "0004_L3A2_CausalPrinciples", "actor": "L3A2_CausalPrinciples", "timestamp": "2026-07-12T22:02:42", "elapsed_seconds": 17.657, "status": "parsed_dict"}
+{"event": "llm_call_end", "call_id": "0004_L3A2_CausalPrinciples", "role": "L3A2_CausalPrinciples", "timestamp": "2026-07-12T22:02:42", "elapsed_seconds": 17.657, "status": "parsed_dict", "truncated": false}
+{"event": "actor_start", "call_id": "0005_L3A3_CrossDomainAnalogies", "actor": "L3A3_CrossDomainAnalogies", "timestamp": "2026-07-12T22:02:42", "prompt_chars": 4952}
+{"event": "llm_call_start", "call_id": "0005_L3A3_CrossDomainAnalogies", "role": "L3A3_CrossDomainAnalogies", "timestamp": "2026-07-12T22:02:42", "prompt_chars": 4952}
+{"event": "actor_end", "call_id": "0005_L3A3_CrossDomainAnalogies", "actor": "L3A3_CrossDomainAnalogies", "timestamp": "2026-07-12T22:03:03", "elapsed_seconds": 20.498, "status": "parsed_dict"}
+{"event": "llm_call_end", "call_id": "0005_L3A3_CrossDomainAnalogies", "role": "L3A3_CrossDomainAnalogies", "timestamp": "2026-07-12T22:03:03", "elapsed_seconds": 20.498, "status": "parsed_dict", "truncated": false}
+{"event": "actor_start", "call_id": "0006_L3A4_OpenQuestions", "actor": "L3A4_OpenQuestions", "timestamp": "2026-07-12T22:03:03", "prompt_chars": 4412}
+{"event": "llm_call_start", "call_id": "0006_L3A4_OpenQuestions", "role": "L3A4_OpenQuestions", "timestamp": "2026-07-12T22:03:03", "prompt_chars": 4412}
+{"event": "actor_end", "call_id": "0006_L3A4_OpenQuestions", "actor": "L3A4_OpenQuestions", "timestamp": "2026-07-12T22:03:22", "elapsed_seconds": 18.904, "status": "parsed_dict"}
+{"event": "llm_call_end", "call_id": "0006_L3A4_OpenQuestions", "role": "L3A4_OpenQuestions", "timestamp": "2026-07-12T22:03:22", "elapsed_seconds": 18.904, "status": "parsed_dict", "truncated": false}
+{"event": "actor_start", "call_id": "0007_L3A5_GlobalSynthesis", "actor": "L3A5_GlobalSynthesis", "timestamp": "2026-07-12T22:03:22", "prompt_chars": 9776}
+{"event": "llm_call_start", "call_id": "0007_L3A5_GlobalSynthesis", "role": "L3A5_GlobalSynthesis", "timestamp": "2026-07-12T22:03:22", "prompt_chars": 9776}
+{"event": "actor_end", "call_id": "0007_L3A5_GlobalSynthesis", "actor": "L3A5_GlobalSynthesis", "timestamp": "2026-07-12T22:03:41", "elapsed_seconds": 19.357, "status": "parsed_dict"}
+{"event": "llm_call_end", "call_id": "0007_L3A5_GlobalSynthesis", "role": "L3A5_GlobalSynthesis", "timestamp": "2026-07-12T22:03:41", "elapsed_seconds": 19.357, "status": "parsed_dict", "truncated": false}
+{"event": "actor_start", "call_id": "0008_L3B_CrossScaleValidator", "actor": "L3B_CrossScaleValidator", "timestamp": "2026-07-12T22:03:42", "prompt_chars": 2551}
+{"event": "llm_call_start", "call_id": "0008_L3B_CrossScaleValidator", "role": "L3B_CrossScaleValidator", "timestamp": "2026-07-12T22:03:42", "prompt_chars": 2551}
+{"event": "actor_end", "call_id": "0008_L3B_CrossScaleValidator", "actor": "L3B_CrossScaleValidator", "timestamp": "2026-07-12T22:04:04", "elapsed_seconds": 22.107, "status": "parsed_dict"}
+{"event": "llm_call_end", "call_id": "0008_L3B_CrossScaleValidator", "role": "L3B_CrossScaleValidator", "timestamp": "2026-07-12T22:04:04", "elapsed_seconds": 22.107, "status": "parsed_dict", "truncated": false}
+{"event": "actor_start", "call_id": "0009_L5_FractalExpander", "actor": "L5_FractalExpander", "timestamp": "2026-07-12T22:04:04", "prompt_chars": 5530}
+{"event": "llm_call_start", "call_id": "0009_L5_FractalExpander", "role": "L5_FractalExpander", "timestamp": "2026-07-12T22:04:04", "prompt_chars": 5530}
+{"event": "actor_end", "call_id": "0009_L5_FractalExpander", "actor": "L5_FractalExpander", "timestamp": "2026-07-12T22:04:34", "elapsed_seconds": 30.371, "status": "parsed_dict"}
+{"event": "llm_call_end", "call_id": "0009_L5_FractalExpander", "role": "L5_FractalExpander", "timestamp": "2026-07-12T22:04:34", "elapsed_seconds": 30.371, "status": "parsed_dict", "truncated": false}
+{"event": "actor_start", "call_id": "0010_L5_FractalExpander", "actor": "L5_FractalExpander", "timestamp": "2026-07-12T22:04:34", "prompt_chars": 5557}
+{"event": "llm_call_start", "call_id": "0010_L5_FractalExpander", "role": "L5_FractalExpander", "timestamp": "2026-07-12T22:04:34", "prompt_chars": 5557}
+{"event": "actor_end", "call_id": "0010_L5_FractalExpander", "actor": "L5_FractalExpander", "timestamp": "2026-07-12T22:04:59", "elapsed_seconds": 24.549, "status": "parsed_dict"}
+{"event": "llm_call_end", "call_id": "0010_L5_FractalExpander", "role": "L5_FractalExpander", "timestamp": "2026-07-12T22:04:59", "elapsed_seconds": 24.549, "status": "parsed_dict", "truncated": false}
+{"event": "actor_start", "call_id": "0011_L5_FractalExpander", "actor": "L5_FractalExpander", "timestamp": "2026-07-12T22:04:59", "prompt_chars": 5552}
+{"event": "llm_call_start", "call_id": "0011_L5_FractalExpander", "role": "L5_FractalExpander", "timestamp": "2026-07-12T22:04:59", "prompt_chars": 5552}
+{"event": "actor_end", "call_id": "0011_L5_FractalExpander", "actor": "L5_FractalExpander", "timestamp": "2026-07-12T22:05:32", "elapsed_seconds": 32.767, "status": "parsed_dict"}
+{"event": "llm_call_end", "call_id": "0011_L5_FractalExpander", "role": "L5_FractalExpander", "timestamp": "2026-07-12T22:05:32", "elapsed_seconds": 32.767, "status": "parsed_dict", "truncated": false}

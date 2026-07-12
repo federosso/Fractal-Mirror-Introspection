@@ -1,0 +1,29 @@
+# Trace V10.14.0
+
+- PIPELINE_START at=2026-07-12T22:00:38
+- L0_DomainDiagnose: dominant=scientific_energy_matter
+- L1_Classifier: START call_id=0001_L1_Classifier prompt_chars=7409 payload_chars=1706
+- L1_Classifier: END call_id=0001_L1_Classifier elapsed=50.47s response_chars=3900 status=parsed_dict
+- L1_Classifier: accepted=10 rejected=2 (reasons=['quote_not_in_text', 'quote_too_long'])
+- L2_Locked_atomico: START call_id=0002_L2_Locked_atomico prompt_chars=2973 payload_chars=1636
+- L2_Locked_atomico: END call_id=0002_L2_Locked_atomico elapsed=28.04s response_chars=1045 status=parsed_dict
+- L2_LockedPerScale[atomico]: items=6 links=2 orphans=3
+- L2_LockedPerScale[fondamentale]: items=2 no_pair -> orphans=2
+- L2_LockedPerScale[molecolare]: items=2 no_pair -> orphans=2
+- L2_LockedPerScale: scales_processed=3
+- L3A1_DomainKnowledge: START call_id=0003_L3A1_DomainKnowledge prompt_chars=5489 payload_chars=3395
+- L3A1_DomainKnowledge: END call_id=0003_L3A1_DomainKnowledge elapsed=27.64s response_chars=2262 status=parsed_dict
+- L3A2_CausalPrinciples: START call_id=0004_L3A2_CausalPrinciples prompt_chars=4896 payload_chars=3395
+- L3A2_CausalPrinciples: END call_id=0004_L3A2_CausalPrinciples elapsed=17.66s response_chars=1241 status=parsed_dict
+- L3A3_CrossDomainAnalogies: START call_id=0005_L3A3_CrossDomainAnalogies prompt_chars=4952 payload_chars=3395
+- L3A3_CrossDomainAnalogies: END call_id=0005_L3A3_CrossDomainAnalogies elapsed=20.50s response_chars=1755 status=parsed_dict
+- L3A4_OpenQuestions: START call_id=0006_L3A4_OpenQuestions prompt_chars=4412 payload_chars=3395
+- L3A4_OpenQuestions: END call_id=0006_L3A4_OpenQuestions elapsed=18.90s response_chars=974 status=parsed_dict
+- L3A5_GlobalSynthesis: START call_id=0007_L3A5_GlobalSynthesis prompt_chars=9776 payload_chars=8298
+- L3A5_GlobalSynthesis: END call_id=0007_L3A5_GlobalSynthesis elapsed=19.36s response_chars=1338 status=parsed_dict
+- L3A_Unlocked: knowledge=6 principles=4 analogies=3 questions=5 degraded=[]
+- L3B_CrossScaleValidator: START call_id=0008_L3B_CrossScaleValidator prompt_chars=2551 payload_chars=1448
+- L3B_CrossScaleValidator: END call_id=0008_L3B_CrossScaleValidator elapsed=22.11s response_chars=1310 status=parsed_dict
+- L3B_CrossScaleValidator: candidates=3 verdicts=genuine=2 spurious=1 uncertain=0
+- L4_Orchestrator: items=10 locked_scales=3 cross_scale_total=3 genuine=2
+- PIPELINE_END at=2026-07-12T22:04:04

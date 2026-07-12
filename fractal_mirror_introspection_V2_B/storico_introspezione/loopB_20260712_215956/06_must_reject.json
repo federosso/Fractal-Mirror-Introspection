@@ -1,0 +1,145 @@
+{
+  "ventaglio_filtrato": {
+    "tenuti": [
+      {
+        "testo": "Modello Standard — Il decadimento radioattivo e la struttura nucleare sono fenomeni descritti all'interno del contesto più ampio del Modello Standard della fisica delle particelle.",
+        "scala": "subatomico",
+        "nature": "cause",
+        "epistemic": "domain_knowledge",
+        "referente": "processo",
+        "parent_id": "L3A1_DomainKnowledge",
+        "confidence": 0.0
+      },
+      {
+        "testo": "equilibrio di Nash (nucleare): La stabilità del nucleo rappresenta un equilibrio di Nash dove la forza nucleare si bilancia tra le forze repulsive e attrattive, e il decadimento è la transizione tra stati di equilibrio locali.",
+        "scala": "principio",
+        "nature": "cause",
+        "epistemic": "causal_model",
+        "referente": "processo",
+        "parent_id": "L3A2_CausalPrinciples",
+        "confidence": 0.0
+      }
+    ],
+    "rigettati": [
+      {
+        "testo": "Il principio fondamentale è la tendenza intrinseca di ogni sistema a minimizzare l'energia potenziale.",
+        "scala": "fondamentale",
+        "motivo": "referente = fenomeno descritto: fuori dal gesto. Non è scarto: resta nel ventaglio come mappa del non-scelto (lo Specchio la usa per le assenze)",
+        "parent_id": "itm_81a8d8e58c",
+        "confidence": 1.0
+      },
+      {
+        "testo": "Il bilancio specifico tra quark e leptoni definisce lo stato di stabilità subatomica.",
+        "scala": "subatomico",
+        "motivo": "referente = fenomeno descritto: fuori dal gesto. Non è scarto: resta nel ventaglio come mappa del non-scelto (lo Specchio la usa per le assenze)",
+        "parent_id": "itm_81a8d8e58c",
+        "confidence": 0.9
+      },
+      {
+        "testo": "La meccanica quantistica funge da ponte tra il principio fondamentale e la struttura atomica.",
+        "scala": "subatomico",
+        "motivo": "referente = fenomeno descritto: fuori dal gesto. Non è scarto: resta nel ventaglio come mappa del non-scelto (lo Specchio la usa per le assenze)",
+        "parent_id": "itm_81a8d8e58c",
+        "confidence": 0.95
+      },
+      {
+        "testo": "L'eccesso di particelle destabilizza il potenziale di binding nucleare.",
+        "scala": "atomico",
+        "motivo": "referente = fenomeno descritto: fuori dal gesto. Non è scarto: resta nel ventaglio come mappa del non-scelto (lo Specchio la usa per le assenze)",
+        "parent_id": "itm_0a6ae566f8",
+        "confidence": 0.95
+      },
+      {
+        "testo": "La forza nucleare debole regola il bilancio tra protoni e neutroni.",
+        "scala": "fondamentale",
+        "motivo": "referente = fenomeno descritto: fuori dal gesto. Non è scarto: resta nel ventaglio come mappa del non-scelto (lo Specchio la usa per le assenze)",
+        "parent_id": "itm_0a6ae566f8",
+        "confidence": 0.75
+      },
+      {
+        "testo": "Le transizioni energetiche atomiche definiscono stati subatomici.",
+        "scala": "subatomico",
+        "motivo": "referente = fenomeno descritto: fuori dal gesto. Non è scarto: resta nel ventaglio come mappa del non-scelto (lo Specchio la usa per le assenze)",
+        "parent_id": "itm_0a6ae566f8",
+        "confidence": 0.9
+      },
+      {
+        "testo": "Le equazioni di campo sottostanti determinano le forze fondamentali che governano la stabilità nucleare.",
+        "scala": "fondamentale",
+        "motivo": "referente = fenomeno descritto: fuori dal gesto. Non è scarto: resta nel ventaglio come mappa del non-scelto (lo Specchio la usa per le assenze)",
+        "parent_id": "itm_50db01f29f",
+        "confidence": 0.95
+      },
+      {
+        "testo": "Le fluttuazioni quantistiche introducono l'incertezza intrinseca che definisce lo stato fondamentale.",
+        "scala": "subatomico",
+        "motivo": "referente = fenomeno descritto: fuori dal gesto. Non è scarto: resta nel ventaglio come mappa del non-scelto (lo Specchio la usa per le assenze)",
+        "parent_id": "itm_50db01f29f",
+        "confidence": 0.8
+      },
+      {
+        "testo": "La transizione dall'equilibrio fondamentale al comportamento subatomico è governata dalle interazioni particellari.",
+        "scala": "subatomico",
+        "motivo": "referente = fenomeno descritto: fuori dal gesto. Non è scarto: resta nel ventaglio come mappa del non-scelto (lo Specchio la usa per le assenze)",
+        "parent_id": "itm_50db01f29f",
+        "confidence": 0.9
+      },
+      {
+        "testo": "Forza Nucleare Forte — La forza nucleare è il meccanismo fondamentale che agisce all'interno del nucleo, spingendo per mantenere l'equilibrio e determinando la stabilità.",
+        "scala": "fondamentale",
+        "motivo": "referente = fenomeno descritto: fuori dal gesto. Non è scarto: resta nel ventaglio come mappa del non-scelto (lo Specchio la usa per le assenze)",
+        "parent_id": "L3A1_DomainKnowledge",
+        "confidence": 0.0
+      },
+      {
+        "testo": "Principio di Minimizzazione dell'Energia — La tendenza della natura a raggiungere uno stato di energia più basso è il principio sottostante che guida l'instabilità e il decadimento nucleare.",
+        "scala": "fondamentale",
+        "motivo": "referente = fenomeno descritto: fuori dal gesto. Non è scarto: resta nel ventaglio come mappa del non-scelto (lo Specchio la usa per le assenze)",
+        "parent_id": "L3A1_DomainKnowledge",
+        "confidence": 0.0
+      },
+      {
+        "testo": "principio di minima azione (Hamilton): Il decadimento radioattivo è il percorso che il nucleo instabile sceglie per minimizzare l'energia potenziale del sistema, muovendosi verso uno stato di energia più basso e stabile.",
+        "scala": "principio",
+        "motivo": "referente = fenomeno descritto: fuori dal gesto. Non è scarto: resta nel ventaglio come mappa del non-scelto (lo Specchio la usa per le assenze)",
+        "parent_id": "L3A2_CausalPrinciples",
+        "confidence": 0.0
+      },
+      {
+        "testo": "feedback negativo (cibernetica): L'eccesso di energia potenziale (instabilità) agisce come un segnale di errore che innesca il decadimento, un meccanismo che corregge l'asimmetria del rapporto protoni/neutroni.",
+        "scala": "principio",
+        "motivo": "referente = fenomeno descritto: fuori dal gesto. Non è scarto: resta nel ventaglio come mappa del non-scelto (lo Specchio la usa per le assenze)",
+        "parent_id": "L3A2_CausalPrinciples",
+        "confidence": 0.0
+      },
+      {
+        "testo": "[fisica] L'instabilità nucleare come un sistema che cade verso il minimo di una curva di potenziale (analogia con il principio di energia potenziale). (attenzione: Resta analogia perché la curva di potenziale è una semplificazione matematica; non coglie la natura quantistica della transizione di stato del nucleo.)",
+        "scala": "analogia",
+        "motivo": "referente = fenomeno descritto: fuori dal gesto. Non è scarto: resta nel ventaglio come mappa del non-scelto (lo Specchio la usa per le assenze)",
+        "parent_id": "L3A3_CrossDomainAnalogies",
+        "confidence": 0.0
+      },
+      {
+        "testo": "[musica/armonia] Il decadimento radioattivo come la risoluzione di una dissonanza musicale in una consonanza più stabile. (attenzione: Resta analogia perché la musica è percepita; non coglie la natura fisica del rilascio di particelle e onde come manifestazione dell'energia rilasciata.)",
+        "scala": "analogia",
+        "motivo": "referente = fenomeno descritto: fuori dal gesto. Non è scarto: resta nel ventaglio come mappa del non-scelto (lo Specchio la usa per le assenze)",
+        "parent_id": "L3A3_CrossDomainAnalogies",
+        "confidence": 0.0
+      },
+      {
+        "testo": "Qual è la funzione esatta della forza nucleare che 'spinge per mantenere l'equilibrio' tra protoni e neutroni?",
+        "scala": "domanda_aperta",
+        "motivo": "referente = fenomeno descritto: fuori dal gesto. Non è scarto: resta nel ventaglio come mappa del non-scelto (lo Specchio la usa per le assenze)",
+        "parent_id": "L3A4_OpenQuestions",
+        "confidence": 0.0
+      },
+      {
+        "testo": "Come si lega la descrizione del 'rapporto corretto tra protoni e neutroni' (livello atomico) alla manifestazione del 'potenziale energetico' che viene rilasciato (livello macroscopico)?",
+        "scala": "domanda_aperta",
+        "motivo": "referente = fenomeno descritto: fuori dal gesto. Non è scarto: resta nel ventaglio come mappa del non-scelto (lo Specchio la usa per le assenze)",
+        "parent_id": "L3A4_OpenQuestions",
+        "confidence": 0.0
+      }
+    ]
+  }
+}

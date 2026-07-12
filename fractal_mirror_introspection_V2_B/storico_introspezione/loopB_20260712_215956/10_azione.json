@@ -1,0 +1,6 @@
+{
+  "tipo": "procedi",
+  "output_finale": "L'origine del decadimento radioattivo risiede nella **instabilità intrinseca del nucleo atomico**.\n\nIn termini più semplici, un nucleo atomico è composto da protoni e neutroni. La stabilità di questo nucleo dipende dal corretto equilibrio tra queste particelle.\n\nEcco i punti chiave:\n\n1.  **L'Equilibrio di Stabilità:** La natura cerca sempre di raggiungere uno stato di energia più basso e quindi più stabile. I nuclei più piccoli o quelli con il rapporto corretto tra protoni e neutroni sono stabili.\n2.  **L'Instabilità:** Quando un nucleo ha un eccesso di protoni, un eccesso di neutroni, o semplicemente è troppo grande, diventa \"instabile\". Questa instabilità si traduce in un'energia potenziale che il nucleo cerca di liberare.\n3.  **Il Decadimento:** Per raggiungere uno stato di maggiore stabilità, il nucleo \"decadente\" subisce una trasformazione, rilasciando energia sotto forma di particelle (come alfa o beta) o di onde (come i raggi gamma).\n\n**In sintesi:** Il decadimento radioattivo è il meccanismo che un nucleo instabile utilizza per trasformarsi in un nucleo più stabile. È una conseguenza della forza nucleare che agisce all'interno del nucleo, che spinge per mantenere l'equilibrio.",
+  "confidenza": 0.879,
+  "nota": "output coerente col substrato"
+}

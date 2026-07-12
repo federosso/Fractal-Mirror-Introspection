@@ -1,0 +1,410 @@
+{
+  "items": [
+    {
+      "id": "itm_85ece6579d",
+      "quote": "un nucleo atomico è composto da protoni e neutroni.",
+      "predicate": "definition",
+      "nature": "context",
+      "scale": "atomico",
+      "rationale": "Definizione della struttura base del nucleo.",
+      "source_input_id": "input_001",
+      "epistemic_status": "text_observed",
+      "metadata": {}
+    },
+    {
+      "id": "itm_291dc464e6",
+      "quote": "La stabilità di questo nucleo dipende dal corretto equilibrio tra queste particelle.",
+      "predicate": "claimed_property",
+      "nature": "context",
+      "scale": "atomico",
+      "rationale": "Descrive la condizione (equilibrio) necessaria per la proprietà (stabilità).",
+      "source_input_id": "input_001",
+      "epistemic_status": "text_observed",
+      "metadata": {}
+    },
+    {
+      "id": "itm_81a8d8e58c",
+      "quote": "La natura cerca sempre di raggiungere uno stato di energia più basso e quindi più stabile.",
+      "predicate": "process_description",
+      "nature": "cause",
+      "scale": "fondamentale",
+      "rationale": "Descrive la tendenza intrinseca della natura come causa del processo di stabilità.",
+      "source_input_id": "input_001",
+      "epistemic_status": "text_observed",
+      "metadata": {}
+    },
+    {
+      "id": "itm_7b50c8bd18",
+      "quote": "I nuclei più piccoli o quelli con il rapporto corretto tra protoni e neutroni sono stabili.",
+      "predicate": "claimed_property",
+      "nature": "effect",
+      "scale": "atomico",
+      "rationale": "Descrive lo stato osservato (stabilità) derivante dalla configurazione corretta.",
+      "source_input_id": "input_001",
+      "epistemic_status": "text_observed",
+      "metadata": {}
+    },
+    {
+      "id": "itm_0a6ae566f8",
+      "quote": "Quando un nucleo ha un eccesso di protoni, un eccesso di neutroni, o semplicemente è troppo grande, diventa \"instabile\".",
+      "predicate": "process_description",
+      "nature": "cause",
+      "scale": "atomico",
+      "rationale": "Descrive la condizione (eccesso) che causa lo stato (instabilità).",
+      "source_input_id": "input_001",
+      "epistemic_status": "text_observed",
+      "metadata": {}
+    },
+    {
+      "id": "itm_88b3e42abb",
+      "quote": "Questa instabilità si traduce in un'energia potenziale che il nucleo cerca di liberare.",
+      "predicate": "process_description",
+      "nature": "effect",
+      "scale": "atomico",
+      "rationale": "Descrive la conseguenza diretta dell'instabilità (rilascio di energia potenziale).",
+      "source_input_id": "input_001",
+      "epistemic_status": "text_observed",
+      "metadata": {}
+    },
+    {
+      "id": "itm_f2bc0b3dd4",
+      "quote": "Il decadimento radioattivo è il meccanismo che un nucleo instabile utilizza per trasformarsi in un nucleo più stabile.",
+      "predicate": "definition",
+      "nature": "effect",
+      "scale": "atomico",
+      "rationale": "Definizione del meccanismo complessivo del decadimento.",
+      "source_input_id": "input_001",
+      "epistemic_status": "text_observed",
+      "metadata": {}
+    },
+    {
+      "id": "itm_50db01f29f",
+      "quote": "È una conseguenza della forza nucleare che agisce all'interno del nucleo, che spinge per mantenere l'equilibrio.",
+      "predicate": "process_description",
+      "nature": "cause",
+      "scale": "fondamentale",
+      "rationale": "Identifica la forza nucleare come causa ultima del mantenimento dell'equilibrio.",
+      "source_input_id": "input_001",
+      "epistemic_status": "text_observed",
+      "metadata": {}
+    },
+    {
+      "id": "itm_2c6439c08b",
+      "quote": "Il testo qui sopra è un output prodotto da un modello linguistico.",
+      "predicate": "state",
+      "nature": "context",
+      "scale": "molecolare",
+      "rationale": "Definisce lo stato del testo stesso come prodotto di un sistema computazionale.",
+      "source_input_id": "input_001",
+      "epistemic_status": "text_observed",
+      "metadata": {}
+    },
+    {
+      "id": "itm_8d20c2e98f",
+      "quote": "Se ne cercano i processi che l'hanno generato: frequenze apprese nei dati di training, tratti del personaggio addestrato, tendenze statistiche della generazione.",
+      "predicate": "process_description",
+      "nature": "cause",
+      "scale": "molecolare",
+      "rationale": "Descrive i processi computazionali che hanno causato l'output del testo.",
+      "source_input_id": "input_001",
+      "epistemic_status": "text_observed",
+      "metadata": {}
+    }
+  ],
+  "locked_reports": [
+    {
+      "scale": "atomico",
+      "same_scale_links": [
+        {
+          "id": "lnk_1e414947af",
+          "scale": "atomico",
+          "cause_item_id": "itm_0a6ae566f8",
+          "effect_item_id": "itm_88b3e42abb",
+          "rationale": "L'eccesso di protoni/neutroni (causa) genera un'energia potenziale da liberare (effetto).",
+          "confidence": 0.0
+        },
+        {
+          "id": "lnk_04fc0913cb",
+          "scale": "atomico",
+          "cause_item_id": "itm_0a6ae566f8",
+          "effect_item_id": "itm_f2bc0b3dd4",
+          "rationale": "L'instabilità del nucleo (causa) è il meccanismo che porta al decadimento radioattivo (effetto).",
+          "confidence": 0.0
+        }
+      ],
+      "orphans": [
+        {
+          "item_id": "itm_85ece6579d",
+          "nature": "context",
+          "scale": "atomico",
+          "reason": "È una definizione della struttura, non una causa o un effetto diretto di un altro item sulla stessa scala."
+        },
+        {
+          "item_id": "itm_291dc464e6",
+          "nature": "context",
+          "scale": "atomico",
+          "reason": "Descrive la condizione per la stabilità, ma non è la causa diretta di un effetto osservato tra gli altri item."
+        },
+        {
+          "item_id": "itm_7b50c8bd18",
+          "nature": "effect",
+          "scale": "atomico",
+          "reason": "not_linked_at_scale"
+        }
+      ],
+      "items_seen": [
+        "itm_85ece6579d",
+        "itm_291dc464e6",
+        "itm_7b50c8bd18",
+        "itm_0a6ae566f8",
+        "itm_88b3e42abb",
+        "itm_f2bc0b3dd4"
+      ],
+      "summary": "Il legame causale più forte è tra l'instabilità nucleare (causa) e la conseguente liberazione di energia potenziale e il meccanismo di decadimento (effetti)."
+    },
+    {
+      "scale": "fondamentale",
+      "same_scale_links": [],
+      "orphans": [
+        {
+          "item_id": "itm_81a8d8e58c",
+          "nature": "cause",
+          "scale": "fondamentale",
+          "reason": "no_pair_at_scale"
+        },
+        {
+          "item_id": "itm_50db01f29f",
+          "nature": "cause",
+          "scale": "fondamentale",
+          "reason": "no_pair_at_scale"
+        }
+      ],
+      "items_seen": [
+        "itm_81a8d8e58c",
+        "itm_50db01f29f"
+      ],
+      "summary": "Nessuna coppia cause-effect sulla scala."
+    },
+    {
+      "scale": "molecolare",
+      "same_scale_links": [],
+      "orphans": [
+        {
+          "item_id": "itm_2c6439c08b",
+          "nature": "context",
+          "scale": "molecolare",
+          "reason": "no_pair_at_scale"
+        },
+        {
+          "item_id": "itm_8d20c2e98f",
+          "nature": "cause",
+          "scale": "molecolare",
+          "reason": "no_pair_at_scale"
+        }
+      ],
+      "items_seen": [
+        "itm_2c6439c08b",
+        "itm_8d20c2e98f"
+      ],
+      "summary": "Nessuna coppia cause-effect sulla scala."
+    }
+  ],
+  "unlocked": {
+    "domain": "fisica_nucleare",
+    "domain_knowledge": [
+      {
+        "concept": "Modello Standard",
+        "relation_to_input": "Il decadimento radioattivo e la struttura nucleare sono fenomeni descritti all'interno del contesto più ampio del Modello Standard della fisica delle particelle.",
+        "status": "domain_knowledge",
+        "suggested_scale": "subatomico",
+        "not_in_input": true
+      },
+      {
+        "concept": "Forza Nucleare Forte",
+        "relation_to_input": "La forza nucleare è il meccanismo fondamentale che agisce all'interno del nucleo, spingendo per mantenere l'equilibrio e determinando la stabilità.",
+        "status": "causal_model",
+        "suggested_scale": "fondamentale",
+        "not_in_input": true
+      },
+      {
+        "concept": "Principio di Minimizzazione dell'Energia",
+        "relation_to_input": "La tendenza della natura a raggiungere uno stato di energia più basso è il principio sottostante che guida l'instabilità e il decadimento nucleare.",
+        "status": "domain_knowledge",
+        "suggested_scale": "fondamentale",
+        "not_in_input": true
+      },
+      {
+        "concept": "Struttura Nucleare (Rapporto N/Z)",
+        "relation_to_input": "La stabilità dipende dal corretto rapporto tra protoni (Z) e neutroni (N), un concetto chiave nella modellazione della struttura nucleare.",
+        "status": "domain_knowledge",
+        "suggested_scale": "atomico",
+        "not_in_input": true
+      },
+      {
+        "concept": "Decadimento Beta ($\beta^-$ o $\beta^+$)",
+        "relation_to_input": "Le particelle beta sono uno dei meccanismi specifici attraverso cui un nucleo instabile trasforma la sua configurazione per raggiungere uno stato più stabile.",
+        "status": "causal_model",
+        "suggested_scale": "atomico",
+        "not_in_input": true
+      },
+      {
+        "concept": "Energia di Legame Nucleare",
+        "relation_to_input": "L'energia potenziale rilasciata durante il decadimento è direttamente correlata alla differenza tra l'energia di legame del nucleo instabile e quello stabile.",
+        "status": "causal_model",
+        "suggested_scale": "atomico",
+        "not_in_input": true
+      }
+    ],
+    "causal_principles": [
+      {
+        "name": "principio di minima azione (Hamilton)",
+        "description": "Il decadimento radioattivo è il percorso che il nucleo instabile sceglie per minimizzare l'energia potenziale del sistema, muovendosi verso uno stato di energia più basso e stabile.",
+        "status": "causal_model"
+      },
+      {
+        "name": "feedback negativo (cibernetica)",
+        "description": "L'eccesso di energia potenziale (instabilità) agisce come un segnale di errore che innesca il decadimento, un meccanismo che corregge l'asimmetria del rapporto protoni/neutroni.",
+        "status": "causal_model"
+      },
+      {
+        "name": "equilibrio di Nash (nucleare)",
+        "description": "La stabilità del nucleo rappresenta un equilibrio di Nash dove la forza nucleare si bilancia tra le forze repulsive e attrattive, e il decadimento è la transizione tra stati di equilibrio locali.",
+        "status": "causal_model"
+      },
+      {
+        "name": "rinforzo operante (Skinner)",
+        "description": "Il rilascio di energia durante il decadimento agisce come un rinforzo positivo per il processo di trasformazione, rafforzando la tendenza del nucleo a preferire le configurazioni più stabili.",
+        "status": "causal_model"
+      }
+    ],
+    "cross_domain_analogies": [
+      {
+        "domain": "fisica",
+        "analogy": "L'instabilità nucleare come un sistema che cade verso il minimo di una curva di potenziale (analogia con il principio di energia potenziale).",
+        "warning": "Resta analogia perché la curva di potenziale è una semplificazione matematica; non coglie la natura quantistica della transizione di stato del nucleo.",
+        "status": "cross_domain_analogy"
+      },
+      {
+        "domain": "musica/armonia",
+        "analogy": "Il decadimento radioattivo come la risoluzione di una dissonanza musicale in una consonanza più stabile.",
+        "warning": "Resta analogia perché la musica è percepita; non coglie la natura fisica del rilascio di particelle e onde come manifestazione dell'energia rilasciata.",
+        "status": "cross_domain_analogy"
+      },
+      {
+        "domain": "biologia",
+        "analogy": "Il nucleo come un ecosistema che, per mantenere l'omeostasi, subisce una 'morte cellulare' o una trasformazione per raggiungere uno stato metabolico più stabile.",
+        "warning": "Resta analogia perché l'ecosistema è un sistema complesso; non coglie la specificità delle forze nucleari e la natura deterministica del decadimento.",
+        "status": "cross_domain_analogy"
+      }
+    ],
+    "open_questions": [
+      "Qual è la funzione esatta della forza nucleare che 'spinge per mantenere l'equilibrio' tra protoni e neutroni?",
+      "Come si lega la descrizione del 'rapporto corretto tra protoni e neutroni' (livello atomico) alla manifestazione del 'potenziale energetico' che viene rilasciato (livello macroscopico)?",
+      "Quale osservazione sperimentale confuterebbe l'ipotesi che il decadimento sia *necessariamente* il meccanismo per raggiungere uno stato più stabile, piuttosto che una semplice fluttuazione statistica?",
+      "Qual è la differenza quantitativa nell'energia potenziale rilasciata tra un decadimento beta e un decadimento alfa per un dato isotopo?",
+      "Quali sono le condizioni precise (oltre all'eccesso di particelle) che determinano la soglia di 'instabilità' di un nucleo?"
+    ],
+    "known_uncertainties": [],
+    "degraded": false,
+    "degraded_parts": []
+  },
+  "cross_scale": [
+    {
+      "id": "csh_62be91f8bf",
+      "cause_item_id": "itm_8d20c2e98f",
+      "effect_item_id": "itm_7b50c8bd18",
+      "cause_scale": "molecolare",
+      "effect_scale": "atomico",
+      "verdict": "spurious",
+      "reasoning": "La distanza di scala è 1, suggerendo una forte probabilità di spuriosità. La causa (processi di generazione di dati/tratti) è un livello astratto/computazionale (molecolare), mentre l'effetto (stabilità nucleare) è un livello fisico fondamentale (atomico). Il legame causale diretto è debole.",
+      "confidence": 0.9
+    },
+    {
+      "id": "csh_69da451aec",
+      "cause_item_id": "itm_50db01f29f",
+      "effect_item_id": "itm_7b50c8bd18",
+      "cause_scale": "fondamentale",
+      "effect_scale": "atomico",
+      "verdict": "genuine",
+      "reasoning": "La causa ('conseguenza della forza nucleare che spinge per mantenere l'equilibrio') è il meccanismo diretto che determina la proprietà descritta nell'effetto (stabilità nucleare). La distanza di scala 2 è sufficiente per indicare un meccanismo plausibile che attraversa il livello fondamentale all'effetto atomico.",
+      "confidence": 0.95
+    },
+    {
+      "id": "csh_4e68b311af",
+      "cause_item_id": "itm_81a8d8e58c",
+      "effect_item_id": "itm_7b50c8bd18",
+      "cause_scale": "fondamentale",
+      "effect_scale": "atomico",
+      "verdict": "genuine",
+      "reasoning": "La causa ('la natura cerca sempre di raggiungere uno stato di energia più basso e quindi più stabile') è il principio fondamentale (termodinamico/natura) che spiega la condizione descritta nell'effetto (stabilità del nucleo). Questo è un legame causale ben stabilito tra scala fondamentale ed atomica.",
+      "confidence": 0.9
+    }
+  ],
+  "double_cone": {
+    "cone_of_causes": {
+      "molecolare": [
+        "itm_8d20c2e98f"
+      ],
+      "atomico": [
+        "itm_0a6ae566f8"
+      ],
+      "fondamentale": [
+        "itm_81a8d8e58c",
+        "itm_50db01f29f"
+      ]
+    },
+    "cone_of_effects": {
+      "atomico": [
+        "itm_7b50c8bd18",
+        "itm_88b3e42abb",
+        "itm_f2bc0b3dd4"
+      ]
+    }
+  },
+  "vision": {
+    "core_image": "Il decadimento radioattivo è il sussurro incessante di un nucleo che, spinto dalla necessità di quiete, scambia l'energia per la stabilità.",
+    "human_summary": "L'origine del decadimento radioattivo è intrinsecamente legata all'instabilità del nucleo atomico, definito dal corretto equilibrio tra protoni e neutroni. Quando il nucleo devia da questo equilibrio, la natura, guidata dal principio di minima azione, manifesta un eccesso di energia potenziale. Il decadimento è il meccanismo inevitabile attraverso cui il nucleo instabile si trasforma in una configurazione più stabile, rilasciando energia sotto forma di particelle o onde. L'analisi del testo stesso suggerisce che questo processo è anche un pattern statistico appreso dal modello linguistico.",
+    "epistemic_warning": "Sebbene il testo descriva il meccanismo causale del decadimento, non dimostra la natura ultima della 'forza nucleare' che impone questo equilibrio, lasciando aperta la domanda sulla sua essenza quantistica.",
+    "dominant_domain": "fisica_nucleare",
+    "primary_lenses": [
+      "principio_di_minima_azione",
+      "forza_nucleare_forte",
+      "struttura_nucleare_n_z",
+      "feedback_negativo_cibernetica"
+    ],
+    "blocked_lenses": [
+      "diagnosi_clinica_individuale",
+      "validazione_metafisica",
+      "teoria_relativistica_completa"
+    ]
+  },
+  "trace": [
+    "PIPELINE_START at=2026-07-12T22:00:38",
+    "L0_DomainDiagnose: dominant=scientific_energy_matter",
+    "L1_Classifier: START call_id=0001_L1_Classifier prompt_chars=7409 payload_chars=1706",
+    "L1_Classifier: END call_id=0001_L1_Classifier elapsed=50.47s response_chars=3900 status=parsed_dict",
+    "L1_Classifier: accepted=10 rejected=2 (reasons=['quote_not_in_text', 'quote_too_long'])",
+    "L2_Locked_atomico: START call_id=0002_L2_Locked_atomico prompt_chars=2973 payload_chars=1636",
+    "L2_Locked_atomico: END call_id=0002_L2_Locked_atomico elapsed=28.04s response_chars=1045 status=parsed_dict",
+    "L2_LockedPerScale[atomico]: items=6 links=2 orphans=3",
+    "L2_LockedPerScale[fondamentale]: items=2 no_pair -> orphans=2",
+    "L2_LockedPerScale[molecolare]: items=2 no_pair -> orphans=2",
+    "L2_LockedPerScale: scales_processed=3",
+    "L3A1_DomainKnowledge: START call_id=0003_L3A1_DomainKnowledge prompt_chars=5489 payload_chars=3395",
+    "L3A1_DomainKnowledge: END call_id=0003_L3A1_DomainKnowledge elapsed=27.64s response_chars=2262 status=parsed_dict",
+    "L3A2_CausalPrinciples: START call_id=0004_L3A2_CausalPrinciples prompt_chars=4896 payload_chars=3395",
+    "L3A2_CausalPrinciples: END call_id=0004_L3A2_CausalPrinciples elapsed=17.66s response_chars=1241 status=parsed_dict",
+    "L3A3_CrossDomainAnalogies: START call_id=0005_L3A3_CrossDomainAnalogies prompt_chars=4952 payload_chars=3395",
+    "L3A3_CrossDomainAnalogies: END call_id=0005_L3A3_CrossDomainAnalogies elapsed=20.50s response_chars=1755 status=parsed_dict",
+    "L3A4_OpenQuestions: START call_id=0006_L3A4_OpenQuestions prompt_chars=4412 payload_chars=3395",
+    "L3A4_OpenQuestions: END call_id=0006_L3A4_OpenQuestions elapsed=18.90s response_chars=974 status=parsed_dict",
+    "L3A5_GlobalSynthesis: START call_id=0007_L3A5_GlobalSynthesis prompt_chars=9776 payload_chars=8298",
+    "L3A5_GlobalSynthesis: END call_id=0007_L3A5_GlobalSynthesis elapsed=19.36s response_chars=1338 status=parsed_dict",
+    "L3A_Unlocked: knowledge=6 principles=4 analogies=3 questions=5 degraded=[]",
+    "L3B_CrossScaleValidator: START call_id=0008_L3B_CrossScaleValidator prompt_chars=2551 payload_chars=1448",
+    "L3B_CrossScaleValidator: END call_id=0008_L3B_CrossScaleValidator elapsed=22.11s response_chars=1310 status=parsed_dict",
+    "L3B_CrossScaleValidator: candidates=3 verdicts=genuine=2 spurious=1 uncertain=0",
+    "L4_Orchestrator: items=10 locked_scales=3 cross_scale_total=3 genuine=2",
+    "PIPELINE_END at=2026-07-12T22:04:04"
+  ]
+}

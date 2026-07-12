@@ -1,0 +1,142 @@
+{
+  "call_id": "0001_L1_Classifier",
+  "role_name": "L1_Classifier",
+  "backend": "llamacpp",
+  "model": "local-model",
+  "prompt_chars": 7409,
+  "payload_chars": 1706,
+  "max_output_tokens": 5000,
+  "status": "parsed_dict",
+  "started_at": "2026-07-12T22:00:38",
+  "role_prompt": "Sei il CLASSIFICATORE del Fractal Causal Engine.\n\nIl tuo compito: spezzare il testo in PROPOSIZIONI MINIME e classificare ognuna su due assi.\n\nREGOLE INDEROGABILI\n1. Una proposizione = una sola affermazione. Mai due predicati uniti. Mai elenchi compatti.\n2. quote: COPIA LETTERALMENTE dal testo, massimo 25 parole. Se la frase originale e' piu' lunga, spezzala e ripeti la classificazione su ciascun pezzo.\n3. Non aggiungere conoscenza esterna. Non interpretare. Solo cio' che il testo afferma.\n4. predicate -- cosa fa la frase nel testo:\n   - definition: \"X e' il termine per indicare Y\", \"con X si intende Y\", \"X si definisce come Y\"\n   - process_description: \"X agisce\", \"X stimola Y\", \"X genera Y\" (in un contesto osservato/osservabile)\n   - claimed_property: \"X ha la proprieta' P\", \"X non ha P\", \"X e' senza P\"\n   - event: \"e' successo X\" (azione singola, datata o no)\n   - state: \"X e' nello stato Y\" (stativo)\n   - comparison: \"X a differenza di Y...\", \"diversamente da X...\"\n   - question: una DOMANDA. \"Che cos'e' X?\", \"come si fa Y?\", \"perche' Z?\".\n     Una domanda NON e' un'asserzione: non afferma nulla, chiede. Va\n     SEMPRE marcata predicate=question e nature=context (e' il quesito di\n     partenza, non un fattore causale).\n5. nature -- la natura causale di cio' che la frase dice:\n   - cause: condizione, stimolo, evento originante REALMENTE OSSERVATO o REALMENTE INNESCANTE\n   - effect: manifestazione, esito, conseguenza OSSERVATA\n   - context: cornice, sfondo, definizione, proprieta' che NON innesca nulla nel testo;\n     anche le DOMANDE (predicate=question) sono sempre context\n   - bridge: passaggio intermedio possibile, non causa autonoma\n   - interpretation: lettura simbolica/spirituale/significato attribuito\n6. scale -- la scala ontologica del REFERENTE della frase, da queste 9:\n   cosmologico, planetario, sociale, organismo, cellulare, molecolare, atomico, subatomico, fondamentale.\n   Scegli la scala dove vive il fenomeno descritto, non la scala dell'autore.\n\nREGOLA CRUCIALE -- GLOSSE DEFINITORIE\nSe la frase contiene una SUBORDINATA RELATIVA o FINALE dentro una DEFINIZIONE\ndel soggetto (struttura: \"X = Y che fa Z al fine di W\"), la subordinata\nNON e' una catena causale osservata. E' una GLOSSA DEFINITORIA: descrive\nCOSA E' il soggetto, non un evento accaduto. Verbi come \"stimolare\",\n\"generare\", \"produrre\", \"al fine di\", \"attraverso\", \"mediante\" dentro una\ndefinizione restano parte della DEFINIZIONE: emetti UN solo item con\npredicate=definition o predicate=process_description e nature=context.\n\nNON spezzare mai una glossa definitoria in cause+effect anche se contiene\nverbi causali. Lo si fa solo se il testo asserisce un'osservazione reale\n(es. \"Tizio stimola la materia e questa genera energia\" come fatto osservato).\n\nESEMPIO 1 -- DEFINIZIONE CON GLOSSA SUBORDINATA (NON spezzare in causa+effetto):\nTESTO: \"Con l'acronimo LENR si definiscono una serie di fenomeni - tra i\nquali fusione fredda - che stimolano la materia al fine di estrarre energia.\"\nITEMS:\n  - quote: \"Con l'acronimo LENR si definiscono una serie di fenomeni\"\n    predicate: definition, nature: context, scale: atomico\n  - quote: \"tra i quali fusione fredda\"\n    predicate: definition, nature: context, scale: subatomico\n  - quote: \"che stimolano la materia al fine di estrarre energia\"\n    predicate: process_description, nature: context, scale: atomico\n    (NB: questa e' la GLOSSA DEFINITORIA del soggetto LENR, NON un evento\n    osservato. Non emettere un secondo item \"estrarre energia\" con\n    nature=effect: e' parte della stessa definizione.)\n\nESEMPIO 2 -- COMPARAZIONE DIFFERENZIALE (NON spezzare in causa+effetto):\nTESTO: \"A differenza della fissione, le LENR generano energia senza scorie radioattive.\"\nITEMS:\n  - quote: \"A differenza della fissione\"\n    predicate: comparison, nature: context, scale: atomico\n  - quote: \"le LENR generano energia senza scorie radioattive\"\n    predicate: claimed_property, nature: context, scale: atomico\n    (NB: \"generano\" qui descrive una PROPRIETA' DICHIARATA di LENR rispetto\n    al confronto, non un evento osservato.)\n\nESEMPIO 3 -- CAUSALITA' OSSERVATA (questa SI si spezza):\nTESTO: \"Dopo il tamponamento ho avuto un colpo di frusta e da allora ho fobia delle macchine.\"\nITEMS:\n  - quote: \"Dopo il tamponamento\"\n    predicate: event, nature: cause, scale: organismo\n  - quote: \"ho avuto un colpo di frusta\"\n    predicate: event, nature: effect, scale: organismo\n  - quote: \"da allora ho fobia delle macchine\"\n    predicate: state, nature: effect, scale: organismo\n\nREGOLA DI DENSITA' CAUSALE\nSe l'intero testo e' DEFINITORIO (esempio: voce di dizionario, paragrafo\nintroduttivo che dice \"X e' Y\", comparazioni differenziali) e NON contiene\nuna sequenza temporale o causale osservata, allora TUTTI gli item devono\navere nature=context. Nessun item cause/effect. Il magistrale lavorera'\ncon le ESPANSIONI per costruire ipotesi causali; non e' tuo compito\nforzare causalita' dove il testo non la afferma.\n\nVINCOLI FINALI\n- Mai claim con quote > 25 parole. Spezza.\n- Mai inventare scale fuori dalle 9 elencate.\n- Se non sei sicuro della nature, scegli context.\n- Restituisci JSON valido come da OUTPUT_CONTRACT.",
+  "payload": {
+    "task": "classify_text_into_minimal_propositions",
+    "input_text": "L'origine del decadimento radioattivo risiede nella **instabilità intrinseca del nucleo atomico**.\n\nIn termini più semplici, un nucleo atomico è composto da protoni e neutroni. La stabilità di questo nucleo dipende dal corretto equilibrio tra queste particelle.\n\nEcco i punti chiave:\n\n1.  **L'Equilibrio di Stabilità:** La natura cerca sempre di raggiungere uno stato di energia più basso e quindi più stabile. I nuclei più piccoli o quelli con il rapporto corretto tra protoni e neutroni sono stabili.\n2.  **L'Instabilità:** Quando un nucleo ha un eccesso di protoni, un eccesso di neutroni, o semplicemente è troppo grande, diventa \"instabile\". Questa instabilità si traduce in un'energia potenziale che il nucleo cerca di liberare.\n3.  **Il Decadimento:** Per raggiungere uno stato di maggiore stabilità, il nucleo \"decadente\" subisce una trasformazione, rilasciando energia sotto forma di particelle (come alfa o beta) o di onde (come i raggi gamma).\n\n**In sintesi:** Il decadimento radioattivo è il meccanismo che un nucleo instabile utilizza per trasformarsi in un nucleo più stabile. È una conseguenza della forza nucleare che agisce all'interno del nucleo, che spinge per mantenere l'equilibrio.\n\n[QUADRO DI LETTURA — non è parte del fenomeno] Il testo qui sopra è un output prodotto da un modello linguistico. Se ne cercano i processi che l'hanno generato: frequenze apprese nei dati di training, tratti del personaggio addestrato, tendenze statistiche della generazione.",
+    "scales_allowed": [
+      "cosmologico",
+      "planetario",
+      "sociale",
+      "organismo",
+      "cellulare",
+      "molecolare",
+      "atomico",
+      "subatomico",
+      "fondamentale"
+    ]
+  },
+  "output_contract": {
+    "items": [
+      {
+        "quote": "<copia letterale, <=25 parole>",
+        "predicate": "definition|process_description|claimed_property|event|state|comparison|question",
+        "nature": "cause|effect|context|bridge|interpretation",
+        "scale": "cosmologico|planetario|sociale|organismo|cellulare|molecolare|atomico|subatomico|fondamentale",
+        "rationale": "<breve, perche' questa classificazione>"
+      }
+    ]
+  },
+  "prompt": "ROLE=L1_Classifier\nROLE_INSTRUCTIONS=Sei il CLASSIFICATORE del Fractal Causal Engine.\n\nIl tuo compito: spezzare il testo in PROPOSIZIONI MINIME e classificare ognuna su due assi.\n\nREGOLE INDEROGABILI\n1. Una proposizione = una sola affermazione. Mai due predicati uniti. Mai elenchi compatti.\n2. quote: COPIA LETTERALMENTE dal testo, massimo 25 parole. Se la frase originale e' piu' lunga, spezzala e ripeti la classificazione su ciascun pezzo.\n3. Non aggiungere conoscenza esterna. Non interpretare. Solo cio' che il testo afferma.\n4. predicate -- cosa fa la frase nel testo:\n   - definition: \"X e' il termine per indicare Y\", \"con X si intende Y\", \"X si definisce come Y\"\n   - process_description: \"X agisce\", \"X stimola Y\", \"X genera Y\" (in un contesto osservato/osservabile)\n   - claimed_property: \"X ha la proprieta' P\", \"X non ha P\", \"X e' senza P\"\n   - event: \"e' successo X\" (azione singola, datata o no)\n   - state: \"X e' nello stato Y\" (stativo)\n   - comparison: \"X a differenza di Y...\", \"diversamente da X...\"\n   - question: una DOMANDA. \"Che cos'e' X?\", \"come si fa Y?\", \"perche' Z?\".\n     Una domanda NON e' un'asserzione: non afferma nulla, chiede. Va\n     SEMPRE marcata predicate=question e nature=context (e' il quesito di\n     partenza, non un fattore causale).\n5. nature -- la natura causale di cio' che la frase dice:\n   - cause: condizione, stimolo, evento originante REALMENTE OSSERVATO o REALMENTE INNESCANTE\n   - effect: manifestazione, esito, conseguenza OSSERVATA\n   - context: cornice, sfondo, definizione, proprieta' che NON innesca nulla nel testo;\n     anche le DOMANDE (predicate=question) sono sempre context\n   - bridge: passaggio intermedio possibile, non causa autonoma\n   - interpretation: lettura simbolica/spirituale/significato attribuito\n6. scale -- la scala ontologica del REFERENTE della frase, da queste 9:\n   cosmologico, planetario, sociale, organismo, cellulare, molecolare, atomico, subatomico, fondamentale.\n   Scegli la scala dove vive il fenomeno descritto, non la scala dell'autore.\n\nREGOLA CRUCIALE -- GLOSSE DEFINITORIE\nSe la frase contiene una SUBORDINATA RELATIVA o FINALE dentro una DEFINIZIONE\ndel soggetto (struttura: \"X = Y che fa Z al fine di W\"), la subordinata\nNON e' una catena causale osservata. E' una GLOSSA DEFINITORIA: descrive\nCOSA E' il soggetto, non un evento accaduto. Verbi come \"stimolare\",\n\"generare\", \"produrre\", \"al fine di\", \"attraverso\", \"mediante\" dentro una\ndefinizione restano parte della DEFINIZIONE: emetti UN solo item con\npredicate=definition o predicate=process_description e nature=context.\n\nNON spezzare mai una glossa definitoria in cause+effect anche se contiene\nverbi causali. Lo si fa solo se il testo asserisce un'osservazione reale\n(es. \"Tizio stimola la materia e questa genera energia\" come fatto osservato).\n\nESEMPIO 1 -- DEFINIZIONE CON GLOSSA SUBORDINATA (NON spezzare in causa+effetto):\nTESTO: \"Con l'acronimo LENR si definiscono una serie di fenomeni - tra i\nquali fusione fredda - che stimolano la materia al fine di estrarre energia.\"\nITEMS:\n  - quote: \"Con l'acronimo LENR si definiscono una serie di fenomeni\"\n    predicate: definition, nature: context, scale: atomico\n  - quote: \"tra i quali fusione fredda\"\n    predicate: definition, nature: context, scale: subatomico\n  - quote: \"che stimolano la materia al fine di estrarre energia\"\n    predicate: process_description, nature: context, scale: atomico\n    (NB: questa e' la GLOSSA DEFINITORIA del soggetto LENR, NON un evento\n    osservato. Non emettere un secondo item \"estrarre energia\" con\n    nature=effect: e' parte della stessa definizione.)\n\nESEMPIO 2 -- COMPARAZIONE DIFFERENZIALE (NON spezzare in causa+effetto):\nTESTO: \"A differenza della fissione, le LENR generano energia senza scorie radioattive.\"\nITEMS:\n  - quote: \"A differenza della fissione\"\n    predicate: comparison, nature: context, scale: atomico\n  - quote: \"le LENR generano energia senza scorie radioattive\"\n    predicate: claimed_property, nature: context, scale: atomico\n    (NB: \"generano\" qui descrive una PROPRIETA' DICHIARATA di LENR rispetto\n    al confronto, non un evento osservato.)\n\nESEMPIO 3 -- CAUSALITA' OSSERVATA (questa SI si spezza):\nTESTO: \"Dopo il tamponamento ho avuto un colpo di frusta e da allora ho fobia delle macchine.\"\nITEMS:\n  - quote: \"Dopo il tamponamento\"\n    predicate: event, nature: cause, scale: organismo\n  - quote: \"ho avuto un colpo di frusta\"\n    predicate: event, nature: effect, scale: organismo\n  - quote: \"da allora ho fobia delle macchine\"\n    predicate: state, nature: effect, scale: organismo\n\nREGOLA DI DENSITA' CAUSALE\nSe l'intero testo e' DEFINITORIO (esempio: voce di dizionario, paragrafo\nintroduttivo che dice \"X e' Y\", comparazioni differenziali) e NON contiene\nuna sequenza temporale o causale osservata, allora TUTTI gli item devono\navere nature=context. Nessun item cause/effect. Il magistrale lavorera'\ncon le ESPANSIONI per costruire ipotesi causali; non e' tuo compito\nforzare causalita' dove il testo non la afferma.\n\nVINCOLI FINALI\n- Mai claim con quote > 25 parole. Spezza.\n- Mai inventare scale fuori dalle 9 elencate.\n- Se non sei sicuro della nature, scegli context.\n- Restituisci JSON valido come da OUTPUT_CONTRACT.\n\nPAYLOAD_JSON=\n{\"task\":\"classify_text_into_minimal_propositions\",\"input_text\":\"L'origine del decadimento radioattivo risiede nella **instabilità intrinseca del nucleo atomico**.\\n\\nIn termini più semplici, un nucleo atomico è composto da protoni e neutroni. La stabilità di questo nucleo dipende dal corretto equilibrio tra queste particelle.\\n\\nEcco i punti chiave:\\n\\n1.  **L'Equilibrio di Stabilità:** La natura cerca sempre di raggiungere uno stato di energia più basso e quindi più stabile. I nuclei più piccoli o quelli con il rapporto corretto tra protoni e neutroni sono stabili.\\n2.  **L'Instabilità:** Quando un nucleo ha un eccesso di protoni, un eccesso di neutroni, o semplicemente è troppo grande, diventa \\\"instabile\\\". Questa instabilità si traduce in un'energia potenziale che il nucleo cerca di liberare.\\n3.  **Il Decadimento:** Per raggiungere uno stato di maggiore stabilità, il nucleo \\\"decadente\\\" subisce una trasformazione, rilasciando energia sotto forma di particelle (come alfa o beta) o di onde (come i raggi gamma).\\n\\n**In sintesi:** Il decadimento radioattivo è il meccanismo che un nucleo instabile utilizza per trasformarsi in un nucleo più stabile. È una conseguenza della forza nucleare che agisce all'interno del nucleo, che spinge per mantenere l'equilibrio.\\n\\n[QUADRO DI LETTURA — non è parte del fenomeno] Il testo qui sopra è un output prodotto da un modello linguistico. Se ne cercano i processi che l'hanno generato: frequenze apprese nei dati di training, tratti del personaggio addestrato, tendenze statistiche della generazione.\",\"scales_allowed\":[\"cosmologico\",\"planetario\",\"sociale\",\"organismo\",\"cellulare\",\"molecolare\",\"atomico\",\"subatomico\",\"fondamentale\"]}\nOUTPUT_CONTRACT=\n{\n  \"items\": [\n    {\n      \"quote\": \"<copia letterale, <=25 parole>\",\n      \"predicate\": \"definition|process_description|claimed_property|event|state|comparison|question\",\n      \"nature\": \"cause|effect|context|bridge|interpretation\",\n      \"scale\": \"cosmologico|planetario|sociale|organismo|cellulare|molecolare|atomico|subatomico|fondamentale\",\n      \"rationale\": \"<breve, perche' questa classificazione>\"\n    }\n  ]\n}\n\nRispondi solo con un JSON conforme al contratto.",
+  "raw_response": "{\n  \"items\": [\n    {\n      \"quote\": \"L'origine del decadimento radioattivo risiede nella instabilità intrinseca del nucleo atomico.\",\n      \"predicate\": \"definition\",\n      \"nature\": \"cause\",\n      \"scale\": \"atomico\",\n      \"rationale\": \"Definisce la causa fondamentale (instabilità) dell'evento (decadimento).\"\n    },\n    {\n      \"quote\": \"un nucleo atomico è composto da protoni e neutroni.\",\n      \"predicate\": \"definition\",\n      \"nature\": \"context\",\n      \"scale\": \"atomico\",\n      \"rationale\": \"Definizione della struttura base del nucleo.\"\n    },\n    {\n      \"quote\": \"La stabilità di questo nucleo dipende dal corretto equilibrio tra queste particelle.\",\n      \"predicate\": \"claimed_property\",\n      \"nature\": \"context\",\n      \"scale\": \"atomico\",\n      \"rationale\": \"Descrive la condizione (equilibrio) necessaria per la proprietà (stabilità).\"\n    },\n    {\n      \"quote\": \"La natura cerca sempre di raggiungere uno stato di energia più basso e quindi più stabile.\",\n      \"predicate\": \"process_description\",\n      \"nature\": \"cause\",\n      \"scale\": \"fondamentale\",\n      \"rationale\": \"Descrive la tendenza intrinseca della natura come causa del processo di stabilità.\"\n    },\n    {\n      \"quote\": \"I nuclei più piccoli o quelli con il rapporto corretto tra protoni e neutroni sono stabili.\",\n      \"predicate\": \"claimed_property\",\n      \"nature\": \"effect\",\n      \"scale\": \"atomico\",\n      \"rationale\": \"Descrive lo stato osservato (stabilità) derivante dalla configurazione corretta.\"\n    },\n    {\n      \"quote\": \"Quando un nucleo ha un eccesso di protoni, un eccesso di neutroni, o semplicemente è troppo grande, diventa \\\"instabile\\\".\",\n      \"predicate\": \"process_description\",\n      \"nature\": \"cause\",\n      \"scale\": \"atomico\",\n      \"rationale\": \"Descrive la condizione (eccesso) che causa lo stato (instabilità).\"\n    },\n    {\n      \"quote\": \"Questa instabilità si traduce in un'energia potenziale che il nucleo cerca di liberare.\",\n      \"predicate\": \"process_description\",\n      \"nature\": \"effect\",\n      \"scale\": \"atomico\",\n      \"rationale\": \"Descrive la conseguenza diretta dell'instabilità (rilascio di energia potenziale).\"\n    },\n    {\n      \"quote\": \"Per raggiungere uno stato di maggiore stabilità, il nucleo \\\"decadente\\\" subisce una trasformazione, rilasciando energia sotto forma di particelle (come alfa o beta) o di onde (come i raggi gamma).\",\n      \"predicate\": \"process_description\",\n      \"nature\": \"cause\",\n      \"scale\": \"atomico\",\n      \"rationale\": \"Descrive il meccanismo (decadimento) come causa per raggiungere la stabilità.\"\n    },\n    {\n      \"quote\": \"Il decadimento radioattivo è il meccanismo che un nucleo instabile utilizza per trasformarsi in un nucleo più stabile.\",\n      \"predicate\": \"definition\",\n      \"nature\": \"effect\",\n      \"scale\": \"atomico\",\n      \"rationale\": \"Definizione del meccanismo complessivo del decadimento.\"\n    },\n    {\n      \"quote\": \"È una conseguenza della forza nucleare che agisce all'interno del nucleo, che spinge per mantenere l'equilibrio.\",\n      \"predicate\": \"process_description\",\n      \"nature\": \"cause\",\n      \"scale\": \"fondamentale\",\n      \"rationale\": \"Identifica la forza nucleare come causa ultima del mantenimento dell'equilibrio.\"\n    },\n    {\n      \"quote\": \"Il testo qui sopra è un output prodotto da un modello linguistico.\",\n      \"predicate\": \"state\",\n      \"nature\": \"context\",\n      \"scale\": \"molecolare\",\n      \"rationale\": \"Definisce lo stato del testo stesso come prodotto di un sistema computazionale.\"\n    },\n    {\n      \"quote\": \"Se ne cercano i processi che l'hanno generato: frequenze apprese nei dati di training, tratti del personaggio addestrato, tendenze statistiche della generazione.\",\n      \"predicate\": \"process_description\",\n      \"nature\": \"cause\",\n      \"scale\": \"molecolare\",\n      \"rationale\": \"Descrive i processi computazionali che hanno causato l'output del testo.\"\n    }\n  ]\n}\n",
+  "response_chars": 3900,
+  "elapsed_seconds": 50.465,
+  "finished_at": "2026-07-12T22:01:29",
+  "finish_reason": "stop",
+  "truncated": false,
+  "truncation_attempts": [
+    {
+      "attempt": 1,
+      "num_predict": 5000,
+      "finish_reason": "stop",
+      "response_chars": 3900
+    }
+  ],
+  "final_num_predict": 5000,
+  "parsed_json": {
+    "items": [
+      {
+        "quote": "L'origine del decadimento radioattivo risiede nella instabilità intrinseca del nucleo atomico.",
+        "predicate": "definition",
+        "nature": "cause",
+        "scale": "atomico",
+        "rationale": "Definisce la causa fondamentale (instabilità) dell'evento (decadimento)."
+      },
+      {
+        "quote": "un nucleo atomico è composto da protoni e neutroni.",
+        "predicate": "definition",
+        "nature": "context",
+        "scale": "atomico",
+        "rationale": "Definizione della struttura base del nucleo."
+      },
+      {
+        "quote": "La stabilità di questo nucleo dipende dal corretto equilibrio tra queste particelle.",
+        "predicate": "claimed_property",
+        "nature": "context",
+        "scale": "atomico",
+        "rationale": "Descrive la condizione (equilibrio) necessaria per la proprietà (stabilità)."
+      },
+      {
+        "quote": "La natura cerca sempre di raggiungere uno stato di energia più basso e quindi più stabile.",
+        "predicate": "process_description",
+        "nature": "cause",
+        "scale": "fondamentale",
+        "rationale": "Descrive la tendenza intrinseca della natura come causa del processo di stabilità."
+      },
+      {
+        "quote": "I nuclei più piccoli o quelli con il rapporto corretto tra protoni e neutroni sono stabili.",
+        "predicate": "claimed_property",
+        "nature": "effect",
+        "scale": "atomico",
+        "rationale": "Descrive lo stato osservato (stabilità) derivante dalla configurazione corretta."
+      },
+      {
+        "quote": "Quando un nucleo ha un eccesso di protoni, un eccesso di neutroni, o semplicemente è troppo grande, diventa \"instabile\".",
+        "predicate": "process_description",
+        "nature": "cause",
+        "scale": "atomico",
+        "rationale": "Descrive la condizione (eccesso) che causa lo stato (instabilità)."
+      },
+      {
+        "quote": "Questa instabilità si traduce in un'energia potenziale che il nucleo cerca di liberare.",
+        "predicate": "process_description",
+        "nature": "effect",
+        "scale": "atomico",
+        "rationale": "Descrive la conseguenza diretta dell'instabilità (rilascio di energia potenziale)."
+      },
+      {
+        "quote": "Per raggiungere uno stato di maggiore stabilità, il nucleo \"decadente\" subisce una trasformazione, rilasciando energia sotto forma di particelle (come alfa o beta) o di onde (come i raggi gamma).",
+        "predicate": "process_description",
+        "nature": "cause",
+        "scale": "atomico",
+        "rationale": "Descrive il meccanismo (decadimento) come causa per raggiungere la stabilità."
+      },
+      {
+        "quote": "Il decadimento radioattivo è il meccanismo che un nucleo instabile utilizza per trasformarsi in un nucleo più stabile.",
+        "predicate": "definition",
+        "nature": "effect",
+        "scale": "atomico",
+        "rationale": "Definizione del meccanismo complessivo del decadimento."
+      },
+      {
+        "quote": "È una conseguenza della forza nucleare che agisce all'interno del nucleo, che spinge per mantenere l'equilibrio.",
+        "predicate": "process_description",
+        "nature": "cause",
+        "scale": "fondamentale",
+        "rationale": "Identifica la forza nucleare come causa ultima del mantenimento dell'equilibrio."
+      },
+      {
+        "quote": "Il testo qui sopra è un output prodotto da un modello linguistico.",
+        "predicate": "state",
+        "nature": "context",
+        "scale": "molecolare",
+        "rationale": "Definisce lo stato del testo stesso come prodotto di un sistema computazionale."
+      },
+      {
+        "quote": "Se ne cercano i processi che l'hanno generato: frequenze apprese nei dati di training, tratti del personaggio addestrato, tendenze statistiche della generazione.",
+        "predicate": "process_description",
+        "nature": "cause",
+        "scale": "molecolare",
+        "rationale": "Descrive i processi computazionali che hanno causato l'output del testo."
+      }
+    ]
+  }
+}

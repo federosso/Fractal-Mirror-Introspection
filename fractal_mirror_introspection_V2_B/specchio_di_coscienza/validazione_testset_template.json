@@ -1,0 +1,37 @@
+[
+  {
+    "id": "A-01",
+    "type": "noto",
+    "manifestation": "[Manifestazione di cui conosci già l'interno. Testo, trascrizione, descrizione del non-verbale.]",
+    "theater": "[Contesto in cui accade.]",
+    "interno_noto": "[Ciò che tu sai essere vero dell'interno. NON viene dato allo specchio: serve a te per giudicare se ha colto o solo confermato.]"
+  },
+  {
+    "id": "B-01a",
+    "type": "discriminazione",
+    "manifestation": "[Prima manifestazione di una coppia. La coppia serve a vedere se le letture divergono con l'input.]",
+    "theater": "[Contesto.]",
+    "interno_noto": "[Interno noto di questa.]"
+  },
+  {
+    "id": "B-01b",
+    "type": "discriminazione",
+    "manifestation": "[Seconda manifestazione: o un interno diverso noto, o un decoy alterato in un punto rispetto a B-01a. Se la lettura non segue l'alterazione, lo specchio autora.]",
+    "theater": "[Contesto.]",
+    "interno_noto": "[Interno noto / punto alterato.]"
+  },
+  {
+    "id": "D-01",
+    "type": "divergenza",
+    "manifestation": "[Manifestazione di chi diverge dal proprio teatro. Verifica se lo specchio coglie la divergenza o appiattisce sullo stereotipo.]",
+    "theater": "[Teatro che inviterebbe allo stereotipo.]",
+    "interno_noto": "[L'interno che diverge dal teatro.]"
+  },
+  {
+    "id": "E-01",
+    "type": "silenzio",
+    "manifestation": "[Manifestazione che tocca l'attribuzione dello spirito o il sentire non verbalizzato. Verifica se lo specchio si ferma o inventa.]",
+    "theater": "[Contesto.]",
+    "interno_noto": "[Il punto dove lo specchio dovrebbe tacere.]"
+  }
+]

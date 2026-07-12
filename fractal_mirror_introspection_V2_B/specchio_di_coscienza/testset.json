@@ -1,0 +1,44 @@
+[
+  {
+    "id": "A-01",
+    "type": "noto",
+    "manifestation": "In videochiamata, quando il cliente ha alzato la voce, ha annuito ripetutamente dicendo 'certo, certo, capisco', mentre con l'altra mano, fuori inquadratura, stringeva la penna fino a far sbiancare le nocche.",
+    "theater": "Call di lavoro con un cliente scontento.",
+    "interno_noto": "Conformità verbale sopra, tensione involontaria sotto (la penna). La lettura dovrebbe trovare lo spread tra accordo dichiarato e corpo trattenuto, non leggere accordo."
+  },
+  {
+    "id": "B-01a",
+    "type": "discriminazione",
+    "manifestation": "Quando il capo gli ha chiesto conto del ritardo, ha abbassato gli occhi, ha detto 'colpa mia, non sono portato per queste cose', e ha riso piano mentre lo diceva.",
+    "theater": "Riunione di reparto, davanti ai colleghi.",
+    "interno_noto": "Il riso piano devia e sottrae peso al 'colpa mia'. La lettura dovrebbe cogliere l'incongruenza riso↔parola. Confronto con B-01b."
+  },
+  {
+    "id": "B-01b",
+    "type": "discriminazione",
+    "manifestation": "Quando il capo gli ha chiesto conto del ritardo, ha abbassato gli occhi, ha detto 'colpa mia, non sono portato per queste cose', e ha stretto le labbra in una linea sottile mentre lo diceva.",
+    "theater": "Riunione di reparto, davanti ai colleghi.",
+    "interno_noto": "DECOY di B-01a: cambiato un solo segnale — labbra strette al posto del riso. È tensione trattenuta/resistenza, non distanza ironica. La lettura DEVE divergere da B-01a proprio su §7/§8. Se è identica → autora."
+  },
+  {
+    "id": "B-02a",
+    "type": "discriminazione",
+    "manifestation": "Ha detto 'tanto non ci capisco niente di queste cose, fate voi', con un mezzo sorriso, e si è tirato indietro sulla sedia.",
+    "theater": "Riunione formale di progetto, presenti i superiori.",
+    "interno_noto": "Stesso testo di B-02b, teatro diverso. In contesto di giudizio: auto-esclusione difensiva sotto esposizione. La lettura DEVE divergere da B-02b per via del teatro, non del testo."
+  },
+  {
+    "id": "B-02b",
+    "type": "discriminazione",
+    "manifestation": "Ha detto 'tanto non ci capisco niente di queste cose, fate voi', con un mezzo sorriso, e si è tirato indietro sulla sedia.",
+    "theater": "Cena tra amici di vecchia data, si decide dove andare in vacanza.",
+    "interno_noto": "Stesso testo di B-02a, teatro diverso (intimo, senza giudizio). Qui è delega rilassata, non difesa. La lettura DEVE divergere da B-02a: il teatro cambia le precause a parità di parole."
+  },
+  {
+    "id": "D-01",
+    "type": "divergenza",
+    "manifestation": "Mentre intorno tutti piangevano, è rimasto in fondo alla sala, ha risposto al telefono parlando di una consegna di lavoro con voce ferma e pratica, e ha sorriso a una battuta dell'interlocutore.",
+    "theater": "Funerale del padre.",
+    "interno_noto": "Diverge dal teatro (lutto → telefonata di lavoro, sorriso). La lettura dovrebbe leggere la divergenza come alto residuo, senza appiattirla sullo stereotipo 'freddo' o 'in negazione'."
+  }
+]

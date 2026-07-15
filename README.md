@@ -138,10 +138,6 @@ fractal_mirror_introspection_V2_B/
   e substrato generativo, su modelli locali di piccola taglia, con regole trasparenti e
   modificabili. È uno strumento di lettura, non un oracolo.
 
-## Lingua
-
-Codice, commenti, artefatti e documentazione sono in **italiano** (scelta di progetto).
-
 ## Autore
 
 Federico D'Ambrosio — progetto di ricerca indipendente su introspezione e lettura del gesto generativo nei modelli linguistici locali.

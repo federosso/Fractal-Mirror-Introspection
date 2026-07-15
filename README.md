@@ -16,6 +16,14 @@ disco, ispezionabile, riga per riga.
 
 ---
 
+## Video
+
+[![Guarda il video](https://img.youtube.com/vi/VOCeWyN39uI/maxresdefault.jpg)](https://www.youtube.com/watch?v=VOCeWyN39uI)
+
+**[▶ Guarda il video su YouTube](https://www.youtube.com/watch?v=VOCeWyN39uI)**
+
+---
+
 ## Perché
 
 Se chiedi a un modello *perché* ha risposto così, il modello **racconta**: produce una
@@ -63,6 +71,17 @@ Ogni livello scrive il proprio file **appena calcolato** in
 `11_specchio_lettura.md`, `report.md`, `GUIDA_interpretazione.md` e il trace completo di ogni
 chiamata LLM con prompt e tempi. La cartella del run **è** lo stato del run: progresso osservabile
 in tempo reale, artefatti superstiti in caso di crash.
+
+### Esempio di run
+
+Un run completo, con tutti gli artefatti generati da FMI, è consultabile in questa cartella
+del repository:
+
+**[storico_introspezione/loopB_20260712_215956](https://github.com/federosso/Fractal-Mirror-Introspection/tree/main/fractal_mirror_introspection_V2_B/storico_introspezione/loopB_20260712_215956)**
+
+Dentro trovi tutti i file generati dal loop per quel run: gli artefatti numerati
+`00_manifestazione` → `10_azione`, `11_specchio_lettura.md`, il `report.md`, la
+`GUIDA_interpretazione.md` e il trace completo di ogni chiamata LLM (prompt e tempi).
 
 ## Interfaccia web
 
